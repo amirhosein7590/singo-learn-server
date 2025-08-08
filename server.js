@@ -1,0 +1,961 @@
+const jsonServer = require("json-server");
+const server = jsonServer.create();
+const router = jsonServer.router("./DB/deepseek_json_20250624_124bdd.json");
+const middlewares = jsonServer.defaults({
+  static: "./public/uploads", // اضافه کردن مسیر استاتیک برای آپلودها
+  bodyParser: true, // اجازه می‌دهد json-server خودش bodyParser را مدیریت کند
+});
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const { v4: uuidv4 } = require("uuid");
+const crypto = require("crypto");
+const path = require("path");
+const fs = require("fs");
+const { log } = require("console");
+
+// تنظیمات
+const SECRET_KEY = "your-very-secure-key-123!@#";
+const TOKEN_EXPIRY = "1h";
+
+// لیست مسیرهای عمومی که نیاز به احراز هویت ندارند
+const PUBLIC_ROUTES = [
+  "/register",
+  "/login",
+  "/courses",
+  "/courses/:courseId",
+  "/refresh-token",
+  "/forgot-password",
+];
+
+// لیست مسیرهای ادمین
+const ADMIN_ROUTES = [
+  "/users",
+  "/ban",
+  "/offs/all",
+  "/offs/:courseId",
+  "/teachers/:teacherId", // <-- این خط رو اضافه کن
+];
+
+// تنظیمات multer برای آپلود فایل
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let folder = "public/uploads/";
+    if (file.fieldname === "avatar") folder += "avatars/";
+    else if (file.fieldname === "courseImage") folder += "courses/";
+    else if (file.fieldname === "video") folder += "videos/";
+
+    // ایجاد پوشه اگر وجود نداشته باشد
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder, { recursive: true });
+    }
+    cb(null, folder);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, `${uuidv4()}${ext}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 50 * 1024 * 1024 }, // حداکثر 50 مگابایت
+  fileFilter: (req, file, cb) => {
+    const validTypes = ["image/jpeg", "image/png", "video/mp4"];
+    if (validTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("فرمت فایل نامعتبر است!"), false);
+    }
+  },
+});
+
+// استفاده از میدلورهای json-server
+server.use(middlewares);
+
+// اضافه کردن middleware برای افزایش limit حجم درخواست‌ها
+server.use(express.json({ limit: "50mb" }));
+server.use(express.urlencoded({ extended: true, limit: "50mb" }));
+
+// --- Middleware احراز هویت ---
+server.use((req, res, next) => {
+  // استخراج مسیر بدون پارامترهای کوئری
+  const pathWithoutQuery = req.path.split("?")[0];
+
+  // اگر مسیر عمومی است، اجازه دسترسی بده
+  if (
+    PUBLIC_ROUTES.some((route) => {
+      if (route.includes(":")) {
+        const basePath = route.split("/:")[0];
+        return pathWithoutQuery.startsWith(basePath);
+      }
+      return pathWithoutQuery === route;
+    })
+  ) {
+    return next();
+  }
+
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (!token) return res.status(401).json({ error: "دسترسی غیرمجاز" });
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.status(403).json({ error: "توکن نامعتبر" });
+
+    // بررسی مسیرهای ادمین
+    if (
+      ADMIN_ROUTES.some((route) => {
+        if (route.includes(":")) {
+          const basePath = route.split("/:")[0];
+          return pathWithoutQuery.startsWith(basePath);
+        }
+        return pathWithoutQuery === route;
+      })
+    ) {
+      const db = router.db;
+      const userData = db.get("users").find({ id: user.userId }).value();
+
+      if (!userData || userData.role !== "admin") {
+        return res.status(403).json({ error: "دسترسی مخصوص ادمین" });
+      }
+    }
+
+    req.user = user;
+    next();
+  });
+});
+
+// --- روت‌های API ---
+
+/**
+ * @api {post} /register ثبت‌نام کاربران و معلمین
+ * @apiBody {String} username نام کاربری
+ * @apiBody {String} password رمز عبور
+ * @apiBody {String} email ایمیل
+ * @apiBody {String} fullname نام کامل
+ * @apiBody {String} role نقش (user یا teacher)
+ */
+server.post("/register", async (req, res) => {
+  const { username, password, email, fullname, phonenumber, role } = req.body;
+
+  // اعتبارسنجی ورودی‌ها
+  if (!username || !password || !email || !fullname || !phonenumber) {
+    return res.status(400).json({ error: "تمام فیلدها الزامی هستند" });
+  }
+
+  if (role !== "user" && role !== "teacher") {
+    return res.status(400).json({ error: "نقش نامعتبر (فقط user یا teacher)" });
+  }
+
+  const db = router.db;
+
+  // بررسی تکراری نبودن username (هم در کاربران و هم معلمین)
+  const userExists = db.get("users").find({ username }).value();
+  const teacherExists = db.get("teachers").find({ username }).value();
+
+  if (userExists || teacherExists) {
+    return res.status(400).json({ error: "نام کاربری قبلا ثبت شده است" });
+  }
+
+  // هش کردن رمز عبور
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  // ایجاد حساب جدید
+  const newAccount = {
+    id: crypto.randomUUID(),
+    username,
+    password: hashedPassword,
+    email,
+    phonenumber,
+    fullname,
+    role,
+    isBanned: false,
+  };
+
+  // ذخیره در جدول مناسب بر اساس نقش
+  if (role === "teacher") {
+  let { stack, courseIds = [] } = req.body;
+
+  // اضافه کردن مدرس به جدول teachers
+  db.get("teachers")
+    .push({ ...newAccount, courseIds, stack })
+    .write();
+
+  // آپدیت کردن course های مربوطه
+  courseIds.forEach((courseId) => {
+    const course = db.get("courses").find({ id: courseId }).value();
+    if (course) {
+      db.get("courses")
+        .find({ id: courseId })
+        .assign({ teacherId: newAccount.id })
+        .write();
+    }
+  });
+}
+ else {
+    db.get("users")
+      .push({
+        ...newAccount,
+        purchasedCourses: [],
+        cart: [],
+      })
+      .write();
+  }
+
+  res.status(201).json({
+    message: "ثبت‌نام موفق",
+    userId: newAccount.id,
+    role,
+  });
+});
+
+/**
+ * @api {get} /cart دریافت سبد خرید کاربر
+ * @apiHeader {String} Authorization توکن کاربر
+ */
+server.get("/cart", (req, res) => {
+  const userId = req.user.userId; // از توکن احراز هویت استخراج می‌شود
+  const db = router.db;
+
+  const user = db.get("users").find({ id: userId }).value();
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  // دریافت اطلاعات کامل دوره‌های موجود در سبد خرید
+  const cartItems = db
+    .get("courses")
+    .filter((course) => user.cart?.includes(course.id))
+    .value();
+
+  res.json({
+    cart: cartItems,
+  });
+});
+
+/**
+ * @api {post} /cart/add اضافه کردن دوره به سبد خرید
+ * @apiHeader {String} Authorization توکن کاربر
+ * @apiBody {String} courseId شناسه دوره
+ */
+server.post("/cart/add", (req, res) => {
+  const userId = req.user.userId;
+  const { courseId } = req.body;
+  const db = router.db;
+
+  if (!courseId) {
+    return res.status(400).json({ error: "شناسه دوره الزامی است" });
+  }
+
+  const user = db.get("users").find({ id: userId }).value();
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  const course = db.get("courses").find({ id: courseId }).value();
+  if (!course) {
+    return res.status(404).json({ error: "دوره یافت نشد" });
+  }
+
+  // اگر سبد خرید وجود نداشت، ایجاد می‌کنیم
+  if (!user.cart) {
+    user.cart = [];
+  }
+
+  // بررسی آیا دوره قبلاً در سبد خرید وجود دارد
+  if (user.cart.includes(courseId)) {
+    return res
+      .status(400)
+      .json({ error: "این دوره قبلاً در سبد خرید شما وجود دارد" });
+  }
+
+  // اضافه کردن دوره به سبد خرید
+  db.get("users")
+    .find({ id: userId })
+    .update("cart", (cart = []) => [...cart, courseId])
+    .write();
+
+  res.json({
+    success: true,
+    message: "دوره به سبد خرید اضافه شد",
+    cart: [...user.cart, courseId],
+  });
+});
+
+/**
+ * @api {post} /cart/remove حذف دوره از سبد خرید
+ * @apiHeader {String} Authorization توکن کاربر
+ * @apiBody {String} courseId شناسه دوره
+ */
+server.post("/cart/remove", (req, res) => {
+  const userId = req.user.userId;
+  const { courseId } = req.body;
+  const db = router.db;
+
+  if (!courseId) {
+    return res.status(400).json({ error: "شناسه دوره الزامی است" });
+  }
+
+  const user = db.get("users").find({ id: userId }).value();
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  if (!user.cart || user.cart.length === 0) {
+    return res.status(400).json({ error: "سبد خرید شما خالی است" });
+  }
+
+  if (!user.cart.includes(courseId)) {
+    return res
+      .status(400)
+      .json({ error: "این دوره در سبد خرید شما وجود ندارد" });
+  }
+
+  // 1. حذف دوره از سبد خرید کاربر
+  const updatedCart = user.cart.filter((id) => id !== courseId);
+  db.get("users").find({ id: userId }).assign({ cart: updatedCart }).write();
+
+  // 2. دریافت اطلاعات کامل دوره‌های باقیمانده از دیتابیس
+  const remainingCourses = updatedCart
+    .map((id) => db.get("courses").find({ id }).value())
+    .filter(Boolean); // فیلتر کردن موارد null/undefined
+
+  // 3. ارسال پاسخ با جزئیات کامل
+  res.json({
+    success: true,
+    message: "دوره از سبد خرید حذف شد",
+    cart: remainingCourses, // ارسال تمام اطلاعات دوره‌ها (شامل icon، قیمت و...)
+  });
+});
+
+/**
+ * @api {post} /login ورود کاربران و معلمین
+ * @apiBody {String} username نام کاربری
+ * @apiBody {String} password رمز عبور
+ */
+server.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const db = router.db;
+  const users = db.get("users").value();
+  const teachers = db.get("teachers").value();
+
+  const account =
+    users.find((u) => u.username === username) ||
+    teachers.find((t) => t.username === username);
+
+  if (!account) {
+    return res.status(401).json({ error: "کاربری با این مشخصات یافت نشد" });
+  }
+
+  if (!account.password) {
+    return res.status(401).json({ error: "رمز عبور کاربر وجود ندارد" });
+  }
+  
+  if (account.isBanned){
+    return res.status(403).json({ error: "حساب کاربری شما بن شده است" });
+  }
+
+  try {
+    const isPasswordValid = await bcrypt.compare(password, account.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "رمز عبور نادرست است" });
+    }
+
+    // 1. ساخت access token (انقضا: 15 دقیقه)
+    const accessToken = jwt.sign(
+      {
+        userId: account.id,
+        username: account.username,
+        role: account.role,
+      },
+      "access-secret",
+      { expiresIn: "15m" }
+    );
+
+    // 2. ساخت refresh token (انقضا: 7 روز)
+    const refreshToken = jwt.sign(
+      {
+        userId: account.id,
+        tokenType: "refresh", // برای تشخیص نوع توکن
+      },
+      "refresh-secret", // باید متفاوت از access-secret باشد
+      { expiresIn: "7d" }
+    );
+
+    // 3. ذخیره refreshToken در دیتابیس (اختیاری - برای باطل کردن توکن در آینده)
+    // db.get('users').find({ id: account.id }).assign({ refreshToken }).write();
+
+    // 4. ارسال هر دو توکن در پاسخ
+    res.status(200).json({
+      message: "ورود موفق",
+      userId: account.id,
+      role: account.role,
+      token: accessToken, // توکن دسترسی کوتاه‌مدت
+      refreshToken, // توکن تمدید دسترسی
+    });
+  } catch (err) {
+    console.error("💥 Error during login:", err);
+    res.status(500).json({ error: "خطای داخلی سرور" });
+  }
+});
+
+/**
+ * @api {post} /refresh-token ساخت توکن جدید از اطلاعات قبلی
+ * @apiBody {String} userId شناسه کاربر
+ * @apiBody {String} role نقش کاربر (user یا teacher یا admin)
+ */
+
+server.post("/refresh-token", (req, res) => {
+  const { userId, role } = req.body;
+
+  if (!userId || !role) {
+    return res.status(400).json({ error: "userId و role الزامی هستند" });
+  }
+
+  const db = router.db;
+
+  let user;
+  let userTable;
+
+  if (role === "teacher") {
+    userTable = "teachers";
+  } else if (role === "user" || role === "admin") {
+    userTable = "users"; // admin هم داخل users است
+  } else {
+    return res.status(400).json({ error: "نقش نامعتبر است" });
+  }
+
+  user = db.get(userTable).find({ id: userId }).value();
+
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  const newToken = jwt.sign({ userId, role }, SECRET_KEY, {
+    expiresIn: TOKEN_EXPIRY,
+  });
+
+  res.json({ token: newToken });
+});
+
+/**
+ * @api {post} /forgot-password بازیابی رمز عبور
+ * @apiBody {String} username نام کاربری
+ * @apiBody {String} newPassword رمز عبور جدید
+ */
+
+server.post("/forgot-password", async (req, res) => {
+  const { username, newPassword } = req.body;
+
+  if (!username || !newPassword) {
+    return res.status(400).json({ error: "نام کاربری و رمز جدید الزامی است" });
+  }
+
+  const db = router.db;
+  const tables = ["users", "teachers"]; // چون فقط تو این دوتا جدول دنبال کاربر می‌گردی
+
+  let user = null;
+  let foundTable = null;
+
+  for (const table of tables) {
+    const found = db.get(table).find({ username }).value();
+    if (found) {
+      user = found;
+      foundTable = table;
+      break;
+    }
+  }
+
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  db.get(foundTable)
+    .find({ username })
+    .assign({ password: hashedPassword })
+    .write();
+
+  res.json({ success: true, message: "رمز عبور با موفقیت تغییر کرد" });
+});
+
+/**
+ * @api {post} /ban بن/رفع بن کاربران و معلمین
+ * @apiHeader {String} Authorization توکن ادمین
+ * @apiBody {String} targetId شناسه کاربر/معلم
+ * @apiBody {Boolean} isBanned وضعیت بن
+ * @apiBody {String} targetType نوع حساب (user/teacher)
+ */
+server.post("/ban", (req, res) => {
+  const { targetId, isBanned, targetType = "user" } = req.body;
+  const db = router.db;
+
+  // اعتبارسنجی ورودی‌ها
+  if (typeof isBanned !== "boolean") {
+    return res
+      .status(400)
+      .json({ error: "مقدار isBanned باید true/false باشد" });
+  }
+
+  if (targetType !== "user" && targetType !== "teacher") {
+    return res
+      .status(400)
+      .json({ error: "نوع هدف نامعتبر (فقط user یا teacher)" });
+  }
+
+  // پیدا کردن جدول هدف
+  const targetTable =
+    targetType === "user" ? db.get("users") : db.get("teachers");
+  const target = targetTable.find({ id: targetId }).value();
+
+  if (!target) {
+    return res
+      .status(404)
+      .json({ error: `${targetType === "user" ? "کاربر" : "معلم"} یافت نشد` });
+  }
+
+  // اعمال تغییرات
+  targetTable.find({ id: targetId }).assign({ isBanned }).write();
+
+  res.json({
+    success: true,
+    message: `${targetType === "user" ? "کاربر" : "معلم"} ${
+      isBanned ? "بن" : "رفع بن"
+    } شد`,
+    targetType,
+    targetId,
+  });
+});
+
+/**
+ * @api {put} /teachers/:teacherId ویرایش اطلاعات معلم
+ * @apiHeader {String} Authorization توکن ادمین یا خود معلم
+ * @apiParam {String} teacherId شناسه معلم
+ * @apiBody {String} [username] نام کاربری جدید
+ * @apiBody {String} [email] ایمیل جدید
+ * @apiBody {String} [fullname] نام کامل جدید
+ * @apiBody {String} [stack] تخصص جدید
+ * @apiBody {String} [phonenumber] شماره تماس جدید
+ * @apiBody {String[]} [courseIds] آرایه شناسه‌های دوره‌های جدید
+ */
+server.put("/teachers/:teacherId", async (req, res) => {
+  const { teacherId } = req.params;
+  const {
+    username,
+    email,
+    fullname,
+    stack,
+    phonenumber,
+    courseIds,
+  } = req.body;
+  const db = router.db;
+
+  // 1. پیدا کردن معلم
+  const teacher = db.get("teachers").find({ id: teacherId }).value();
+  if (!teacher) {
+    return res.status(404).json({ error: "معلم یافت نشد" });
+  }
+
+  // 2. بررسی مجوز دسترسی (ادمین یا خود معلم)
+  const currentUserId = req.user.userId;
+  const currentUserRole = req.user.role;
+
+  if (currentUserId !== teacherId && currentUserRole !== "admin") {
+    return res.status(403).json({ error: "شما مجوز ویرایش این معلم را ندارید" });
+  }
+
+  // 3. اعتبارسنجی ورودی‌ها و آماده‌سازی داده‌های به‌روزرسانی
+  const updates = {};
+  
+  if (username) {
+    // بررسی تکراری نبودن username
+    const usernameExists = 
+      db.get("users").find({ username }).value() || 
+      db.get("teachers").find({ username, id: { $ne: teacherId } }).value();
+    
+    if (usernameExists) {
+      return res.status(400).json({ error: "نام کاربری قبلاً استفاده شده است" });
+    }
+    updates.username = username;
+  }
+
+  if (email) updates.email = email;
+  if (fullname) updates.fullname = fullname;
+  if (stack) updates.stack = stack;
+  if (phonenumber) updates.phonenumber = phonenumber;
+
+  // 4. پردازش دوره‌ها در صورت وجود
+  if (courseIds && Array.isArray(courseIds)) {
+    // 4.1. بررسی وجود تمام دوره‌ها در دیتابیس
+    const invalidCourses = courseIds.filter(
+      id => !db.get("courses").find({ id }).value()
+    );
+    
+    if (invalidCourses.length > 0) {
+      return res.status(404).json({
+        error: "برخی دوره‌ها یافت نشدند",
+        invalidCourses,
+      });
+    }
+
+    // 4.2. دریافت دوره‌های قبلی معلم
+    const previousCourseIds = teacher.courseIds || [];
+
+    // 4.3. به‌روزرسانی دوره‌های جدید در جدول teachers
+    updates.courseIds = courseIds;
+    
+    // 4.4. حذف teacherId از دوره‌های قدیمی که دیگر به این معلم تعلق ندارند
+    const removedCourses = previousCourseIds.filter(
+      id => !courseIds.includes(id)
+    );
+    
+    removedCourses.forEach(courseId => {
+      db.get("courses")
+        .find({ id: courseId })
+        .assign({ teacherId: null })
+        .write();
+    });
+
+    // 4.5. اضافه کردن teacherId به دوره‌های جدید
+    const addedCourses = courseIds.filter(
+      id => !previousCourseIds.includes(id)
+    );
+    
+    addedCourses.forEach(courseId => {
+      db.get("courses")
+        .find({ id: courseId })
+        .assign({ teacherId: teacherId })
+        .write();
+    });
+  }
+
+  // 5. اعمال به‌روزرسانی‌ها در جدول teachers
+  db.get("teachers")
+    .find({ id: teacherId })
+    .assign(updates)
+    .write();
+
+  // 6. دریافت اطلاعات به‌روزرسانی شده برای پاسخ
+  const updatedTeacher = db.get("teachers").find({ id: teacherId }).value();
+
+  res.json({
+    success: true,
+    message: "اطلاعات معلم با موفقیت به‌روزرسانی شد",
+    teacher: {
+      id: updatedTeacher.id,
+      username: updatedTeacher.username,
+      email: updatedTeacher.email,
+      fullname: updatedTeacher.fullname,
+      stack: updatedTeacher.stack,
+      phonenumber: updatedTeacher.phonenumber,
+      courseIds: updatedTeacher.courseIds,
+    },
+  });
+});
+
+/**
+ * @api {post} /purchase خرید دوره
+ * @apiHeader {String} Authorization توکن کاربر
+ * @apiBody {String[]} courseIds شناسه‌های دوره
+ */
+server.post("/purchase", (req, res) => {
+  const { courseIds } = req.body;
+  const userId = req.user.userId; // دریافت از توکن به جای body
+
+  if (!Array.isArray(courseIds)) {
+    return res.status(400).json({ error: "courseIds باید آرایه باشد" });
+  }
+
+  const db = router.db;
+  const user = db.get("users").find({ id: userId }).value();
+
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  // بررسی وجود دوره‌ها در دیتابیس
+  const invalidCourses = courseIds.filter(
+    (id) => !db.get("courses").find({ id }).value()
+  );
+
+  if (invalidCourses.length > 0) {
+    return res.status(404).json({
+      error: "برخی دوره‌ها یافت نشدند",
+      invalidCourses,
+    });
+  }
+
+  // به‌روزرسانی لیست خریداری‌شده‌ها بدون تکرار
+  const updatedPurchased = [
+    ...new Set([...user.purchasedCourses, ...courseIds]),
+  ];
+
+  // حذف دوره‌های خریداری‌شده از سبد خرید
+  const updatedCart = (user.cart || []).filter((id) => !courseIds.includes(id));
+
+  // ثبت تغییرات
+  db.get("users")
+    .find({ id: userId })
+    .assign({
+      purchasedCourses: updatedPurchased,
+      cart: updatedCart,
+    })
+    .write();
+
+  res.json({
+    success: true,
+    purchasedCourses: updatedPurchased,
+    cart: updatedCart,
+    message: "خرید با موفقیت انجام شد",
+  });
+});
+
+/**
+ * @api {get} /teachers/:teacherId/courses دریافت دوره‌های یک معلم
+ * @apiParam {String} teacherId شناسه معلم
+ */
+server.get("/teachers/:teacherId/courses", (req, res) => {
+  const { teacherId } = req.params;
+  const db = router.db;
+
+  const teacher = db.get("teachers").find({ id: teacherId }).value();
+  if (!teacher) {
+    return res.status(404).json({ error: "معلم یافت نشد" });
+  }
+
+  // دریافت تمام دوره‌های این معلم از جدول courses
+  const teacherCourses = db
+    .get("courses")
+    .filter((course) => teacher.courseIds.includes(course.id))
+    .value();
+
+  res.json({
+    teacher: {
+      id: teacher.id,
+      fullname: teacher.fullname,
+    },
+    courses: teacherCourses,
+  });
+});
+
+/**
+ * @api {get} /user-courses دریافت دوره‌های کاربر
+ * @apiHeader {String} Authorization توکن کاربر
+ */
+server.get("/user-courses/:userId", (req, res) => {
+  const { userId } = req.params;
+
+  // بررسی اینکه کاربر فقط به دوره‌های خودش دسترسی داشته باشد
+  if (req.user.userId !== userId) {
+    return res.status(403).json({ error: "دسترسی غیرمجاز" });
+  }
+
+  const db = router.db;
+  const user = db.get("users").find({ id: userId }).value();
+
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  const courses = db
+    .get("courses")
+    .filter((course) => user.purchasedCourses.includes(course.id))
+    .value();
+
+  res.json({
+    user: {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    },
+    courses,
+  });
+});
+
+/**
+ * @api {post} /offs/all اعمال تخفیف به همه دوره‌ها
+ */
+server.post("/offs/all", (req, res) => {
+  const { percentage } = req.body;
+
+  if (!percentage || percentage < 0 || percentage > 100) {
+    return res.status(400).json({ error: "درصد تخفیف نامعتبر است (0-100)" });
+  }
+
+  const db = router.db;
+  const courses = db.get("courses").value();
+
+  courses.forEach((course) => {
+    const originalPrice = course.originalPrice || course.price;
+    const discountedPrice = (originalPrice * (100 - percentage)) / 100;
+
+    db.get("courses")
+      .find({ id: course.id })
+      .assign({
+        discount: percentage,
+        price: discountedPrice,
+        originalPrice,
+      })
+      .write();
+  });
+
+  res.json({
+    success: true,
+    message: `تخفیف ${percentage}% به همه دوره‌ها اعمال شد`,
+  });
+});
+
+/**
+ * @api {delete} /teachers/:teacherId حذف یک معلم
+ * @apiHeader {String} Authorization توکن ادمین
+ * @apiParam {String} teacherId شناسه معلم
+ * @apiSuccess {String} message پیام موفقیت‌آمیز حذف
+ */
+server.delete("/teachers/:teacherId", (req, res) => {
+  const db = router.db;
+  const { teacherId } = req.params;
+
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن ارسال نشده" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "توکن معتبر نیست" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر" });
+    }
+
+    // چک نقش ادمین در جدول users
+    const adminUser = db.get("users").find({ id: user.userId }).value();
+    if (!adminUser || adminUser.role !== "admin") {
+      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+    }
+
+    // پیدا کردن معلم
+    const teacher = db.get("teachers").find({ id: teacherId }).value();
+    if (!teacher) {
+      return res.status(404).json({ error: "معلم یافت نشد" });
+    }
+
+    // حذف معلم فقط
+    db.get("teachers").remove({ id: teacherId }).write();
+
+    res.status(200).json({ message: "معلم با موفقیت حذف شد" });
+  });
+});
+
+
+/**
+ * @api {post} /offs/:courseId اعمال تخفیف به دوره خاص
+ */
+server.post("/offs/:courseId", (req, res) => {
+  const { percentage } = req.body;
+  const { courseId } = req.params;
+
+  if (!percentage || percentage < 0 || percentage > 100) {
+    return res.status(400).json({ error: "درصد تخفیف نامعتبر است (0-100)" });
+  }
+
+  const db = router.db;
+  const course = db.get("courses").find({ id: courseId }).value();
+
+  if (!course) {
+    return res.status(404).json({ error: "دوره یافت نشد" });
+  }
+
+  const originalPrice = course.originalPrice || course.price;
+  const discountedPrice = (originalPrice * (100 - percentage)) / 100;
+
+  db.get("courses")
+    .find({ id: courseId })
+    .assign({
+      discount: percentage,
+      price: discountedPrice,
+      originalPrice,
+    })
+    .write();
+
+  res.json({
+    success: true,
+    message: `تخفیف ${percentage}% به دوره اعمال شد`,
+    newPrice: discountedPrice,
+  });
+});
+
+// آپلود عکس دوره
+/**
+ * @api {post} /upload-course-image اعمال تخفیف به دوره خاص
+ * @api {body} courseImage
+ * @api {body} courseId
+ */
+server.post(
+  "/upload-course-image",
+  upload.single("courseImage"),
+  (req, res) => {
+    if (!req.file)
+      return res.status(400).json({ error: "هیچ فایلی آپلود نشد" });
+
+    const db = router.db;
+    const courseId = req.body.courseId;
+    const imageUrl = `/uploads/courses/${req.file.filename}`;
+
+    db.get("courses")
+      .find({ id: courseId })
+      .assign({ image: imageUrl })
+      .write();
+
+    res.json({ imageUrl });
+  }
+);
+
+// آپلود ویدئو جلسه
+
+/**
+ * @api {post} /upload-session-video اعمال تخفیف به دوره خاص
+ * @api {body} video
+ * @api {body} sessionId
+ */
+server.post("/upload-session-video", upload.single("video"), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: "هیچ فایلی آپلود نشد" });
+
+  const db = router.db;
+  const sessionId = req.body.sessionId;
+  const videoUrl = `/uploads/videos/${req.file.filename}`;
+
+  db.get("sessions").find({ id: sessionId }).assign({ videoUrl }).write();
+
+  res.json({ videoUrl });
+});
+
+// استفاده از روتر json-server
+server.use(router);
+
+// راه‌اندازی سرور
+server.listen(8080, () => {
+  console.log("سرور API در حال اجرا است: http://localhost:8080");
+  console.log("مستندات API:");
+  console.log(`
+  ================================================
+  | API Endpoint          | Method | Description |
+  ================================================
+  | /register            | POST   | ثبت‌نام کاربر |
+  | /login               | POST   | ورود کاربر   |
+  | /ban                 | POST   | بن کردن کاربر|
+  | /purchase            | POST   | خرید دوره‌ها |
+  | /user-courses/:userId| GET    | دوره‌های کاربر|
+  | /offs/all            | POST   | تخفیف کلی    |
+  | /offs/:courseId      | POST   | تخفیف دوره   |
+  | /upload-course-image | POST   | آپلود عکس دوره|
+  | /upload-session-video| POST   | آپلود ویدئو  |
+  ================================================
+  `);
+});

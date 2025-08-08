@@ -1,0 +1,3112 @@
+{
+  "users": [
+    {
+      "id": "e9c137d0-8259-4c1e-b97f-8eb33a0b33e5",
+      "role": "admin",
+      "password": "$2b$10$yUUNmFaroiEQm0XlKjrOE.5YF/WqAbb7ES9hNPmDQQy2zBwtFv4By",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": [],
+      "username": "amirhosein",
+      "fullname": "امیرحسین غلامی",
+      "email": "amirhosein@example.com",
+      "phonenumber": "09334557899"
+    },
+    {
+      "id": "db0e0cdf-d284-4a9d-ba9b-9a1875702c18",
+      "username": "maryam_amiri",
+      "password": "$2b$10$.LsQyF0v/hIwEprwH85j/eWZzeTcl8sWT5o205IG6THhGPwTPNK4m",
+      "email": "maryam.amiri@example.com",
+      "phonenumber": "09129876543",
+      "role": "user",
+      "fullname": "مریم امیری",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "fee04ad9-d382-4d37-9d47-5ab464da19cb",
+      "username": "reza_mohammadi",
+      "password": "$2b$10$kFJ698TpsaKvUNjq5kl63OoDQVTHBDxXlZdVoZS.y7l4nsg9vuc0q",
+      "email": "reza.mohammadi@example.com",
+      "phonenumber": "09351234567",
+      "fullname": "رضا محمدی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "445658e8-aae8-4d08-be68-946cf8c4fd20",
+      "username": "ahmad_rezaei",
+      "password": "$2b$10$9ljYV3o1fwKE1jPQgeqYyep5c5qXnYWQtsAZ/eciqKqm4efzb8RmC",
+      "email": "ahmad.rezaei@example.com",
+      "phonenumber": "09123456789",
+      "fullname": "احمد رضایی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "ef6a4d2f-7bd5-4699-8d92-d05f8ffca742",
+      "username": "fatemeh_akbari",
+      "password": "$2b$10$jpxxL6BxjP1uLGRS6xbgBOSus1NO7vmAl130rz4/2cbz/Rwmy/uv6",
+      "email": "fatemeh.akbari@example.com",
+      "phonenumber": "09127654321",
+      "fullname": "فاطمه اکبری",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e"
+      ],
+      "cart": []
+    },
+    {
+      "id": "2d0ce8b7-abe8-4c4c-842a-f4fa28c4de87",
+      "username": "ali_naseri",
+      "password": "$2b$10$l7z7PwHNrvBLcCAXZwP3D.n0Knbz9FlaaeYkU9fzm6b0BZ0RfNm3i",
+      "email": "ali.naseri@example.com",
+      "phonenumber": "09123456781",
+      "fullname": "علی ناصری",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+        "46cd7e50-724b-42c4-b03a-6087c55c6328"
+      ],
+      "cart": []
+    },
+    {
+      "id": "4dc818cc-ae7a-41de-989e-c5631e512c01",
+      "username": "zahra_rahimi",
+      "password": "$2b$10$3UGwn3PJEa5G4/AIrragSOxjSr4ZesgfsxVd6qHfBDm6wdJOWD5gG",
+      "email": "zahra.rahimi@example.com",
+      "phonenumber": "09123456782",
+      "fullname": "زهرا رحیمی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "3b13580d-0d1f-461d-8b71-19cd1a3f720c",
+      "username": "hossein_karimi",
+      "password": "$2b$10$OsI47CUCmMstnL8ZbebGT.NYtG9dRykEYnepwguJJsp0hUw6e/hIO",
+      "email": "hossein.karimi@example.com",
+      "phonenumber": "09123456783",
+      "fullname": "حسین کریمی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "b6a66500-c660-42a8-9084-a28f496dce66",
+      "username": "nasrin_ahmadi",
+      "password": "$2b$10$630BW8RUChKa.NJFS9gUUuSBS31iATdFHdlaKYobHNVUo8y3qSpge",
+      "email": "nasrin.ahmadi@example.com",
+      "phonenumber": "09123456784",
+      "fullname": "نسرین احمدی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "46cd7e50-724b-42c4-b03a-6087c55c6328",
+        "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
+        "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+        "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783"
+      ],
+      "cart": []
+    },
+    {
+      "id": "57084c38-369f-4984-9927-df1cdae9a2fd",
+      "username": "mohammad_hosseini",
+      "password": "$2b$10$0JnnihxuNxo1XhZGg8KzM.Ighwn2c3NtxG43kPC08F6Owe6um30mq",
+      "email": "mohammad.hosseini@example.com",
+      "phonenumber": "09123456785",
+      "fullname": "محمد حسینی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
+        "d9bbb2f2-26d3-4a28-a943-19eb81e60958"
+      ],
+      "cart": []
+    },
+    {
+      "id": "ca2a1241-5c9f-480e-b5ba-5d8c985f0243",
+      "username": "leila_moradi",
+      "password": "$2b$10$1F5ZetzeoHySrCaYZpG0iOU.JO79SFnBz0/RzdMQAeui70Df0jiMa",
+      "email": "leila.moradi@example.com",
+      "phonenumber": "09123456786",
+      "fullname": "لیلا مرادی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "3d5548ee-c4df-4467-a992-ce9083001838",
+      "username": "sara_hashemi",
+      "password": "$2b$10$x39mzaHE8yy.mDSx.iGq6.uEyXoAFOGLTGJ1/iJ27ZSJeHJWhN9oy",
+      "email": "sara.hashemi@example.com",
+      "phonenumber": "09123456788",
+      "fullname": "سارا هاشمی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "9ee61d97-aa84-4c84-80ea-0c88f203d136",
+      "username": "mehdi_farahani",
+      "password": "$2b$10$s0LZ8qdRhKx8qmG0ehuBXO2KKg8ywKec8bsP8CCstlA2P3s8mzcLi",
+      "email": "mehdi.farahani@example.com",
+      "phonenumber": "09123456790",
+      "fullname": "مهدی فراهانی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "c13255b1-9bd7-420d-9187-534ff4898dc5",
+      "username": "elnaz_ebadi",
+      "password": "$2b$10$6TkHiffMc2vTbg0XkaAj7OJOtNvLZ4iHf4LT32ZHQF28uFotNmhN6",
+      "email": "elnaz.ebadi@example.com",
+      "phonenumber": "09123456791",
+      "fullname": "الناز عبادی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e"
+      ],
+      "cart": []
+    },
+    {
+      "id": "2de7fe95-1c29-4b94-808c-53ea5ca32474",
+      "username": "javad_soleimani",
+      "password": "$2b$10$.B5wCO8kaZnrZiqM9xuz2exqmDCwH5zz./JSmqV/Py3C58a2.AlzW",
+      "email": "javad.soleimani@example.com",
+      "phonenumber": "09123456792",
+      "fullname": "جواد سلیمانی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "501fa59c-8d67-4273-b1e5-a5fcd9056e47"
+      ],
+      "cart": []
+    },
+    {
+      "id": "eb86f325-1941-43cb-9040-21666605e649",
+      "username": "parisa_mousavi",
+      "password": "$2b$10$ij7MXeLvjrgLKsPiZexYoe8gn7DTBIYC6n7DQbmywwP6S1LhJlT8S",
+      "email": "parisa.mousavi@example.com",
+      "phonenumber": "09123456793",
+      "fullname": "پریسا موسوی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+        "d9bbb2f2-26d3-4a28-a943-19eb81e60958",
+        "eb9a69ed-a9fc-4b63-987b-e657a5fa7496"
+      ],
+      "cart": []
+    },
+    {
+      "id": "2170d160-44e4-4c08-af79-7d650cd57048",
+      "username": "farhad_azizi",
+      "password": "$2b$10$if4elTTCZRaeN5uUsPAM.uM50CctxJjSNc.fF7e/kq7MCg8j7F8sy",
+      "email": "farhad.azizi@example.com",
+      "phonenumber": "09123456794",
+      "fullname": "فرهاد عزیزی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "8f5c68e1-2a11-47bf-8553-78a3a11a3528",
+      "username": "shima_naderi",
+      "password": "$2b$10$NnMJtw50B2jVGKJ.0nmBr.OzD0CjxN5qPshDjHCfGGomAvJKhACdm",
+      "email": "shima.naderi@example.com",
+      "phonenumber": "09123456795",
+      "fullname": "شیما نادری",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "id": "83499447-62ed-4aaa-9414-5470ae995760",
+      "username": "arash_kiani",
+      "password": "$2b$10$P/sggCu2LY9H1WM6yfBwhuME.gsBiZaax8hiuydiTVfVtbaRHLz9S",
+      "email": "arash.kiani@example.com",
+      "phonenumber": "09123456796",
+      "fullname": "آرش کیانی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [],
+      "cart": []
+    },
+    {
+      "username": "nima_ramezani",
+      "email": "nima.ramezani@example.com",
+      "phonenumber": "09123456797",
+      "fullname": "نیما رضایی",
+      "role": "user",
+      "id": "a5d5ab85-d027-4f52-bc5d-c4aa6171ca2d"
+    },
+    {
+      "id": "e0e88377-4851-415e-a0fa-d514d69fc901",
+      "username": "HadeSaei",
+      "password": "$2b$10$mQgNfP6fQoD53cJ/849okuS.ttACI7rkIm1FdbPs2x0SlnvGuurnu",
+      "email": "Hadi@gmail.com",
+      "phonenumber": "09334457788",
+      "fullname": "هادی ساعی",
+      "role": "user",
+      "isBanned": false,
+      "purchasedCourses": [
+        "501fa59c-8d67-4273-b1e5-a5fcd9056e47"
+      ],
+      "cart": []
+    }
+  ],
+  "courses": [
+    {
+      "id": "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b",
+      "title": "دوره کامل React JS",
+      "slug": "react-js",
+      "overview": "با وجود قابلیت بسیار بالای React JS در پیاده‌سازی فرانت‌اند،گاهاً با ضعف‌هایی مخصوصاً در صفحات اصلی مواجه می‌شویم. بارزترین موردی که باید اشاره کرد، ضعف React JS در SEO است که این مشکل توسط Next JS حل شده است. البته NextJS مزایای دیگری هم دارد که در طول این دوره به آن خواهیم پرداخت.",
+      "image": "https://ucarecdn.com/3b5ddcf4-46cf-41af-9325-e5754c6a33cd/",
+      "icon": "https://ucarecdn.com/77af7b90-48ca-4e82-ad93-95b1074b2d3f/",
+      "details": "React Js Course",
+      "teacherId": "5c0d2927-1d7c-4e70-b89c-a79cd94e1df1",
+      "price": 2500000,
+      "duration": 30,
+      "studentsCount": 150,
+      "isSupport": true,
+      "createdAt": "2025-02-01T10:00:00Z",
+      "sessions": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "React JS چیست؟",
+          "description": "React یک کتابخانه جاوااسکریپت برای ساخت رابط کاربری استکه توسط فیسبوک توسعه داده شده و برای ساخت اپلیکیشن‌های تک صفحه‌ای (SPA) استفادهمی‌شود."
+        },
+        {
+          "id": 2,
+          "title": "مزایای React چیست؟",
+          "description": "استفاده از Virtual DOM برای عملکرد بهتر، قابلیت استفادهمجدد از کامپوننت‌ها، جامعه توسعه‌دهنده بزرگ و اکوسیستم غلی از ابزارها و کتابخانههای کمکی."
+        },
+        {
+          "id": 3,
+          "title": "JSX در React چیست؟",
+          "description": "JSX یک سینتکس شبیه HTML است که در React استفاده می‌شود وبه توسعه‌دهندگان اجازه می‌دهد ساختار UI را به راحتی توصیف کنند."
+        },
+        {
+          "id": 4,
+          "title": "تفاوت React با Angular چیست؟",
+          "description": "React یک کتابخانه است در حالی که Angular یک فریم‌ورک کامل است. React بر روی view تمرکز دارد در حالی که Angular امکانات کامل برای ساخت اپلیکیشن ارائه می‌دهد."
+        },
+        {
+          "id": 5,
+          "title": "آیا React برای پروژه‌های بزرگ مناسب است؟",
+          "description": "بله، بسیاری از شرکت‌های بزرگ مانند فیسبوک، اینستاگرام، نتفلیکس و ... از React در پروژه‌های خود استفاده می‌کنند."
+        },
+        {
+          "id": 6,
+          "title": "Hooks در React چیست؟",
+          "description": "Hooks توابعی هستند که به شما امکان استفاده از state و دیگر ویژگی‌های React را بدون نوشتن کلاس می‌دهند."
+        },
+        {
+          "id": 7,
+          "title": "آیا یادگیری React سخت است؟",
+          "description": "برای کسانی که با جاوااسکریپت آشنا هستند، یادگیری React نسبتاً ساده است. مفاهیم اصلی آن در چند روز قابل یادگیری هستند."
+        },
+        {
+          "id": 8,
+          "title": "React Native چیست؟",
+          "description": "React Native یک فریم‌ورک برای ساخت اپلیکیشن‌های موبایل با استفاده از React و جاوااسکریپت است که هم برای iOS و هم Android کار می‌کند."
+        },
+        {
+          "id": 9,
+          "title": "Redux چیست و چه زمانی باید از آن استفاده کرد؟",
+          "description": "Redux یک کتابخانه مدیریت state برای اپلیکیشن‌های جاوااسکریپت است و زمانی استفاده می‌شود که state برنامه پیچیده باشد و نیاز به مدیریت متمرکز داشته باشد."
+        },
+        {
+          "id": 10,
+          "title": "آینده React چگونه است؟",
+          "description": "با توجه به محبوبیت و پشتیبانی فیسبوک، React همچنان یکی از اصلی‌ترین تکنولوژی‌های فرانت‌اند خواهد بود و به رشد خود ادامه خواهد داد."
+        }
+      ]
+    },
+    {
+      "id": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
+      "title": "آموزش پروژه‌محور Node JS",
+      "slug": "node-js",
+      "overview": "Node JS یک محیط اجرایی قدرتمند برای جاوااسکریپت در سمت سروراست. این ابزار به توسعه‌دهندگان امکان می‌دهد تا از یک زبان در هر دو سمت کلاینت وسرور استفاده کنند. در این دوره با ساخت API، مدیریت فایل‌ها و ارتباط با دیتابیسآشنا می‌شویم.",
+      "image": "https://ucarecdn.com/041f0c63-07ed-4abb-951c-61ab167323ea/",
+      "icon": "https://ucarecdn.com/0772db84-27e3-4501-9ea5-e5e7f6b1af11/",
+      "details": "Node Js Course",
+      "teacherId": null,
+      "price": 3000000,
+      "duration": 40,
+      "studentsCount": 120,
+      "isSupport": true,
+      "createdAt": "2025-02-05T11:00:00Z",
+      "sessions": [
+        "s5",
+        "s6",
+        "s7"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Node.js چیست؟",
+          "description": "Node.js یک محیط اجرای جاوااسکریپت سمت سرور است که بر پایه موتور V8 گوگل کروم ساخته شده و امکان اجرای کدهای جاوااسکریپت را خارج از مرورگرفراهم می‌کند."
+        },
+        {
+          "id": 2,
+          "title": "چرا از Node.js استفاده کنیم؟",
+          "description": "به دلیل معماری غیرمسدودکننده (non-blocking) و رویدادمحور(event-driven)، Node.js برای برنامه‌های شبکه‌ای و real-time بسیار مناسب است."
+        },
+        {
+          "id": 3,
+          "title": "NPM چیست؟",
+          "description": "NPM (Node Package Manager) بزرگترین اکوسیستم کتابخانه‌های متن‌باز در جهان است که همراه با Node.js نصب می‌شود و برای مدیریت وابستگی‌های پروژه استفاده می‌شود."
+        },
+        {
+          "id": 4,
+          "title": "Express.js چیست؟",
+          "description": "Express یک فریم‌ورک مینیمال و انعطاف‌پذیر برای Node.js است که ویژگی‌های قوی برای ساخت برنامه‌های وب و موبایل ارائه می‌دهد."
+        },
+        {
+          "id": 5,
+          "title": "آیا Node.js برای برنامه‌های CPU-Intensive مناسب است؟",
+          "description": "خیر، به دلیل ماهیت تک‌ریسمانی (single-threaded) Node.js،برای کارهای سنگین محاسباتی مناسب نیست و بهتر است برای این نوع کارها از زبان‌هایدیگر استفاده شود."
+        },
+        {
+          "id": 6,
+          "title": "تفاوت Node.js با PHP چیست؟",
+          "description": "Node.js رویدادمحور و غیرمسدودکننده است در حالی که PHP بهصورت سنتی و مسدودکننده کار می‌کند. همچنین Node.js از جاوااسکریپت استفاده می‌کنددر حالی که PHP یک زبان جداگانه است."
+        },
+        {
+          "id": 7,
+          "title": "چگونه می‌توانیم Node.js را در تولید (Production) اجرا کنیم؟",
+          "description": "برای اجرای Node.js در محیط تولید می‌توانید از ابزارهاییمانند PM2، Forever یا Docker استفاده کنید که امکان مدیریت فرآیندها، load balancing و restart خودکار را فراهم می‌کنند."
+        },
+        {
+          "id": 8,
+          "title": "آیا Node.js امن است؟",
+          "description": "مانند هر پلتفرم دیگری، امنیت Node.js به نحوه استفاده ازآن بستگی دارد. با رعایت بهترین روش‌های امنیتی و استفاده از کتابخانه‌های معتبر میتوان اپلیکیشن‌های امنی با Node.js ساخت."
+        },
+        {
+          "id": 9,
+          "title": "WebSocket در Node.js چیست؟",
+          "description": "WebSocket یک پروتکل ارتباطی است که امکان ارتباط دوطرفه وreal-time بین کلاینت و سرور را فراهم می‌کند و در Node.js با کتابخانه‌هایی مانندSocket.io پیاده‌سازی می‌شود."
+        },
+        {
+          "id": 10,
+          "title": "آینده Node.js چگونه است؟",
+          "description": "با توجه به محبوبیت جاوااسکریپت و کاربردهای گسترده Node.js در توسعه backend، microservices و ابزارهای توسعه، آینده روشنی برای Node.js پیشبینی می‌شود."
+        }
+      ]
+    },
+    {
+      "id": "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+      "title": "دوره Django از پایه تا پیشرفته",
+      "slug": "python-django",
+      "overview": "Django یک فریم‌ورک پیشرفته بر پایه زبان پایتون است که برای توسعه سریع و امن وب اپلیکیشن‌ها طراحی شده. در این دوره به اصول ساختارمند برنامه‌نویسی، اتصال به دیتابیس، پنل مدیریت خودکار و ساخت API می‌پردازیم.",
+      "image": "https://ucarecdn.com/9bfdd1cc-173f-492d-a7fc-95f308f3809a/",
+      "icon": "https://ucarecdn.com/4d8fa705-9ac1-4d40-bb42-363bc4a7ec27/",
+      "details": "Python Django Course",
+      "teacherId": "fe95c15a-dbee-4baf-a70e-1e3d0d20c3b3",
+      "price": 2800000,
+      "duration": 35,
+      "studentsCount": 100,
+      "isSupport": true,
+      "createdAt": "2025-02-10T12:00:00Z",
+      "sessions": [
+        "s8",
+        "s9"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Django چیست؟",
+          "description": "Django یک فریم‌ورک وب سطح بالا و مبتنی بر پایتون است کهتوسعه سریع و طراحی تمیز و عملی را تشویق می‌کند."
+        },
+        {
+          "id": 2,
+          "title": "مزایای Django چیست؟",
+          "description": "Django دارای سیستم ادمین داخلی، ORM قدرتمند، سیستم احرازهویت کاربر و معماری MVC است که توسعه برنامه‌های وب پیچیده را آسان می‌کند."
+        },
+        {
+          "id": 3,
+          "title": "Django REST framework چیست؟",
+          "description": "یک toolkit قدرتمند برای ساخت Web APIها در Django که ساختAPIهای RESTful را بسیار ساده می‌کند."
+        },
+        {
+          "id": 4,
+          "title": "آیا Django برای پروژه‌های کوچک مناسب است؟",
+          "description": "بله، اگرچه Django برای پروژه‌های بزرگ طراحی شده، اما برای پروژه‌های کوچک نیز قابل استفاده است و با ویژگی‌هایی مانند سیستم ادمین داخلی، حتی پروژه‌های کوچک نیز می‌توانند از آن بهره ببرند."
+        },
+        {
+          "id": 5,
+          "title": "تفاوت Django با Flask چیست؟",
+          "description": "Django یک فریم‌ورک کامل با امکانات از پیش ساخته شده استدر حالی که Flask یک میکروفریم‌ورک سبک‌تر و انعطاف‌پذیرتر است که به توسعه‌دهنده کنترل بیشتری می‌دهد."
+        },
+        {
+          "id": 6,
+          "title": "ORM در Django چیست؟",
+          "description": "سیستم Object-Relational Mapping در Django امکان تعامل باپایگاه داده را با استفاده از کدهای پایتون (به جای SQL) فراهم می‌کند."
+        },
+        {
+          "id": 7,
+          "title": "چگونه می‌توان Django را در تولید (Production) اجرا کرد؟",
+          "description": "برای اجرای Django در محیط تولید می‌توانید از ترکیب Nginx، Gunicorn/uWSGI و یک پایگاه داده مانند PostgreSQL استفاده کنید."
+        },
+        {
+          "id": 8,
+          "title": "آیا Django از NoSQL پشتیبانی می‌کند؟",
+          "description": "به صورت پیش‌فرض Django از پایگاه‌های داده رابطه‌ای پشتیبانی می‌کند، اما با استفاده از کتابخانه‌های جانبی مانند Django-nonrel می‌توان ازبرخی پایگاه‌های داده NoSQL نیز استفاده کرد."
+        },
+        {
+          "id": 9,
+          "title": "سیستم احراز هویت Django چگونه کار می‌کند؟",
+          "description": "Django دارای یک سیستم احراز هویت کاربر داخلی است که مدیریت کاربران، گروه‌ها، مجوزها و جلسات (sessions) را فراهم می‌کند."
+        },
+        {
+          "id": 10,
+          "title": "آینده Django چگونه است؟",
+          "description": "با توجه به محبوبیت پایتون و قدرت Django در توسعه وب، اینفریم‌ورک همچنان یکی از گزینه‌های اصلی برای توسعه برنامه‌های وب پیچیده خواهد بود."
+        }
+      ]
+    },
+    {
+      "id": "e8fa04fb-fd0e-46f2-bb43-955a968e712b",
+      "title": "آموزش جامع Vue JS",
+      "slug": "vue-js",
+      "overview": "Vue JS یک فریم‌ورک سبک و قابل فهم برای ساخت رابط‌های کاربریاست. تمرکز این فریم‌ورک بر سادگی، خوانایی و توسعه تدریجی پروژه‌هاست. در این دورهبا مفاهیم کامپوننت‌ها، واکنش‌گرایی و مدیریت وضعیت در Vue آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/94b34a26-7ab8-4694-8100-4f0160cb4bf5/",
+      "icon": "https://ucarecdn.com/d7397e61-3735-403c-85b9-6aa3a784cdea/",
+      "details": "Vue Js Course",
+      "teacherId": "4a712055-05ff-4c5a-80f0-786f0b3d9b20",
+      "price": 2200000,
+      "duration": 25,
+      "studentsCount": 90,
+      "isSupport": true,
+      "createdAt": "2025-02-15T13:00:00Z",
+      "sessions": [
+        "s10",
+        "s11",
+        "s12"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Vue.js چیست؟",
+          "description": "Vue.js یک فریم‌ورک پیش‌رونده جاوااسکریپت برای ساخت رابط‌های کاربری است که بر روی view layer تمرکز دارد و ادغام آن با پروژه‌های موجود بسیار آسان است."
+        },
+        {
+          "id": 2,
+          "title": "مزایای Vue.js چیست؟",
+          "description": "Vue.js یادگیری آسانی دارد، سبک‌وزن است، انعطاف‌پذیر استو با ویژگی‌هایی مانند سیستم reactive و کامپوننت‌ها، توسعه رابط کاربری را آسان میکند."
+        },
+        {
+          "id": 3,
+          "title": "تفاوت Vue با React چیست؟",
+          "description": "هر دو کتابخانه‌هایی برای ساخت UI هستند، اما Vue سینتکس ساده‌تر و مستندات بهتری دارد در حالی که React جامعه بزرگتری دارد و از JSX استفادهمی‌کند."
+        },
+        {
+          "id": 4,
+          "title": "Vuex چیست؟",
+          "description": "Vuex یک الگوی مدیریت state و کتابخانه برای برنامه‌های Vue.js است که مدیریت state متمرکز را برای تمام کامپوننت‌ها در یک برنامه فراهم می‌کند."
+        },
+        {
+          "id": 5,
+          "title": "آیا Vue برای پروژه‌های بزرگ مناسب است؟",
+          "description": "بله، با استفاده از معماری مناسب و ابزارهایی مانند Vuex وVue Router می‌توان از Vue در پروژه‌های بزرگ نیز استفاده کرد."
+        },
+        {
+          "id": 6,
+          "title": "Vue CLI چیست؟",
+          "description": "یک سیستم استاندارد برای ساخت سریع برنامه‌های Vue.js که شامل پیکربندی پیش‌فرض برای ابزارهای مدرن فرانت‌اند است."
+        },
+        {
+          "id": 7,
+          "title": "Nuxt.js چیست؟",
+          "description": "Nuxt.js یک فریم‌ورک برای Vue.js است که ویژگی‌هایی مانندرندرینگ سمت سرور (SSR)، تولید صفحات استاتیک و مسیریابی خودکار را ارائه می‌دهد."
+        },
+        {
+          "id": 8,
+          "title": "آینده Vue.js چگونه است؟",
+          "description": "با توجه به محبوبیت روزافزون و پشتیبانی فعال جامعه توسعه‌دهندگان، Vue.js آینده روشنی دارد و به رشد خود ادامه خواهد داد."
+        },
+        {
+          "id": 9,
+          "title": "Vue 3 چه ویژگی‌های جدیدی دارد؟",
+          "description": "Vue 3 دارای Composition API جدید، بهبود عملکرد، اندازه باندل کوچک‌تر و پشتیبانی بهتر از TypeScript است."
+        },
+        {
+          "id": 10,
+          "title": "چرا Vue.js انتخاب خوبی برای تازه‌کارهاست؟",
+          "description": "به دلیل سینتکس ساده، مستندات عالی و منحنی یادگیری ملایم،Vue.js گزینه ایده‌آلی برای توسعه‌دهندگان تازه‌کار است."
+        }
+      ]
+    },
+    {
+      "id": "46cd7e50-724b-42c4-b03a-6087c55c6328",
+      "title": "ساخت اپ موبایل با React Native",
+      "slug": "react-native",
+      "overview": "React Native این امکان را فراهم می‌کند تا با استفاده از جاوااسکریپت و ری‌اکت، اپلیکیشن‌های موبایل برای اندروید و iOS توسعه دهیم. در این دورهمی‌آموزیم چطور با استفاده از یک کدبیس، اپلیکیشن‌هایی سریع و نیتیو طراحی کنیم.",
+      "image": "https://ucarecdn.com/cc7c0def-8cc8-4a87-ba91-e4947b701ec2/",
+      "icon": "https://ucarecdn.com/bf48ff14-6492-4e2f-9f23-d9046f61b563/",
+      "details": "React Native Course",
+      "teacherId": "031efa93-8822-4207-8f97-d44fbd37faba",
+      "price": 3500000,
+      "duration": 45,
+      "studentsCount": 80,
+      "isSupport": true,
+      "createdAt": "2025-02-20T14:00:00Z",
+      "sessions": [
+        "s13",
+        "s14",
+        "s15"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "React Native چیست؟",
+          "description": "React Native یک فریم‌ورک متن‌باز برای ساخت اپلیکیشن‌هایموبایل است که از React و جاوااسکریپت استفاده می‌کند و امکان ساخت اپلیکیشن‌های native برای iOS و Android را فراهم می‌کند."
+        },
+        {
+          "id": 2,
+          "title": "تفاوت React Native با React چیست؟",
+          "description": "React برای ساخت وب اپلیکیشن‌ها استفاده می‌شود در حالی کهReact Native برای ساخت اپلیکیشن‌های موبایل native استفاده می‌شود."
+        },
+        {
+          "id": 3,
+          "title": "آیا React Native واقعاً native است؟",
+          "description": "بله، React Native کامپوننت‌های واقعی native را تولید می‌کند و مانند بعضی از راه‌حل‌های هیبریدی مبتنی بر WebView نیست."
+        },
+        {
+          "id": 4,
+          "title": "Expo چیست؟",
+          "description": "Expo مجموعه‌ای از ابزارها و سرویس‌ها است که توسعه اپلیکیشن‌های React Native را ساده‌تر می‌کند و نیاز به تنظیمات native را کاهش می‌دهد."
+        },
+        {
+          "id": 5,
+          "title": "آیا React Native برای استارتاپ‌ها مناسب است؟",
+          "description": "بله، به دلیل امکان توسعه همزمان برای دو پلتفرم iOS و Android با یک کدبیس، React Native انتخاب مناسبی برای استارتاپ‌هاست."
+        },
+        {
+          "id": 6,
+          "title": "محدودیت‌های React Native چیست؟",
+          "description": "دسترسی به بعضی از ویژگی‌های پلتفرم ممکن است نیاز به ماژول‌های native داشته باشد و عملکرد در بعضی موارد ممکن است بهینه نباشد."
+        },
+        {
+          "id": 7,
+          "title": "آیا اپلیکیشن‌های بزرگی با React Native ساخته شده‌اند؟",
+          "description": "بله، شرکت‌های بزرگی مانند فیسبوک، اینستاگرام، اسکایپ و تسلا از React Native در اپلیکیشن‌های خود استفاده کرده‌اند."
+        },
+        {
+          "id": 8,
+          "title": "React Native CLI چیست؟",
+          "description": "یک ابزار خط فرمان برای ایجاد و مدیریت پروژه‌های React Native که کنترل بیشتری نسبت به Expo ارائه می‌دهد."
+        },
+        {
+          "id": 9,
+          "title": "آینده React Native چگونه است؟",
+          "description": "با حمایت فیسبوک و جامعه فعال توسعه‌دهندگان، React Nativeهمچنان یکی از گزینه‌های اصلی برای توسعه اپلیکیشن‌های موبایل خواهد بود."
+        },
+        {
+          "id": 10,
+          "title": "چگونه می‌توان عملکرد React Native را بهبود بخشید؟",
+          "description": "با استفاده از بهینه‌سازی‌هایی مانند استفاده از PureComponent، حافظه پنهان (memoization)، کاهش اندازه تصاویر و استفاده از لیست‌های بهینهشده."
+        }
+      ]
+    },
+    {
+      "id": "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
+      "title": "جاوااسکریپت پیشرفته",
+      "slug": "advanced-js",
+      "overview": "جاوااسکریپت در سطح پیشرفته شامل مفاهیمی مثل closures، prototype، async/await، event loop و طراحی ماژولار است. در این دوره به درک عمیق‌تر اززبان جاوااسکریپت می‌پردازیم تا برای توسعه پروژه‌های واقعی آماده‌تر شویم.",
+      "image": "https://ucarecdn.com/316d70fe-6f34-4d46-a73d-361a858d816c/",
+      "icon": "https://ucarecdn.com/17db6cbb-c83d-46ee-9773-b687fb8d93f3/",
+      "details": "Advance js Course",
+      "teacherId": "8fe24411-594c-4cf6-9e7d-2201e57c35ff",
+      "price": 2000000,
+      "duration": 20,
+      "studentsCount": 200,
+      "isSupport": true,
+      "createdAt": "2025-03-01T15:00:00Z",
+      "sessions": [
+        "s16",
+        "s17"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Closure در جاوااسکریپت چیست؟",
+          "description": "Closure ترکیبی از یک تابع و محیط لغوی (lexical environment) است که در آن تابع تعریف شده است. این ویژگی به توابع اجازه می‌دهد به متغیرهایخارج از scope خود دسترسی داشته باشند."
+        },
+        {
+          "id": 2,
+          "title": "Prototypal Inheritance چیست؟",
+          "description": "یک مدل ارث‌بری در جاوااسکریپت که در آن اشیا می‌توانند ویژگی‌ها و متدهای اشیا دیگر را به ارث ببرند. این برخلاف مدل کلاس‌محور در زبان‌هاییمانند جاوا است."
+        },
+        {
+          "id": 3,
+          "title": "Event Loop چگونه کار می‌کند؟",
+          "description": "Event Loop مکانیسمی است که اجرای کدهای جاوااسکریپت، جمع‌آوری و پردازش رویدادها و اجرای توابع فرعی (sub-tasks) را مدیریت می‌کند و باعث میشود جاوااسکریپت با وجود تک‌ریسمانی بودن، بتواند عملیات ناهمزمان را مدیریت کند."
+        },
+        {
+          "id": 4,
+          "title": "تفاوت بین == و === چیست؟",
+          "description": "عملگر == مقایسه با تبدیل نوع (type coercion) انجام می‌دهد در حالی که === مقایسه دقیق بدون تبدیل نوع انجام می‌دهد. برای مثال '5' == 5 مقدار true برمی‌گرداند اما '5' === 5 مقدار false برمی‌گرداند."
+        },
+        {
+          "id": 5,
+          "title": "Hoisting در جاوااسکریپت چیست؟",
+          "description": "Hoisting رفتار پیش‌فرض جاوااسکریپت است که در آن تعریف متغیرها و توابع به بالای scope فعلی منتقل می‌شوند. این به این معنی است که می‌تواناز یک متغیر یا تابع قبل از تعریف آن استفاده کرد."
+        },
+        {
+          "id": 6,
+          "title": "this در جاوااسکریپت چگونه کار می‌کند؟",
+          "description": "کلمه کلیدی this به شیئی اشاره می‌کند که تابع در حال حاضرمتعلق به آن است. مقدار this بستگی به نحوه فراخوانی تابع دارد و می‌تواند در موقعیت‌های مختلف متفاوت باشد."
+        },
+        {
+          "id": 7,
+          "title": "Promise در جاوااسکریپت چیست؟",
+          "description": "Promise یک شیء است که نماینده نتیجه یک عملیات ناهمزمان است. Promise می‌تواند در یکی از سه حالت pending، fulfilled یا rejected باشد و امکان زنجیره کردن عملیات‌های ناهمزمان را فراهم می‌کند."
+        },
+        {
+          "id": 8,
+          "title": "Async/Await چگونه کار می‌کند؟",
+          "description": "Async/Await یک سینتکس مدرن برای کار با Promiseها است کهکدنویسی ناهمزمان را شبیه به کد همزمان می‌کند. توابع async همیشه یک Promise برمی‌گردانند و await برای انتظار کشیدن برای حل شدن Promise استفاده می‌شود."
+        },
+        {
+          "id": 9,
+          "title": "Generator functions چیستند؟",
+          "description": "Generator functions نوع خاصی از توابع هستند که می‌تواننداجرای خود را متوقف و از سر بگیرند. این توابع با استفاده از function* تعریف می‌شوند و از yield برای برگشت دادن مقادیر و مکث اجرا استفاده می‌کنند."
+        },
+        {
+          "id": 10,
+          "title": "تفاوت بین let، const و var چیست؟",
+          "description": "var دارای scope تابعی است و hoisting می‌شود. let و constدارای scope بلوکی هستند و hoisting نمی‌شوند. const برای تعریف ثابت‌ها استفاده می‌شود و مقدار آن پس از تعریف قابل تغییر نیست در حالی که let برای متغیرهای قابل تغییر استفاده می‌شود."
+        }
+      ]
+    },
+    {
+      "id": "b24905e6-2a14-4042-a790-0fe5d9476db2",
+      "title": "دوره کامل TypeScript",
+      "slug": "typescript",
+      "overview": "TypeScript نسخه‌ی توسعه‌یافته‌تری از جاوااسکریپت است که ویژگی‌هایی مثل تایپ ایمن و کلاس‌های پیشرفته را به آن اضافه می‌کند. در این دوره با سینتکس تایپ‌اسکریپت و نحوه ترکیب آن با فریم‌ورک‌هایی مثل React آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/634f861b-1e21-4f0c-9b8d-b53121c65a94/",
+      "icon": "https://ucarecdn.com/39c3a983-abb2-4f17-a9e9-62228833af57/",
+      "details": "TypeScript Course",
+      "teacherId": null,
+      "price": 1800000,
+      "duration": 18,
+      "studentsCount": 150,
+      "isSupport": true,
+      "createdAt": "2025-03-05T16:00:00Z",
+      "sessions": [
+        "s18",
+        "s19",
+        "s20"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "TypeScript چیست؟",
+          "description": "TypeScript یک زبان برنامه‌نویسی متن‌باز است که توسط مایکروسافت توسعه داده شده و یک سوپرست از جاوااسکریپت محسوب می‌شود. TypeScript کدهایجاوااسکریپت را با اضافه کردن انواع استاتیک (static types) گسترش می‌دهد."
+        },
+        {
+          "id": 2,
+          "title": "مزایای TypeScript چیست؟",
+          "description": "TypeScript خطاها را در زمان کامپایل شناسایی می‌کند، مستندات خودآموز (self-documenting) ایجاد می‌کند، refactoring را آسان‌تر می‌کند و ازویژگی‌های مدرن ECMAScript پشتیبانی می‌کند."
+        },
+        {
+          "id": 3,
+          "title": "تفاوت TypeScript با JavaScript چیست؟",
+          "description": "TypeScript از نوع‌دهی استاتیک پشتیبانی می‌کند در حالی که JavaScript از نوع‌دهی پویا استفاده می‌کند. TypeScript نیاز به کامپایل دارد اماJavaScript مستقیماً در مرورگر اجرا می‌شود."
+        },
+        {
+          "id": 4,
+          "title": "Interface در TypeScript چیست؟",
+          "description": "Interface یک ساختار است که قراردادی را برای اشیا تعریف می‌کند. اینترفیس‌ها می‌توانند برای تعریف شکل اشیا، پارامترهای تابع و مقادیر بازگشتی استفاده شوند."
+        },
+        {
+          "id": 5,
+          "title": "Generics در TypeScript چیست؟",
+          "description": "Generics امکان ایجاد کامپوننت‌های قابل استفاده مجدد را فراهم می‌کند که می‌توانند با انواع مختلف کار کنند. این ویژگی شبیه به templateها در ++C یا genericها در جاوا است."
+        },
+        {
+          "id": 6,
+          "title": "آیا TypeScript بر عملکرد اجرایی تأثیر می‌گذارد؟",
+          "description": "خیر، TypeScript در زمان اجرا به جاوااسکریپت خالص کامپایلمی‌شود و هیچ تأثیری بر عملکرد اجرایی ندارد. تمام نوع‌ها در زمان کامپایل بررسی می‌شوند و در کد نهایی حذف می‌شوند."
+        },
+        {
+          "id": 7,
+          "title": "Decorators در TypeScript چیست؟",
+          "description": "Decoratorها یک ویژگی آزمایشی در TypeScript هستند که امکان اضافه کردن حاشیه‌نویسی‌ها و متا-برنامه‌نویسی به کلاس‌ها و اعضای آن‌ها را فراهممی‌کنند. این ویژگی از مفهوم decorator در پایتون الهام گرفته شده است."
+        },
+        {
+          "id": 8,
+          "title": "چگونه می‌توان از TypeScript با React استفاده کرد؟",
+          "description": "با استفاده از templateهای create-react-app که از TypeScript پشتیبانی می‌کنند یا با تنظیم دستی webpack و tsconfig. فایل‌های کامپوننت‌ها باید با پسوند .tsx ذخیره شوند."
+        },
+        {
+          "id": 9,
+          "title": "آیا می‌توان پروژه‌های JavaScript موجود را به TypeScript تبدیلکرد؟",
+          "description": "بله، می‌توان پروژه‌ها را تدریجی به TypeScript تبدیل کرد.با تغییر پسوند فایل‌ها از .js به .ts و تنظیم allowJs در tsconfig.json می‌توان فایل‌های JavaScript و TypeScript را در یک پروژه ترکیب کرد."
+        },
+        {
+          "id": 10,
+          "title": "آینده TypeScript چگونه است؟",
+          "description": "با حمایت مایکروسافت و پذیرش گسترده در جامعه توسعه‌دهندگان، TypeScript به رشد خود ادامه خواهد داد. بسیاری از فریم‌ورک‌های مدرن مانند Angular و NestJS از TypeScript به عنوان زبان اصلی استفاده می‌کنند."
+        }
+      ]
+    },
+    {
+      "id": "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
+      "title": "آموزش MongoDB کاربردی",
+      "slug": "mongodb",
+      "overview": "MongoDB یک پایگاه‌داده NoSQL است که داده‌ها را به‌صورت JSON-like ذخیره می‌کند. این مدل انعطاف‌پذیری بالا و مقیاس‌پذیری سریع‌تری نسبت به دیتابیس‌های رابطه‌ای دارد. در این دوره با مفاهیم CRUD، کوئری‌گیری، و مدل‌سازی داده‌ها آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/9e0f54bb-2f20-44ce-a565-e9c71928ca7f/",
+      "icon": "https://ucarecdn.com/c80849cd-81d5-4831-ae14-cb528f5c16e8/",
+      "details": "No SQL Course",
+      "teacherId": "3f2ca0d3-acea-41e8-9f0f-397b72234ffe",
+      "price": 1500000,
+      "duration": 15,
+      "studentsCount": 120,
+      "isSupport": true,
+      "createdAt": "2025-03-10T17:00:00Z",
+      "sessions": [
+        "s21",
+        "s22"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "MongoDB چیست؟",
+          "description": "MongoDB یک پایگاه داده NoSQL سندگرا (document-oriented)است که داده‌ها را در قالب سندهای شبیه به JSON با ساختار پویا ذخیره می‌کند."
+        },
+        {
+          "id": 2,
+          "title": "مزایای MongoDB نسبت به پایگاه‌های داده رابطه‌ای چیست؟",
+          "description": "MongoDB از مقیاس‌پذیری افقی پشتیبانی می‌کند، ساختار انعطاف‌پذیر دارد، توسعه سریع‌تر را امکان‌پذیر می‌سازد و برای داده‌های بدون ساختار یانیمه‌ساختار یافته مناسب است."
+        },
+        {
+          "id": 3,
+          "title": "سند (Document) در MongoDB چیست؟",
+          "description": "سند واحد اصلی داده در MongoDB است که شبیه به یک شیء JSONاست و در مجموعه‌ها (collections) ذخیره می‌شود. هر سند می‌تواند ساختار متفاوتی داشته باشد."
+        },
+        {
+          "id": 4,
+          "title": "تفاوت MongoDB با MySQL چیست؟",
+          "description": "MongoDB یک پایگاه داده NoSQL است در حالی که MySQL رابطه‌ای است. MongoDB از سندهای JSON-like استفاده می‌کند در حالی که MySQL از جداول و ردیف‌ها. MongoDB برای داده‌های بدون ساختار مناسب است در حالی که MySQL برای داده‌های ساختار یافته طراحی شده است."
+        },
+        {
+          "id": 5,
+          "title": "Aggregation در MongoDB چیست؟",
+          "description": "Aggregation فرآیند پردازش سندها برای محاسبه نتایج تجمعیاست. فریم‌ورک aggregation در MongoDB امکان فیلتر، گروه‌بندی و محاسبه روی سندها را فراهم می‌کند."
+        },
+        {
+          "id": 6,
+          "title": "Index در MongoDB چیست و چرا مهم است؟",
+          "description": "Index ساختاری است که کارایی جستجوها را بهبود می‌بخشد. MongoDB از indexها برای محدود کردن تعداد سندهایی که باید در یک query بررسی شوند استفاده می‌کند."
+        },
+        {
+          "id": 7,
+          "title": "Replication در MongoDB چگونه کار می‌کند؟",
+          "description": "Replication فرآیند نگهداری چندین کپی از داده‌ها روی سرورهای مختلف است که در دسترس‌پذیری و تحمل خطا را بهبود می‌بخشد. MongoDB از مجموعه‌های replica برای این منظور استفاده می‌کند."
+        },
+        {
+          "id": 8,
+          "title": "Sharding در MongoDB چیست؟",
+          "description": "Sharding روشی برای توزیع داده‌ها بین چندین ماشین است. MongoDB از sharding برای پشتیبانی از مجموعه‌های داده بسیار بزرگ و عملیات با کاراییبالا استفاده می‌کند."
+        },
+        {
+          "id": 9,
+          "title": "چگونه می‌توان MongoDB را با Node.js استفاده کرد؟",
+          "description": "با استفاده از درایور رسمی MongoDB برای Node.js یا کتابخانه‌های سطح بالاتر مانند Mongoose که یک لایه مدل شیء-سند (ODM) فراهم می‌کند."
+        },
+        {
+          "id": 10,
+          "title": "آینده MongoDB چگونه است؟",
+          "description": "با رشد نیاز به پردازش داده‌های بدون ساختار و نیاز به مقیاس‌پذیری بالا، MongoDB همچنان یکی از گزینه‌های اصلی برای توسعه برنامه‌های مدرن خواهد بود."
+        }
+      ]
+    },
+    {
+      "id": "d9bbb2f2-26d3-4a28-a943-19eb81e60958",
+      "title": "دوره عملی Docker",
+      "slug": "docker",
+      "overview": "Docker به شما این امکان را می‌دهد که پروژه‌هایتان را در محیطهایی مجزا و قابل حمل اجرا کنید. در این دوره با مفاهیم کانتینر، ایمیج، داکرفایلواستفاده عملی از Docker در توسعه و دیپلوی آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/8e48d09b-76ae-4b4f-8d6c-66bbff08223b/",
+      "icon": "https://ucarecdn.com/c529b5d8-7e9b-40a3-8163-be37d051d30c/",
+      "details": "Docker Course",
+      "teacherId": "d2c1e4dd-a457-498c-8f0e-ded09ba1fe83",
+      "price": 2400000,
+      "duration": 22,
+      "studentsCount": 100,
+      "isSupport": true,
+      "createdAt": "2025-03-15T18:00:00Z",
+      "sessions": [
+        "s23",
+        "s24",
+        "s25"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Docker چیست؟",
+          "description": "Docker یک پلتفرم متن‌باز برای توسعه، انتشار و اجرای برنامه‌ها در قالب کانتینرها است. کانتینرها امکان بسته‌بندی برنامه و وابستگی‌های آن را در یک واحد استاندارد فراهم می‌کنند."
+        },
+        {
+          "id": 2,
+          "title": "کانتینر (Container) چیست؟",
+          "description": "کانتینر یک واحد نرم‌افزاری سبک‌وزن و مستقل است که شامل کد، زمان‌اجرا، ابزارهای سیستم، کتابخانه‌ها و تنظیمات مورد نیاز برای اجرای یک برنامه می‌شود."
+        },
+        {
+          "id": 3,
+          "title": "تفاوت کانتینر با ماشین مجازی (VM) چیست؟",
+          "description": "کانتینرها به جای مجازی‌سازی سخت‌افزار، سیستم عامل میزبانرا مجازی‌سازی می‌کنند. کانتینرها سبک‌تر هستند، سریع‌تر راه‌اندازی می‌شوند و منابع کمتری مصرف می‌کنند در حالی که VMها ایزوله‌تر هستند."
+        },
+        {
+          "id": 4,
+          "title": "Dockerfile چیست؟",
+          "description": "Dockerfile یک فایل متنی است که شامل دستورالعمل‌هایی برایساخت یک image داکر است. این فایل مراحل لازم برای ایجاد محیط اجرای برنامه را توصیف می‌کند."
+        },
+        {
+          "id": 5,
+          "title": "Docker Compose چیست؟",
+          "description": "ابزاری برای تعریف و اجرای برنامه‌های چندکانتینری که با استفاده از یک فایل YAML سرویس‌ها، شبکه‌ها و volumeها را تنظیم می‌کند."
+        },
+        {
+          "id": 6,
+          "title": "Docker Hub چیست؟",
+          "description": "یک سرویس رجیستری عمومی برای اشتراک‌گذاری و مدیریت imageهای داکر که شامل هزاران image رسمی و جامعه‌ساخته شده است."
+        },
+        {
+          "id": 7,
+          "title": "چرا از Docker استفاده کنیم؟",
+          "description": "Docker تضمین می‌کند برنامه در هر محیطی یکسان اجرا می‌شود، فرآیند توسعه و استقرار را ساده می‌کند، منابع را بهینه استفاده می‌کند و امکان مقیاس‌پذیری را فراهم می‌کند."
+        },
+        {
+          "id": 8,
+          "title": "Docker Swarm چیست؟",
+          "description": "ابزار اورکستراسیون داخلی داکر برای مدیریت خوشه‌ای از کانتینرها که امکان اجرای کانتینرها روی چندین میزبان را فراهم می‌کند."
+        },
+        {
+          "id": 9,
+          "title": "تفاوت Docker با Kubernetes چیست؟",
+          "description": "Docker برای ساخت و اجرای کانتینرها طراحی شده در حالی کهKubernetes برای اورکستراسیون و مدیریت کانتینرها در مقیاس بزرگ طراحی شده است. ایندو تکنولوژی مکمل یکدیگر هستند."
+        },
+        {
+          "id": 10,
+          "title": "آینده Docker چگونه است؟",
+          "description": "با رشد محاسبات ابری و نیاز به توسعه مبتنی بر میکروسرویس‌ها، داکر همچنان یکی از فناوری‌های کلیدی در اکوسیستم DevOps خواهد بود."
+        }
+      ]
+    },
+    {
+      "id": "61b91f5e-f071-435b-a956-572dc0011a4a",
+      "title": "آموزش سریع GraphQL",
+      "slug": "graphql",
+      "overview": "GraphQL یک زبان کوئری‌گیری برای API‌هاست که به کلاینت اجازهمی‌دهد دقیقاً داده‌هایی را دریافت کند که نیاز دارد. در این دوره نحوه طراحی و مصرفAPI‌های GraphQL را از صفر تا سطح پیشرفته آموزش می‌دهیم.",
+      "image": "https://ucarecdn.com/c7b59826-3fb5-4e6e-9380-ab93dfced823/",
+      "icon": "https://ucarecdn.com/79d6ebe7-e24f-4e45-9b67-e2a3c8fdfca6/",
+      "details": "Graph Ql Course",
+      "teacherId": "bbb10c00-d866-4c7d-98fa-5797caba1c0d",
+      "price": 2100000,
+      "duration": 20,
+      "studentsCount": 90,
+      "isSupport": true,
+      "createdAt": "2025-03-20T19:00:00Z",
+      "sessions": [
+        "s26",
+        "s27"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "GraphQL چیست؟",
+          "description": "GraphQL یک زبان پرس‌وجو برای APIها و یک زمان‌اجرا برای اجرای این پرس‌وجوها با داده‌های موجود است. GraphQL توسط فیسبوک توسعه داده شده و جایگزین کارآمدی برای REST ارائه می‌دهد."
+        },
+        {
+          "id": 2,
+          "title": "مزایای GraphQL نسبت به REST چیست؟",
+          "description": "GraphQL از over-fetching و under-fetching داده جلوگیری می‌کند، امکان دریافت چندین منبع داده در یک درخواست را فراهم می‌کند، دارای سیستم نوع قوی است و به کلاینت کنترل بیشتری روی داده‌های دریافتی می‌دهد."
+        },
+        {
+          "id": 3,
+          "title": "تفاوت Query با Mutation در GraphQL چیست؟",
+          "description": "Query برای دریافت داده استفاده می‌شود (معادل GET در REST) در حالی که Mutation برای تغییر داده (ایجاد، به‌روزرسانی یا حذف - معادل POST/PUT/DELETE در REST) استفاده می‌شود."
+        },
+        {
+          "id": 4,
+          "title": "Schema در GraphQL چیست؟",
+          "description": "Schema قراردادی بین سرور و کلاینت است که انواع داده‌هاییکه می‌توانند درخواست یا تغییر داده شوند را تعریف می‌کند. Schema با زبان تعریف Schema GraphQL (SDL) نوشته می‌شود."
+        },
+        {
+          "id": 5,
+          "title": "Resolver در GraphQL چیست؟",
+          "description": "Resolver تابعی است که مسئول پر کردن داده برای یک فیلد خاص در schema است. هر فیلد در یک نوع GraphQL دارای یک تابع resolver است که نحوه دریافت آن فیلد را مشخص می‌کند."
+        },
+        {
+          "id": 6,
+          "title": "Apollo چیست؟",
+          "description": "Apollo یک پلتفرم برای پیاده‌سازی GraphQL است که شامل کلاینت (برای فرانت‌اند)، سرور (برای بک‌اند) و ابزارهای دیگر برای توسعه برنامه‌های GraphQL می‌شود."
+        },
+        {
+          "id": 7,
+          "title": "چگونه می‌توان GraphQL را با پایگاه داده استفاده کرد؟",
+          "description": "با استفاده از resolverها می‌توان GraphQL را به هر منبع داده‌ای متصل کرد. کتابخانه‌هایی مانند Prisma لایه داده‌ای قدرتمندی برای GraphQL فراهم می‌کنند."
+        },
+        {
+          "id": 8,
+          "title": "آیا GraphQL جایگزین REST می‌شود؟",
+          "description": "GraphQL جایگزین مطلق REST نیست اما در بسیاری از موارد انتخاب بهتری است، به ویژه برای برنامه‌های پیچیده که نیاز به انعطاف‌پذیری در دریافتداده دارند."
+        },
+        {
+          "id": 9,
+          "title": "Subscription در GraphQL چیست؟",
+          "description": "Subscription امکان دریافت به‌روزرسانی‌های real-time از سرور را فراهم می‌کند. این ویژگی برای پیاده‌سازی ویژگی‌هایی مانند نوتیفیکیشن‌های بلادرنگ مفید است."
+        },
+        {
+          "id": 10,
+          "title": "آینده GraphQL چگونه است؟",
+          "description": "با حمایت شرکت‌های بزرگی مانند فیسبوک، گیت‌هاب و ... و رشد جامعه توسعه‌دهندگان، GraphQL به استاندارد جدیدی برای APIهای مدرن تبدیل شده است."
+        }
+      ]
+    },
+    {
+      "id": "020d41dd-173c-46e3-a9d2-245efbf89161",
+      "title": "دوره جامع و پروژه‌محور Next JS",
+      "slug": "next-js",
+      "overview": "Next JS بر پایه React ساخته شده و امکاناتی مثل SSR، SEO بهینه و مسیرهای داینامیک را در اختیار توسعه‌دهنده می‌گذارد. در این دوره با ساخت پروژه‌های واقعی به قدرت و مزایای Next پی خواهیم برد.",
+      "image": "https://ucarecdn.com/1317ce5f-f46f-4f53-b3c1-4888794d9e1b/",
+      "icon": "https://ucarecdn.com/b8d9f74d-8788-452b-af96-ddf8d375f3b7/",
+      "details": "Next Js Course",
+      "teacherId": "7b770ce5-2a1e-48a6-b20d-fec6ac1214e0",
+      "price": 2700000,
+      "duration": 28,
+      "studentsCount": 110,
+      "isSupport": true,
+      "createdAt": "2025-04-01T20:00:00Z",
+      "sessions": [
+        "s28",
+        "s29",
+        "s30"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Next.js چیست؟",
+          "description": "Next.js یک فریم‌ورک React برای توسعه برنامه‌های وب با رندر سمت سرور (SSR)، تولید صفحات ایستا (SSG) و مسیرهای فایل‌محور است."
+        },
+        {
+          "id": 2,
+          "title": "مزایای Next.js چیست؟",
+          "description": "Next.js سئو بهتر، بارگذاری سریع‌تر، پشتیبانی از API داخلی و توسعه آسان با React را ارائه می‌دهد."
+        },
+        {
+          "id": 3,
+          "title": "تفاوت SSR و SSG در Next.js چیست؟",
+          "description": "SSR در هر درخواست صفحه را رندر می‌کند، در حالی که SSG درزمان build صفحات را می‌سازد و سریع‌تر ارائه می‌دهد."
+        },
+        {
+          "id": 4,
+          "title": "چگونه مسیرها در Next.js تعریف می‌شوند؟",
+          "description": "با سیستم فایل محور. هر فایل در پوشه `pages` به صورت خودکار به یک مسیر URL تبدیل می‌شود."
+        },
+        {
+          "id": 5,
+          "title": "API Routes در Next.js چه هستند؟",
+          "description": "به شما اجازه می‌دهند مستقیماً در پروژه‌ی Next.js خود endpointهای API ایجاد کنید، بدون نیاز به سرور مجزا."
+        },
+        {
+          "id": 6,
+          "title": "تصاویر در Next.js چگونه بهینه می‌شوند؟",
+          "description": "با استفاده از کامپوننت Image که ویژگی‌هایی مانند lazy loading، فشرده‌سازی و اندازه‌دهی خودکار را دارد."
+        },
+        {
+          "id": 7,
+          "title": "getStaticProps چیست؟",
+          "description": "تابعی برای واکشی داده در زمان build برای صفحات SSG است.نتایج آن به صورت ایستا کش می‌شود."
+        },
+        {
+          "id": 8,
+          "title": "getServerSideProps چیست؟",
+          "description": "تابعی برای واکشی داده در زمان هر درخواست است. برای صفحاتی که محتوایشان باید داینامیک باشد مناسب است."
+        },
+        {
+          "id": 9,
+          "title": "next.config.js چه کاربردی دارد؟",
+          "description": "برای پیکربندی تنظیمات کلی پروژه مثل مسیرهای سفارشی، فشرده‌سازی تصاویر و تنظیمات Webpack استفاده می‌شود."
+        },
+        {
+          "id": 10,
+          "title": "چگونه می‌توان Next.js را Deploy کرد؟",
+          "description": "با سرویس‌هایی مانند Vercel، Netlify یا حتی سرورهای اختصاصی از طریق Docker و Node.js قابل دیپلوی است."
+        }
+      ]
+    },
+    {
+      "id": "c7c5350c-eca5-4226-bc98-aa571df106a3",
+      "title": "آموزش NestJS از صفر",
+      "slug": "nestjs",
+      "overview": "NestJS یک فریم‌ورک پیشرفته برای توسعه بک‌اند در NodeJS است که با استفاده از TypeScript و معماری ماژولار، سازمان‌دهی و توسعه پروژه‌ها را سادهتر می‌کند. در این دوره با ساخت RESTful و GraphQL API در Nest آشنا می‌شویم.",
+      "teacherId": "a8c3400c-ec3f-4120-a3e7-29afb03111f6",
+      "image": "https://ucarecdn.com/36f9c40f-6457-41be-93d1-0a10edfff970/",
+      "icon": "https://ucarecdn.com/b6eeae4c-2d75-4161-a9e6-9abac98ab4dc/",
+      "details": "Nest Js Course",
+      "price": 2900000,
+      "duration": 30,
+      "studentsCount": 95,
+      "isSupport": true,
+      "createdAt": "2025-04-05T21:00:00Z",
+      "sessions": [
+        "s31",
+        "s32"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "NestJS چیست؟",
+          "description": "NestJS یک فریم‌ورک بک‌اند مدرن برای Node.js است که با TypeScript نوشته شده و ساختار ماژولار و مبتنی بر معماری MVC دارد."
+        },
+        {
+          "id": 2,
+          "title": "مزایای استفاده از NestJS چیست؟",
+          "description": "پشتیبانی کامل از TypeScript، ساختار ماژولار، تزریق وابستگی داخلی و یکپارچگی خوب با کتابخانه‌های رایج Node.js."
+        },
+        {
+          "id": 3,
+          "title": "ماژول در NestJS چیست؟",
+          "description": "واحد اصلی ساختار برنامه است که شامل کنترلرها، سرویس‌ها ودیگر providerها می‌شود و با `@Module` تعریف می‌شود."
+        },
+        {
+          "id": 4,
+          "title": "Controller در NestJS چیست؟",
+          "description": "برای مدیریت درخواست‌ها و پاسخ‌ها در مسیرهای خاص کاربرد دارد و با دکوراتور `@Controller` تعریف می‌شود."
+        },
+        {
+          "id": 5,
+          "title": "Service در NestJS چیست؟",
+          "description": "برای پیاده‌سازی منطق تجاری (business logic) استفاده می‌شود و با دکوراتور `@Injectable` تعریف می‌گردد."
+        },
+        {
+          "id": 6,
+          "title": "Pipe در NestJS چیست؟",
+          "description": "برای اعتبارسنجی، تبدیل داده یا مانیتور کردن داده ورودی قبل از رسیدن به کنترلرها استفاده می‌شود."
+        },
+        {
+          "id": 7,
+          "title": "Interceptor در NestJS چه کاربردی دارد؟",
+          "description": "برای لاگ‌گیری، تغییر پاسخ‌ها یا افزودن منطق قبل/بعد از اجرای متد استفاده می‌شود."
+        },
+        {
+          "id": 8,
+          "title": "Middleware در NestJS چیست؟",
+          "description": "کدی است که قبل از رسیدن درخواست به کنترلر اجرا می‌شود. برای احراز هویت یا لاگ گرفتن کاربرد دارد."
+        },
+        {
+          "id": 9,
+          "title": "چگونه با پایگاه داده کار می‌کند؟",
+          "description": "NestJS از ORMهایی مثل TypeORM، Prisma و Sequelize به خوبی پشتیبانی می‌کند."
+        },
+        {
+          "id": 10,
+          "title": "Nest CLI چیست؟",
+          "description": "ابزاری خط فرمان برای ساخت سریع پروژه و اجزای مختلف مانندکنترلر، ماژول و سرویس‌ها است."
+        }
+      ]
+    },
+    {
+      "id": "5b849684-b46d-4d5c-a13b-f535ead82eff",
+      "title": "ساخت اپ با Flutter",
+      "slug": "flutter",
+      "overview": "Flutter یک فریم‌ورک مدرن از گوگل برای توسعه اپلیکیشن‌های موبایل با رابط کاربری بسیار زیبا و سرعت بالا است. در این دوره با زبان Dart، ساخت UIو نحوه ارتباط با سرور در Flutter آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/c155c35c-0ac2-41ec-9c7c-3ac38d6add55/",
+      "icon": "https://ucarecdn.com/e0fbb342-7f7e-4bec-bcfa-7962cb9e321b/",
+      "details": "Flutter Course",
+      "teacherId": "031efa93-8822-4207-8f97-d44fbd37faba",
+      "price": 3200000,
+      "duration": 35,
+      "studentsCount": 85,
+      "isSupport": true,
+      "createdAt": "2025-04-10T22:00:00Z",
+      "sessions": [
+        "s33",
+        "s34",
+        "s35"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Flutter چیست؟",
+          "description": "فریم‌ورکی برای ساخت اپلیکیشن‌های موبایل، وب و دسکتاپ بایک کد بیس واحد با استفاده از زبان Dart."
+        },
+        {
+          "id": 2,
+          "title": "مزایای Flutter چیست؟",
+          "description": "Hot Reload، رابط کاربری زیبا، توسعه سریع، و اجرای nativeروی iOS و Android."
+        },
+        {
+          "id": 3,
+          "title": "Dart چه نقشی در Flutter دارد؟",
+          "description": "Dart زبان برنامه‌نویسی Flutter است که توسط گوگل توسعه داده شده و برای ساخت رابط‌های کاربری reactive طراحی شده است."
+        },
+        {
+          "id": 4,
+          "title": "Widget در Flutter چیست؟",
+          "description": "هر چیزی در Flutter یک ویجت است؛ از دکمه و متن گرفته تا layoutهای پیچیده."
+        },
+        {
+          "id": 5,
+          "title": "تفاوت Stateless و Stateful Widget چیست؟",
+          "description": "Stateless تغییرناپذیر است ولی Stateful می‌تواند state داخلی داشته باشد و با تغییر آن بازسازی شود."
+        },
+        {
+          "id": 6,
+          "title": "State Management در Flutter چگونه است؟",
+          "description": "می‌توان از روش‌هایی مانند Provider، Bloc، Riverpod یا setState استفاده کرد."
+        },
+        {
+          "id": 7,
+          "title": "Flutter چگونه UI را رندر می‌کند؟",
+          "description": "با استفاده از موتور گرافیکی Skia بدون وابستگی به کامپوننت‌های native سیستم عامل."
+        },
+        {
+          "id": 8,
+          "title": "Hot Reload در Flutter چیست؟",
+          "description": "قابلیتی برای اعمال سریع تغییرات کد بدون نیاز به ری‌استارت کامل برنامه."
+        },
+        {
+          "id": 9,
+          "title": "چگونه می‌توان اپ را در Android و iOS اجرا کرد؟",
+          "description": "با استفاده از Android Studio، VSCode یا دستور `flutter run` می‌توان روی هر دو پلتفرم اجرا گرفت."
+        },
+        {
+          "id": 10,
+          "title": "Flutter برای وب و دسکتاپ هم قابل استفاده است؟",
+          "description": "بله، Flutter از وب (HTML/CSS/Canvas) و دسکتاپ (Windows،macOS، Linux) نیز پشتیبانی می‌کند."
+        }
+      ]
+    },
+    {
+      "id": "b669682d-24fa-46ad-a698-7c462857a6f9",
+      "title": "آموزش فشرده Svelte",
+      "slug": "svelte",
+      "overview": "Svelte نسل جدیدی از فریم‌ورک‌های فرانت‌اند است که برخلاف React و Vue در زمان کامپایل تبدیل به کد جاوااسکریپت می‌شود. نتیجه این معماری، اپلیکیشن‌هایی سریع‌تر و سبک‌تر است. در این دوره با ساختار و امکانات Svelte به طور کامل آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/192d54e9-4468-45ab-8046-3e29f5da518d/",
+      "icon": "https://ucarecdn.com/a4122dde-dc18-4b69-8a7e-3f0cfe84d5b8/",
+      "details": "Svelte Course",
+      "teacherId": "d2c1e4dd-a457-498c-8f0e-ded09ba1fe83",
+      "price": 0,
+      "duration": 18,
+      "studentsCount": 70,
+      "isSupport": true,
+      "createdAt": "2025-04-15T23:00:00Z",
+      "sessions": [
+        "s36",
+        "s37"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Svelte چیست؟",
+          "description": "Svelte یک فریم‌ورک جاوااسکریپتی مدرن است که در زمان build کد را به JavaScript خالص کامپایل می‌کند."
+        },
+        {
+          "id": 2,
+          "title": "تفاوت Svelte با React و Vue چیست؟",
+          "description": "Svelte نیاز به virtual DOM ندارد و در زمان build بهینه‌سازی انجام می‌دهد، بنابراین عملکرد سریع‌تری دارد."
+        },
+        {
+          "id": 3,
+          "title": "سینتکس Svelte چگونه است؟",
+          "description": "ساده و تمیز، شبیه HTML با امکان افزودن منطق جاوااسکریپتدر اسکریپت و استایل اختصاصی درون کامپوننت."
+        },
+        {
+          "id": 4,
+          "title": "چگونه می‌توان State را مدیریت کرد؟",
+          "description": "Svelte به‌صورت داخلی از reactive statement (`$:`) و Storeها برای مدیریت state پشتیبانی می‌کند."
+        },
+        {
+          "id": 5,
+          "title": "کامپوننت در Svelte چگونه تعریف می‌شود؟",
+          "description": "با فایل‌های `.svelte` که شامل `<script>`، `<style>` و markup می‌شوند."
+        },
+        {
+          "id": 6,
+          "title": "Reactive declarations در Svelte چیست؟",
+          "description": "با علامت `$:` مشخص می‌شود و به صورت خودکار هنگام تغییر وابستگی‌ها اجرا می‌شود."
+        },
+        {
+          "id": 7,
+          "title": "Store در Svelte چیست؟",
+          "description": "روشی برای مدیریت state سراسری یا اشتراکی بین کامپوننت‌هاست. شامل `writable`، `readable` و `derived` است."
+        },
+        {
+          "id": 8,
+          "title": "Transition و Animation در Svelte چگونه انجام می‌شود؟",
+          "description": "Svelte انیمیشن‌ها را درون خود پشتیبانی می‌کند با استفادهاز `transition:`، `animate:` و `motion`."
+        },
+        {
+          "id": 9,
+          "title": "SvelteKit چیست؟",
+          "description": "فریم‌ورکی بر پایه Svelte برای ساخت اپلیکیشن‌های SSR، SSG، و SPA با امکانات کامل مسیریابی و API."
+        },
+        {
+          "id": 10,
+          "title": "Svelte برای پروژه‌های بزرگ مناسب است؟",
+          "description": "بله، مخصوصاً با SvelteKit، قابلیت استفاده در پروژه‌های واقعی با عملکرد بالا فراهم شده است."
+        }
+      ]
+    },
+    {
+      "id": "d057a7a2-348e-401d-80c7-a141d41e7c07",
+      "title": "دوره کاربردی Kubernetes",
+      "slug": "kubernetes",
+      "overview": "Kubernetes ابزاری قدرتمند برای مدیریت و ارکستراسیون کانتینرها در مقیاس بالا است. در این دوره با مفاهیم Pod، Service، Deployment و نحوه مدیریت پروژه‌های کانتینری در محیط‌های پرکاربرد آشنا می‌شویم.",
+      "image": "https://ucarecdn.com/7a50fb61-9f4c-407a-976c-27fb18e7c2e5/",
+      "icon": "https://ucarecdn.com/c099aaee-cc1b-4ba1-9b59-42d1ac98c00e/",
+      "teacherId": "34c1dcc7-ad90-4d0d-9433-01034a64d1ff",
+      "details": "Kubernetes Course",
+      "price": 3600000,
+      "duration": 40,
+      "studentsCount": 75,
+      "isSupport": true,
+      "createdAt": "2025-04-20T00:00:00Z",
+      "sessions": [
+        "s38",
+        "s39",
+        "s40"
+      ],
+      "description": [
+        {
+          "id": 1,
+          "title": "Kubernetes چیست؟",
+          "description": "Kubernetes یک پلتفرم متن‌باز برای مدیریت کانتینرها (مانند Docker) در مقیاس بزرگ است."
+        },
+        {
+          "id": 2,
+          "title": "Pod در Kubernetes چیست؟",
+          "description": "Pod کوچک‌ترین واحد اجرایی در Kubernetes است که می‌تواندیک یا چند کانتینر را شامل شود."
+        },
+        {
+          "id": 3,
+          "title": "Node در Kubernetes چیست؟",
+          "description": "Node ماشین فیزیکی یا مجازی است که پادها روی آن اجرا می‌شوند. هر خوشه شامل چندین Node است."
+        },
+        {
+          "id": 4,
+          "title": "Cluster چیست؟",
+          "description": "مجموعه‌ای از Nodeها که توسط یک کنترل‌پلن مدیریت می‌شوند.تمامی منابع Kubernetes در یک Cluster تعریف می‌شوند."
+        },
+        {
+          "id": 5,
+          "title": "Deployment در Kubernetes چیست؟",
+          "description": "Deployment تعریف می‌کند که چه تعداد Pod از چه کانتینری باید اجرا شوند و چگونه به‌روزرسانی شوند."
+        },
+        {
+          "id": 6,
+          "title": "Service در Kubernetes چیست؟",
+          "description": "برای برقراری ارتباط پایدار بین پادها و مدیریت ترافیک ورودی به آنها استفاده می‌شود."
+        },
+        {
+          "id": 7,
+          "title": "ConfigMap و Secret چیستند؟",
+          "description": "برای ذخیره پیکربندی‌ها و اطلاعات حساس (مثل رمز عبور) به‌صورت جدا از کد کانتینر استفاده می‌شوند."
+        },
+        {
+          "id": 8,
+          "title": "Volume در Kubernetes چیست؟",
+          "description": "برای نگهداری داده پایدار حتی پس از ریستارت شدن کانتینرهامورد استفاده قرار می‌گیرد."
+        },
+        {
+          "id": 9,
+          "title": "kubectl چیست؟",
+          "description": "ابزار خط فرمان برای تعامل با خوشه Kubernetes است. برای اجرای دستورات مدیریتی استفاده می‌شود."
+        },
+        {
+          "id": 10,
+          "title": "Kubernetes برای چه کاربردهایی مناسب است؟",
+          "description": "برای مدیریت خودکار برنامه‌های کانتینری، مقیاس‌پذیری، خودترمیمی و استقرار پیوسته بسیار مناسب است."
+        }
+      ]
+    }
+  ],
+  "sessions": [
+    {
+      "id": "s1",
+      "courseId": "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b",
+      "seasion": "فصل اول",
+      "title": "معرفی دوره React",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s2",
+      "courseId": "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b",
+      "seasion": "فصل دوم",
+      "title": "مبانی React",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "courseId": "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b",
+      "seasion": "فصل سوم",
+      "title": "Hooks در React",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "courseId": "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b",
+      "seasion": "فصل چهارم",
+      "title": "Routing در React",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "courseId": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
+      "seasion": "فصل اول",
+      "title": "معرفی Node.js",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s6",
+      "courseId": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
+      "seasion": "فصل دوم",
+      "title": "Express.js",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "courseId": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
+      "seasion": "فصل سوم",
+      "title": "Middleware در Express",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "courseId": "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+      "seasion": "فصل اول",
+      "title": "معرفی Django",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s9",
+      "courseId": "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+      "seasion": "فصل دوم",
+      "title": "مدل‌ها در Django",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "courseId": "e8fa04fb-fd0e-46f2-bb43-955a968e712b",
+      "seasion": "فصل اول",
+      "title": "معرفی Vue.js",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s11",
+      "courseId": "e8fa04fb-fd0e-46f2-bb43-955a968e712b",
+      "seasion": "فصل دوم",
+      "title": "Components در Vue",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "courseId": "e8fa04fb-fd0e-46f2-bb43-955a968e712b",
+      "seasion": "فصل سوم",
+      "title": "Vue Router",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "courseId": "46cd7e50-724b-42c4-b03a-6087c55c6328",
+      "seasion": "فصل اول",
+      "title": "معرفی React Native",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s14",
+      "courseId": "46cd7e50-724b-42c4-b03a-6087c55c6328",
+      "seasion": "فصل دوم",
+      "title": "کامپوننت‌های اصلی",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "courseId": "46cd7e50-724b-42c4-b03a-6087c55c6328",
+      "seasion": "فصل سوم",
+      "title": "Navigation در React Native",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "courseId": "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
+      "seasion": "فصل اول",
+      "title": "Closures در JavaScript",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s17",
+      "courseId": "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
+      "seasion": "فصل دوم",
+      "title": "Prototype و Inheritance",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "courseId": "b24905e6-2a14-4042-a790-0fe5d9476db2",
+      "seasion": "فصل اول",
+      "title": "معرفی TypeScript",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s19",
+      "courseId": "b24905e6-2a14-4042-a790-0fe5d9476db2",
+      "seasion": "فصل دوم",
+      "title": "Types در TypeScript",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "courseId": "b24905e6-2a14-4042-a790-0fe5d9476db2",
+      "seasion": "فصل سوم",
+      "title": "Interfaces در TypeScript",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "courseId": "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
+      "seasion": "فصل اول",
+      "title": "معرفی MongoDB",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s22",
+      "courseId": "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
+      "seasion": "فصل دوم",
+      "title": "CRUD در MongoDB",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "courseId": "d9bbb2f2-26d3-4a28-a943-19eb81e60958",
+      "seasion": "فصل اول",
+      "title": "معرفی Docker",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s24",
+      "courseId": "d9bbb2f2-26d3-4a28-a943-19eb81e60958",
+      "seasion": "فصل دوم",
+      "title": "Dockerfile",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "courseId": "d9bbb2f2-26d3-4a28-a943-19eb81e60958",
+      "seasion": "فصل سوم",
+      "title": "Docker Compose",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "courseId": "c61b91f5e-f071-435b-a956-572dc0011a4a",
+      "seasion": "فصل چهارم",
+      "title": "مبانی GraphQL",
+      "videos": [
+        {
+          "id": "v76",
+          "title": "GraphQL چیست؟",
+          "duration": 10,
+          "videoUrl": "./videos/graphql/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v77",
+          "title": "ساختار Query در GraphQL",
+          "duration": 14,
+          "videoUrl": "./videos/graphql/query-structure.mp4",
+          "order": 2
+        },
+        {
+          "id": "v78",
+          "title": "ساخت یک API ساده با GraphQL",
+          "duration": 20,
+          "videoUrl": "./videos/graphql/build-api.mp4",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "courseId": "c61b91f5e-f071-435b-a956-572dc0011a4a",
+      "seasion": "فصل پنجم",
+      "title": "پیشرفته‌های GraphQL",
+      "videos": [
+        {
+          "id": "v79",
+          "title": "Mutations در GraphQL",
+          "duration": 15,
+          "videoUrl": "./videos/graphql/mutations.mp4",
+          "order": 1
+        },
+        {
+          "id": "v80",
+          "title": "استفاده از Variables",
+          "duration": 12,
+          "videoUrl": "./videos/graphql/variables.mp4",
+          "order": 2
+        },
+        {
+          "id": "v81",
+          "title": "نقشه‌برداری داده‌ها با Resolverها",
+          "duration": 16,
+          "videoUrl": "./videos/graphql/resolvers.mp4",
+          "order": 3
+        },
+        {
+          "id": "v82",
+          "title": "Authentication و Authorization",
+          "duration": 18,
+          "videoUrl": "./videos/graphql/auth.mp4",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "courseId": "020d41dd-173c-46e3-a9d2-245efbf89161",
+      "seasion": "فصل اول",
+      "title": "معرفی Next.js",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s29",
+      "courseId": "020d41dd-173c-46e3-a9d2-245efbf89161",
+      "seasion": "فصل دوم",
+      "title": "Routing در Next.js",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "courseId": "020d41dd-173c-46e3-a9d2-245efbf89161",
+      "seasion": "فصل سوم",
+      "title": "SSR و SSG",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "courseId": "c7c5350c-eca5-4226-bc98-aa571df106a3",
+      "seasion": "فصل اول",
+      "title": "معرفی NestJS",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s32",
+      "courseId": "c7c5350c-eca5-4226-bc98-aa571df106a3",
+      "seasion": "فصل دوم",
+      "title": "Modules در NestJS",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s33",
+      "courseId": "5b849684-b46d-4d5c-a13b-f535ead82eff",
+      "seasion": "فصل اول",
+      "title": "معرفی Flutter",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s34",
+      "courseId": "5b849684-b46d-4d5c-a13b-f535ead82eff",
+      "seasion": "فصل دوم",
+      "title": "Widgets در Flutter",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "courseId": "5b849684-b46d-4d5c-a13b-f535ead82eff",
+      "seasion": "فصل سوم",
+      "title": "State Management",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "courseId": "b669682d-24fa-46ad-a698-7c462857a6f9",
+      "seasion": "فصل اول",
+      "title": "معرفی Svelte",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s37",
+      "courseId": "b669682d-24fa-46ad-a698-7c462857a6f9",
+      "seasion": "فصل دوم",
+      "title": "Components در Svelte",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "courseId": "d057a7a2-348e-401d-80c7-a141d41e7c07",
+      "seasion": "فصل اول",
+      "title": "معرفی Kubernetes",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s39",
+      "courseId": "d057a7a2-348e-401d-80c7-a141d41e7c07",
+      "seasion": "فصل دوم",
+      "title": "Pods و Deployments",
+      "videos": [
+        {
+          "id": "v71",
+          "title": "مفاهیم Kubernetes",
+          "duration": 11,
+          "videoUrl": "./videos/kubernetes/intro.mp4",
+          "order": 1
+        },
+        {
+          "id": "v72",
+          "title": "پادها و سرویس‌ها",
+          "duration": 16,
+          "videoUrl": "./videos/kubernetes/pods.mp4",
+          "order": 2
+        },
+        {
+          "id": "v73",
+          "title": "Deploymentها",
+          "duration": 14,
+          "videoUrl": "./videos/kubernetes/deployments.mp4",
+          "order": 3
+        },
+        {
+          "id": "v74",
+          "title": "مدیریت حجم‌ها",
+          "duration": 12,
+          "videoUrl": "./videos/kubernetes/volumes.mp4",
+          "order": 4
+        },
+        {
+          "id": "v75",
+          "title": "Ingress",
+          "duration": 18,
+          "videoUrl": "./videos/kubernetes/ingress.mp4",
+          "order": 5
+        }
+      ]
+    }
+  ],
+  "teachers": [
+    {
+      "id": "5c0d2927-1d7c-4e70-b89c-a79cd94e1df1",
+      "username": "hojjat",
+      "password": "$2b$12$HLcvE9o0J9Yvduyjxar2ReZWeMCBt1AAzw0KEI6qrvv5hlVD4AOQu",
+      "email": "hojjat@example.com",
+      "phonenumber": "09123456789",
+      "fullname": "حجت ترابی",
+      "courseIds": [
+        "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b"
+      ],
+      "stack": "فرانت اند",
+      "isBanned": false,
+      "role": "teacher"
+    },
+    {
+      "id": "031efa93-8822-4207-8f97-d44fbd37faba",
+      "username": "Sadeq",
+      "password": "$2b$10$PhhmdhljTe71MHwR3ls1Quew6DeUqmYu6uHV.Goi52krWa7P3oAY.",
+      "email": "Sadeq@gmail.com",
+      "phonenumber": "09354487799",
+      "fullname": "صادق احمد زاده",
+      "role": "teacher",
+      "isBanned": false,
+      "courseIds": [
+        "46cd7e50-724b-42c4-b03a-6087c55c6328",
+        "5b849684-b46d-4d5c-a13b-f535ead82eff"
+      ],
+      "stack": "موبایل دولوپر"
+    },
+    {
+      "id": "a8c3400c-ec3f-4120-a3e7-29afb03111f6",
+      "username": "Sajad",
+      "password": "$2b$10$kVDZvhUM2d/WDXr82jY.hebhY60Gqqtm7dG1s5fXbyypJJvCBh5uO",
+      "email": "Sajad@gmail.com",
+      "phonenumber": "09124457788",
+      "fullname": "سجاد قربانیان",
+      "role": "teacher",
+      "isBanned": false,
+      "courseIds": [
+        "c7c5350c-eca5-4226-bc98-aa571df106a3"
+      ],
+      "stack": "بک اند"
+    },
+    {
+      "id": "3f2ca0d3-acea-41e8-9f0f-397b72234ffe",
+      "username": "Ahmad",
+      "password": "$2b$10$ei7a1ZxTW00pJTZQ1.mox.bqeFt9ET0Qa/Zto0OL5raxFl2pn5e6q",
+      "email": "Ahmad@gmai.com",
+      "phonenumber": "09154423355",
+      "fullname": "احمد واحدی",
+      "role": "teacher",
+      "isBanned": false,
+      "courseIds": [
+        "eb9a69ed-a9fc-4b63-987b-e657a5fa7496"
+      ],
+      "stack": "دیتا ساینس"
+    },
+    {
+      "id": "8fe24411-594c-4cf6-9e7d-2201e57c35ff",
+      "username": "Parisa",
+      "password": "$2b$10$FUJ348xY4NVr7AMkznWvuecvAOfJotL2GovbHzMDie/Fpj9zEbsC2",
+      "email": "Parisa@gmail.com",
+      "phonenumber": "09124463211",
+      "fullname": "پریسا سلطانی",
+      "role": "teacher",
+      "isBanned": false,
+      "courseIds": [
+        "501fa59c-8d67-4273-b1e5-a5fcd9056e47"
+      ],
+      "stack": "فرانت اند"
+    },
+    {
+      "id": "bbb10c00-d866-4c7d-98fa-5797caba1c0d",
+      "username": "Qasem",
+      "password": "$2b$10$3me9auMo2bSW6V68dEhm5.dD4yg2TZGoKNQV0NQt0yoZOO3MXivPa",
+      "email": "Qasem@gmail.com",
+      "phonenumber": "09154478899",
+      "fullname": "قاسم طهماسبی",
+      "role": "teacher",
+      "isBanned": true,
+      "courseIds": [
+        "61b91f5e-f071-435b-a956-572dc0011a4a"
+      ],
+      "stack": "بک اند"
+    }
+  ]
+}
