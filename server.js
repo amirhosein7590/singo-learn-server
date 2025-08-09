@@ -658,6 +658,76 @@ server.put("/teachers/:teacherId", async (req, res) => {
 });
 
 /**
+ * @api {put} /users/:userId ویرایش اطلاعات کاربر
+ * @apiHeader {String} Authorization توکن ادمین یا خود کاربر
+ * @apiParam {String} userId شناسه کاربر
+ * @apiBody {String} [username] نام کاربری جدید
+ * @apiBody {String} [email] ایمیل جدید
+ * @apiBody {String} [fullname] نام کامل جدید
+ * @apiBody {String} [phonenumber] شماره تماس جدید
+ */
+server.put("/users/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const { username, email, fullname, phonenumber } = req.body;
+  const db = router.db;
+
+  // 1. پیدا کردن کاربر
+  const user = db.get("users").find({ id: userId }).value();
+  if (!user) {
+    return res.status(404).json({ error: "کاربر یافت نشد" });
+  }
+
+  // 2. بررسی مجوز دسترسی (ادمین یا خود کاربر)
+  const currentUserId = req.user.userId;
+  const currentUserRole = req.user.role;
+
+  if (currentUserId !== userId && currentUserRole !== "admin") {
+    return res.status(403).json({ error: "شما مجوز ویرایش این کاربر را ندارید" });
+  }
+
+  // 3. اعتبارسنجی ورودی‌ها و آماده‌سازی داده‌های به‌روزرسانی
+  const updates = {};
+  
+  if (username) {
+    // بررسی تکراری نبودن username
+    const usernameExists = 
+      db.get("users").find({ username, id: { $ne: userId } }).value() || 
+      db.get("teachers").find({ username }).value();
+    
+    if (usernameExists) {
+      return res.status(400).json({ error: "نام کاربری قبلاً استفاده شده است" });
+    }
+    updates.username = username;
+  }
+
+  if (email) updates.email = email;
+  if (fullname) updates.fullname = fullname;
+  if (phonenumber) updates.phonenumber = phonenumber;
+
+  // 4. اعمال به‌روزرسانی‌ها
+  db.get("users")
+    .find({ id: userId })
+    .assign(updates)
+    .write();
+
+  // 5. دریافت اطلاعات به‌روزرسانی شده برای پاسخ
+  const updatedUser = db.get("users").find({ id: userId }).value();
+
+  res.json({
+    success: true,
+    message: "اطلاعات کاربر با موفقیت به‌روزرسانی شد",
+    user: {
+      id: updatedUser.id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      fullname: updatedUser.fullname,
+      phonenumber: updatedUser.phonenumber,
+      role: updatedUser.role
+    },
+  });
+});
+
+/**
  * @api {post} /purchase خرید دوره
  * @apiHeader {String} Authorization توکن کاربر
  * @apiBody {String[]} courseIds شناسه‌های دوره
@@ -743,20 +813,19 @@ server.get("/teachers/:teacherId/courses", (req, res) => {
 });
 
 /**
- * @api {get} /user-courses دریافت دوره‌های کاربر
- * @apiHeader {String} Authorization توکن کاربر
+ * @api {get} /user-courses/:userId دریافت دوره‌های کاربر
+ * @apiHeader {String} Authorization توکن کاربر یا ادمین
  */
 server.get("/user-courses/:userId", (req, res) => {
   const { userId } = req.params;
+  const db = router.db;
 
-  // بررسی اینکه کاربر فقط به دوره‌های خودش دسترسی داشته باشد
-  if (req.user.userId !== userId) {
+  // بررسی دسترسی: یا کاربر مالک داده‌هاست یا ادمین است
+  if (req.user.userId !== userId && req.user.role !== 'admin') {
     return res.status(403).json({ error: "دسترسی غیرمجاز" });
   }
 
-  const db = router.db;
   const user = db.get("users").find({ id: userId }).value();
-
   if (!user) {
     return res.status(404).json({ error: "کاربر یافت نشد" });
   }
@@ -810,7 +879,7 @@ server.post("/offs/all", (req, res) => {
 });
 
 /**
- * @api {delete} /teachers/:teacherId حذف یک معلم
+ * @api {delete} /teachers/:teacherId حذف یک معلم و به‌روزرسانی دوره‌های مربوطه
  * @apiHeader {String} Authorization توکن ادمین
  * @apiParam {String} teacherId شناسه معلم
  * @apiSuccess {String} message پیام موفقیت‌آمیز حذف
@@ -846,13 +915,80 @@ server.delete("/teachers/:teacherId", (req, res) => {
       return res.status(404).json({ error: "معلم یافت نشد" });
     }
 
-    // حذف معلم فقط
+    // 1. پیدا کردن تمام دوره‌های مربوط به این معلم
+    const teacherCourses = db.get("courses").filter({ teacherId }).value();
+
+    // 2. حذف teacherId از دوره‌های مربوطه (تنظیم به null)
+    teacherCourses.forEach(course => {
+      db.get("courses")
+        .find({ id: course.id })
+        .assign({ teacherId: null })
+        .write();
+    });
+
+    // 3. حذف معلم از جدول teachers
     db.get("teachers").remove({ id: teacherId }).write();
 
-    res.status(200).json({ message: "معلم با موفقیت حذف شد" });
+    res.status(200).json({ 
+      message: "معلم با موفقیت حذف شد و دوره‌های مربوطه به‌روزرسانی شدند",
+      affectedCourses: teacherCourses.map(c => c.id) // لیست دوره‌های تغییر کرده
+    });
   });
 });
 
+
+/**
+ * @api {delete} /users/:userId حذف کامل یک کاربر از سیستم
+ * @apiHeader {String} Authorization توکن ادمین
+ * @apiParam {String} userId شناسه کاربر
+ * @apiSuccess {String} message پیام موفقیت‌آمیز حذف
+ */
+server.delete("/users/:userId", (req, res) => {
+  const db = router.db;
+  const { userId } = req.params;
+
+  // 1. احراز هویت ادمین
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن احراز هویت ارسال نشده" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "فرمت توکن نامعتبر" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر یا منقضی شده" });
+    }
+
+    // 2. بررسی نقش ادمین
+    const admin = db.get("users").find({ id: decoded.userId }).value();
+    if (!admin || admin.role !== "admin") {
+      return res.status(403).json({ error: "فقط ادمین می‌تواند کاربران را حذف کند" });
+    }
+
+    // 3. پیدا کردن کاربر
+    const user = db.get("users").find({ id: userId }).value();
+    if (!user) {
+      return res.status(404).json({ error: "کاربر مورد نظر یافت نشد" });
+    }
+
+    // 4. حذف کامل کاربر از جدول users
+    db.get("users").remove({ id: userId }).write();
+
+    // 5. پاسخ موفقیت‌آمیز
+    res.status(200).json({
+      success: true,
+      message: "کاربر با موفقیت حذف شد",
+      deletedUser: {
+        id: user.id,
+        username: user.username
+      }
+    });
+  });
+});
 
 /**
  * @api {post} /offs/:courseId اعمال تخفیف به دوره خاص
