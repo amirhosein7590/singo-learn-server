@@ -360,7 +360,9 @@
           "title": "آینده React چگونه است؟",
           "description": "با توجه به محبوبیت و پشتیبانی فیسبوک، React همچنان یکی از اصلی‌ترین تکنولوژی‌های فرانت‌اند خواهد بود و به رشد خود ادامه خواهد داد."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
@@ -371,7 +373,7 @@
       "icon": "https://ucarecdn.com/0772db84-27e3-4501-9ea5-e5e7f6b1af11/",
       "details": "Node Js Course",
       "teacherId": null,
-      "price": 3000000,
+      "price": 2550000,
       "duration": 40,
       "studentsCount": 120,
       "isSupport": true,
@@ -432,7 +434,9 @@
           "title": "آینده Node.js چگونه است؟",
           "description": "با توجه به محبوبیت جاوااسکریپت و کاربردهای گسترده Node.js در توسعه backend، microservices و ابزارهای توسعه، آینده روشنی برای Node.js پیشبینی می‌شود."
         }
-      ]
+      ],
+      "discount": "15",
+      "originalPrice": 3000000
     },
     {
       "id": "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
@@ -443,7 +447,7 @@
       "icon": "https://ucarecdn.com/4d8fa705-9ac1-4d40-bb42-363bc4a7ec27/",
       "details": "Python Django Course",
       "teacherId": "fe95c15a-dbee-4baf-a70e-1e3d0d20c3b3",
-      "price": 2800000,
+      "price": 2100000,
       "duration": 35,
       "studentsCount": 100,
       "isSupport": true,
@@ -503,7 +507,9 @@
           "title": "آینده Django چگونه است؟",
           "description": "با توجه به محبوبیت پایتون و قدرت Django در توسعه وب، اینفریم‌ورک همچنان یکی از گزینه‌های اصلی برای توسعه برنامه‌های وب پیچیده خواهد بود."
         }
-      ]
+      ],
+      "discount": "25",
+      "originalPrice": 2800000
     },
     {
       "id": "e8fa04fb-fd0e-46f2-bb43-955a968e712b",
@@ -729,7 +735,7 @@
       "icon": "https://ucarecdn.com/39c3a983-abb2-4f17-a9e9-62228833af57/",
       "details": "TypeScript Course",
       "teacherId": null,
-      "price": 1800000,
+      "price": 1206000,
       "duration": 18,
       "studentsCount": 150,
       "isSupport": true,
@@ -790,7 +796,9 @@
           "title": "آینده TypeScript چگونه است؟",
           "description": "با حمایت مایکروسافت و پذیرش گسترده در جامعه توسعه‌دهندگان، TypeScript به رشد خود ادامه خواهد داد. بسیاری از فریم‌ورک‌های مدرن مانند Angular و NestJS از TypeScript به عنوان زبان اصلی استفاده می‌کنند."
         }
-      ]
+      ],
+      "discount": "33",
+      "originalPrice": 1800000
     },
     {
       "id": "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
@@ -861,7 +869,9 @@
           "title": "آینده MongoDB چگونه است؟",
           "description": "با رشد نیاز به پردازش داده‌های بدون ساختار و نیاز به مقیاس‌پذیری بالا، MongoDB همچنان یکی از گزینه‌های اصلی برای توسعه برنامه‌های مدرن خواهد بود."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "d9bbb2f2-26d3-4a28-a943-19eb81e60958",
@@ -1004,7 +1014,9 @@
           "title": "آینده GraphQL چگونه است؟",
           "description": "با حمایت شرکت‌های بزرگی مانند فیسبوک، گیت‌هاب و ... و رشد جامعه توسعه‌دهندگان، GraphQL به استاندارد جدیدی برای APIهای مدرن تبدیل شده است."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "020d41dd-173c-46e3-a9d2-245efbf89161",

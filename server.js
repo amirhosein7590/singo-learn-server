@@ -846,6 +846,25 @@ server.get("/user-courses/:userId", (req, res) => {
 });
 
 /**
+ * @api {get} /courses/discounted دریافت همه دوره‌های دارای تخفیف
+ */
+server.get("/courses/discounted", (req, res) => {
+  const db = router.db;
+
+  const discountedCourses = db
+    .get("courses")
+    .filter(course => course.discount && course.discount > 0)
+    .value();
+
+  res.json({
+    success: true,
+    count: discountedCourses.length,
+    courses: discountedCourses
+  });
+});
+
+
+/**
  * @api {post} /offs/all اعمال تخفیف به همه دوره‌ها
  */
 server.post("/offs/all", (req, res) => {
@@ -1008,6 +1027,10 @@ server.post("/offs/:courseId", (req, res) => {
     return res.status(404).json({ error: "دوره یافت نشد" });
   }
 
+  if (course.price < 1){
+    return res.status(400).json({error : 'دوره رایگان است'})
+  }
+
   const originalPrice = course.originalPrice || course.price;
   const discountedPrice = (originalPrice * (100 - percentage)) / 100;
 
@@ -1026,6 +1049,78 @@ server.post("/offs/:courseId", (req, res) => {
     newPrice: discountedPrice,
   });
 });
+
+/**
+ * @api {delete} /offs/:courseId حذف تخفیف از یک دوره
+ */
+server.delete("/offs/:courseId", (req, res) => {
+  const { courseId } = req.params;
+  const db = router.db;
+  const course = db.get("courses").find({ id: courseId }).value();
+
+  if (!course) {
+    return res.status(404).json({ error: "دوره یافت نشد" });
+  }
+
+  // حذف تخفیف: حذف فیلد discount و originalPrice، و برگردوندن قیمت اصلی به price
+  const originalPrice = course.originalPrice || course.price;
+
+  db.get("courses")
+    .find({ id: courseId })
+    .assign({
+      discount: null,
+      price: originalPrice,
+      originalPrice: null,
+    })
+    .write();
+
+  res.json({
+    success: true,
+    message: `تخفیف دوره حذف شد`,
+    newPrice: originalPrice,
+  });
+});
+
+
+/**
+ * @api {put} /offs/:courseId ویرایش تخفیف دوره
+ */
+server.put("/offs/:courseId", (req, res) => {
+  const { percentage } = req.body;
+  const { courseId } = req.params;
+
+  if (!percentage || percentage < 0 || percentage > 100) {
+    return res.status(400).json({ error: "درصد تخفیف نامعتبر است (0-100)" });
+  }
+
+  console.log(percentage);
+
+  const db = router.db;
+  const course = db.get("courses").find({ id: courseId }).value();
+
+  if (!course) {
+    return res.status(404).json({ error: "دوره یافت نشد" });
+  }
+
+  const originalPrice = course.originalPrice || course.price;
+  const discountedPrice = (originalPrice * (100 - percentage)) / 100;
+
+  db.get("courses")
+    .find({ id: courseId })
+    .assign({
+      discount: percentage,
+      price: discountedPrice,
+      originalPrice,
+    })
+    .write();
+
+  res.json({
+    success: true,
+    message: `تخفیف به ${percentage}% بروزرسانی شد`,
+    newPrice: discountedPrice,
+  });
+});
+
 
 // آپلود عکس دوره
 /**
