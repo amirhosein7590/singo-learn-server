@@ -5,7 +5,12 @@
       "role": "admin",
       "password": "$2b$10$yUUNmFaroiEQm0XlKjrOE.5YF/WqAbb7ES9hNPmDQQy2zBwtFv4By",
       "isBanned": false,
-      "purchasedCourses": [],
+      "purchasedCourses": [
+        "61b91f5e-f071-435b-a956-572dc0011a4a",
+        "c7c5350c-eca5-4226-bc98-aa571df106a3",
+        "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e"
+      ],
       "cart": [],
       "username": "amirhosein",
       "fullname": "امیرحسین غلامی",
@@ -155,7 +160,9 @@
       "fullname": "سارا هاشمی",
       "role": "user",
       "isBanned": false,
-      "purchasedCourses": [],
+      "purchasedCourses": [
+        "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783"
+      ],
       "cart": []
     },
     {
@@ -447,7 +454,7 @@
       "icon": "https://ucarecdn.com/4d8fa705-9ac1-4d40-bb42-363bc4a7ec27/",
       "details": "Python Django Course",
       "teacherId": "fe95c15a-dbee-4baf-a70e-1e3d0d20c3b3",
-      "price": 2100000,
+      "price": 2800000,
       "duration": 35,
       "studentsCount": 100,
       "isSupport": true,
@@ -508,8 +515,8 @@
           "description": "با توجه به محبوبیت پایتون و قدرت Django در توسعه وب، اینفریم‌ورک همچنان یکی از گزینه‌های اصلی برای توسعه برنامه‌های وب پیچیده خواهد بود."
         }
       ],
-      "discount": "25",
-      "originalPrice": 2800000
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "e8fa04fb-fd0e-46f2-bb43-955a968e712b",
@@ -592,7 +599,7 @@
       "icon": "https://ucarecdn.com/bf48ff14-6492-4e2f-9f23-d9046f61b563/",
       "details": "React Native Course",
       "teacherId": "031efa93-8822-4207-8f97-d44fbd37faba",
-      "price": 3500000,
+      "price": 1015000,
       "duration": 45,
       "studentsCount": 80,
       "isSupport": true,
@@ -653,7 +660,9 @@
           "title": "چگونه می‌توان عملکرد React Native را بهبود بخشید؟",
           "description": "با استفاده از بهینه‌سازی‌هایی مانند استفاده از PureComponent، حافظه پنهان (memoization)، کاهش اندازه تصاویر و استفاده از لیست‌های بهینهشده."
         }
-      ]
+      ],
+      "discount": "71",
+      "originalPrice": 3500000
     },
     {
       "id": "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
@@ -671,7 +680,8 @@
       "createdAt": "2025-03-01T15:00:00Z",
       "sessions": [
         "s16",
-        "s17"
+        "s17",
+        "s1754920994493"
       ],
       "description": [
         {
@@ -816,7 +826,8 @@
       "createdAt": "2025-03-10T17:00:00Z",
       "sessions": [
         "s21",
-        "s22"
+        "s22",
+        "s1754919513849"
       ],
       "description": [
         {
@@ -881,7 +892,7 @@
       "image": "https://ucarecdn.com/8e48d09b-76ae-4b4f-8d6c-66bbff08223b/",
       "icon": "https://ucarecdn.com/c529b5d8-7e9b-40a3-8163-be37d051d30c/",
       "details": "Docker Course",
-      "teacherId": "753aa605-d086-49dc-898d-9ef343287eba",
+      "teacherId": "0c41b6a9-c8b7-4c52-847d-852c0fe96c14",
       "price": 2400000,
       "duration": 22,
       "studentsCount": 100,
@@ -961,7 +972,8 @@
       "createdAt": "2025-03-20T19:00:00Z",
       "sessions": [
         "s26",
-        "s27"
+        "s27",
+        "s1754924941413"
       ],
       "description": [
         {
@@ -1027,7 +1039,7 @@
       "icon": "https://ucarecdn.com/b8d9f74d-8788-452b-af96-ddf8d375f3b7/",
       "details": "Next Js Course",
       "teacherId": "7b770ce5-2a1e-48a6-b20d-fec6ac1214e0",
-      "price": 2700000,
+      "price": 2295000,
       "duration": 28,
       "studentsCount": 110,
       "isSupport": true,
@@ -1088,7 +1100,9 @@
           "title": "چگونه می‌توان Next.js را Deploy کرد؟",
           "description": "با سرویس‌هایی مانند Vercel، Netlify یا حتی سرورهای اختصاصی از طریق Docker و Node.js قابل دیپلوی است."
         }
-      ]
+      ],
+      "discount": "15",
+      "originalPrice": 2700000
     },
     {
       "id": "c7c5350c-eca5-4226-bc98-aa571df106a3",
@@ -1106,7 +1120,8 @@
       "createdAt": "2025-04-05T21:00:00Z",
       "sessions": [
         "s31",
-        "s32"
+        "s32",
+        "s1755014817085"
       ],
       "description": [
         {
@@ -1311,7 +1326,7 @@
       "overview": "Kubernetes ابزاری قدرتمند برای مدیریت و ارکستراسیون کانتینرها در مقیاس بالا است. در این دوره با مفاهیم Pod، Service، Deployment و نحوه مدیریت پروژه‌های کانتینری در محیط‌های پرکاربرد آشنا می‌شویم.",
       "image": "https://ucarecdn.com/7a50fb61-9f4c-407a-976c-27fb18e7c2e5/",
       "icon": "https://ucarecdn.com/c099aaee-cc1b-4ba1-9b59-42d1ac98c00e/",
-      "teacherId": null,
+      "teacherId": "72d235b7-46b8-4a26-9361-197206a6d4c7",
       "details": "Kubernetes Course",
       "price": 3600000,
       "duration": 40,
@@ -2464,7 +2479,7 @@
     },
     {
       "id": "s26",
-      "courseId": "c61b91f5e-f071-435b-a956-572dc0011a4a",
+      "courseId": "61b91f5e-f071-435b-a956-572dc0011a4a",
       "seasion": "فصل چهارم",
       "title": "مبانی GraphQL",
       "videos": [
@@ -2493,7 +2508,7 @@
     },
     {
       "id": "s27",
-      "courseId": "c61b91f5e-f071-435b-a956-572dc0011a4a",
+      "courseId": "61b91f5e-f071-435b-a956-572dc0011a4a",
       "seasion": "فصل پنجم",
       "title": "پیشرفته‌های GraphQL",
       "videos": [
@@ -3047,6 +3062,77 @@
           "order": 5
         }
       ]
+    },
+    {
+      "id": "s1754919513849",
+      "courseId": "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
+      "seasion": "فصل سوم",
+      "title": "Entity در MongoDB",
+      "videos": [
+        {
+          "id": "v1755013721824",
+          "title": "Entity چیست ؟",
+          "duration": "12",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/12/4jakCueA9E-SampleVideo_1280x720_2mb.mp4",
+          "order": 1
+        }
+      ],
+      "isFree": false
+    },
+    {
+      "id": "s1754920994493",
+      "courseId": "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
+      "seasion": "فصل سوم",
+      "title": "Asynchronous چیست؟",
+      "videos": [
+        {
+          "id": "v1755076823451",
+          "title": "sync و async در جاوااسکریپت",
+          "duration": "50",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/13/4jaedNsHBY-SampleVideo_1280x720_1mb.mp4",
+          "order": 1
+        }
+      ],
+      "isFree": false
+    },
+    {
+      "id": "s1754924941413",
+      "courseId": "61b91f5e-f071-435b-a956-572dc0011a4a",
+      "seasion": "فصل اول",
+      "title": "معرفی دوره GraphQL",
+      "videos": [
+        {
+          "id": "v1755012945302",
+          "title": "چرا GraphQL ؟",
+          "duration": "12",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/12/4jakGmvb2i-SampleVideo_1280x720_1mb.mp4",
+          "order": 1
+        },
+        {
+          "id": "v1755013380424",
+          "title": "تاریخچه GraphQL",
+          "duration": "25",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/12/4jakEd4VAB-SampleVideo_1280x720_2mb.mp4",
+          "order": 2
+        }
+      ],
+      "isFree": true
+    },
+    {
+      "id": "s1755014817085",
+      "courseId": "c7c5350c-eca5-4226-bc98-aa571df106a3",
+      "seasion": "فصل سوم",
+      "title": "Controller ها در Nestjs",
+      "videos": [
+        {
+          "id": "v1755014968069",
+          "title": "Controller چیست ؟",
+          "duration": "15",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/12/4jak6j2oH7-SampleVideo_1280x720_5mb.mp4",
+          "order": 1
+        }
+      ],
+      "isFree": false
     }
   ],
   "teachers": [
@@ -3061,7 +3147,7 @@
         "31b8bc1d-ea36-43e5-a4f9-09cc54b4950b"
       ],
       "stack": "فرانت اند",
-      "isBanned": true,
+      "isBanned": false,
       "role": "teacher"
     },
     {
@@ -3134,6 +3220,34 @@
         "eb9a69ed-a9fc-4b63-987b-e657a5fa7496"
       ],
       "stack": "دیتا ساینس"
+    },
+    {
+      "id": "0c41b6a9-c8b7-4c52-847d-852c0fe96c14",
+      "username": "Golsoom",
+      "password": "$2b$10$DymLbyZPdBcdxNeGxKVShuah8I71lf0rt1aR/cMaFuBsrBrVYOjTy",
+      "email": "Golsoom@gmail.com",
+      "phonenumber": "09151123366",
+      "fullname": "گلثوم اکبری",
+      "role": "teacher",
+      "isBanned": false,
+      "courseIds": [
+        "d9bbb2f2-26d3-4a28-a943-19eb81e60958"
+      ],
+      "stack": "دواپس"
+    },
+    {
+      "id": "72d235b7-46b8-4a26-9361-197206a6d4c7",
+      "username": "mhmd_12",
+      "password": "$2b$10$EuFECUrxCPJqh8cPZ1G7u.KRwc9bJqJx14a/BA4LUOxFf9DBUEmqG",
+      "email": "mhmd@gmail.com",
+      "phonenumber": "09151147788",
+      "fullname": "محمد مهدی سلوکی",
+      "role": "teacher",
+      "isBanned": false,
+      "courseIds": [
+        "d057a7a2-348e-401d-80c7-a141d41e7c07"
+      ],
+      "stack": "بک اند"
     }
   ]
 }
