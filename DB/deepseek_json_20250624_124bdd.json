@@ -1326,7 +1326,7 @@
       "overview": "Kubernetes ابزاری قدرتمند برای مدیریت و ارکستراسیون کانتینرها در مقیاس بالا است. در این دوره با مفاهیم Pod، Service، Deployment و نحوه مدیریت پروژه‌های کانتینری در محیط‌های پرکاربرد آشنا می‌شویم.",
       "image": "https://ucarecdn.com/7a50fb61-9f4c-407a-976c-27fb18e7c2e5/",
       "icon": "https://ucarecdn.com/c099aaee-cc1b-4ba1-9b59-42d1ac98c00e/",
-      "teacherId": "72d235b7-46b8-4a26-9361-197206a6d4c7",
+      "teacherId": null,
       "details": "Kubernetes Course",
       "price": 3600000,
       "duration": 40,
@@ -1478,7 +1478,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s3",
@@ -1521,7 +1522,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s4",
@@ -1564,7 +1566,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s5",
@@ -1651,7 +1654,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s7",
@@ -1694,7 +1698,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s8",
@@ -1781,7 +1786,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s10",
@@ -1868,7 +1874,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s12",
@@ -1911,7 +1918,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s13",
@@ -1998,7 +2006,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s15",
@@ -2041,7 +2050,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s16",
@@ -2128,7 +2138,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s18",
@@ -2215,7 +2226,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s20",
@@ -2258,7 +2270,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s21",
@@ -2345,7 +2358,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s23",
@@ -2432,7 +2446,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s25",
@@ -2475,7 +2490,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s26",
@@ -2504,7 +2520,8 @@
           "videoUrl": "./videos/graphql/build-api.mp4",
           "order": 3
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s27",
@@ -2540,7 +2557,8 @@
           "videoUrl": "./videos/graphql/auth.mp4",
           "order": 4
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s28",
@@ -2627,7 +2645,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s30",
@@ -2670,7 +2689,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s31",
@@ -2757,7 +2777,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s33",
@@ -2844,7 +2865,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s35",
@@ -2887,7 +2909,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": true
     },
     {
       "id": "s36",
@@ -2974,7 +2997,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s38",
@@ -3061,7 +3085,8 @@
           "videoUrl": "./videos/kubernetes/ingress.mp4",
           "order": 5
         }
-      ]
+      ],
+      "isFree": false
     },
     {
       "id": "s1754919513849",

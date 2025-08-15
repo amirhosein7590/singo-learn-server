@@ -141,7 +141,7 @@ server.get("/courses", (req, res) => {
   const endIndex = page * limit;
 
   // گرفتن کل courses از دیتابیس
-  const allCourses = db.get("courses").sortBy("createdAt").reverse().value();
+  const allCourses = db.get("courses").sortBy("createdAt").value();
 
   // محاسبه تعداد کل صفحات
   const totalPages = Math.ceil(allCourses.length / limit);
@@ -156,6 +156,15 @@ server.get("/courses", (req, res) => {
     courses: paginatedCourses,
   });
 });
+
+server.get("/all-courses", (req, res) => {
+  const db = router.db;
+
+  const allCourses = db.get("courses").value();
+
+  res.json(allCourses);
+});
+
 
 server.get("/teachers-with-courses", (req, res) => {
   const db = router.db;
@@ -1255,34 +1264,6 @@ server.post("/sessions", (req, res) => {
   });
 });
 
-/**
- * @api {put} /sessions/:sessionId ویرایش جلسه
- * @apiBody {String} [seasion] عنوان فصل
- * @apiBody {String} [title] عنوان جلسه
- * @apiBody {Boolean} [isFree] رایگان/نقدی
- */
-server.put("/sessions/:sessionId", (req, res) => {
-  const { sessionId } = req.params;
-  const { seasion, title, isFree } = req.body;
-  const db = router.db;
-
-  const session = db.get("sessions").find({ id: sessionId }).value();
-  if (!session) {
-    return res.status(404).json({ error: "جلسه یافت نشد" });
-  }
-
-  const updates = {};
-  if (seasion) updates.seasion = seasion;
-  if (title) updates.title = title;
-  if (typeof isFree === "boolean") updates.isFree = isFree;
-
-  db.get("sessions").find({ id: sessionId }).assign(updates).write();
-
-  res.json({
-    success: true,
-    updatedSession: { ...session, ...updates },
-  });
-});
 
 /**
  * @api {delete} /sessions/:sessionId حذف جلسه
@@ -1309,6 +1290,93 @@ server.delete("/sessions/:sessionId", (req, res) => {
     success: true,
     deletedSession: sessionId,
     courseId: session.courseId,
+    message : 'سر فصل با موفقیت حذف شد'
+  });
+});
+
+server.put("/sessions/:sessionId", (req, res) => {
+  const { sessionId } = req.params;
+  const { courseId, seasion, title, isFree } = req.body;
+  const db = router.db;
+
+  // 1. احراز هویت ادمین
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن احراز هویت ارسال نشده" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "فرمت توکن نامعتبر" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر یا منقضی شده" });
+    }
+
+    // 2. بررسی نقش ادمین
+    const admin = db.get("users").find({ id: decoded.userId }).value();
+    if (!admin || admin.role !== "admin") {
+      return res
+        .status(403)
+        .json({ error: "فقط ادمین می‌تواند سرفصل‌ها را ویرایش کند" });
+    }
+
+    // 3. پیدا کردن سرفصل فعلی
+    const currentSession = db.get("sessions").find({ id: sessionId }).value();
+    if (!currentSession) {
+      return res.status(404).json({ error: "سرفصل مورد نظر یافت نشد" });
+    }
+
+    // 4. بررسی وجود دوره جدید (اگر courseId تغییر کرده باشد)
+    const newCourse = db.get("courses").find({ id: courseId }).value();
+    if (!newCourse) {
+      return res.status(404).json({ error: "دوره جدید یافت نشد" });
+    }
+
+    // 5. اگر دوره تغییر کرده باشد، باید سرفصل از دوره قدیم حذف و به دوره جدید اضافه شود
+    if (courseId !== currentSession.courseId) {
+      // حذف از دوره قدیم
+      db.get("courses")
+        .find({ id: currentSession.courseId })
+        .update("sessions", (sessions) => sessions.filter(id => id !== sessionId))
+        .write();
+
+      // اضافه به دوره جدید
+      db.get("courses")
+        .find({ id: courseId })
+        .update("sessions", (sessions) => [...sessions, sessionId])
+        .write();
+    }
+
+    // 6. ویرایش سرفصل در جدول sessions
+    db.get("sessions")
+      .find({ id: sessionId })
+      .assign({
+        courseId,
+        seasion,
+        title,
+        isFree
+      })
+      .write();
+
+    // 7. پاسخ موفقیت‌آمیز
+    res.status(200).json({
+      success: true,
+      message: "سرفصل با موفقیت ویرایش شد",
+      updatedSession: {
+        id: sessionId,
+        courseId,
+        seasion,
+        title,
+        isFree
+      },
+      affectedCourses: {
+        oldCourseId: currentSession.courseId,
+        newCourseId: courseId
+      }
+    });
   });
 });
 
