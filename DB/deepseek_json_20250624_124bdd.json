@@ -9,7 +9,8 @@
         "61b91f5e-f071-435b-a956-572dc0011a4a",
         "c7c5350c-eca5-4226-bc98-aa571df106a3",
         "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
-        "cc446b24-f061-4741-b5b4-7d1c695d8f1e"
+        "cc446b24-f061-4741-b5b4-7d1c695d8f1e",
+        "e8fa04fb-fd0e-46f2-bb43-955a968e712b"
       ],
       "cart": [],
       "username": "amirhosein",
@@ -302,10 +303,10 @@
       "slug": "react-js",
       "overview": "با وجود قابلیت بسیار بالای React JS در پیاده‌سازی فرانت‌اند،گاهاً با ضعف‌هایی مخصوصاً در صفحات اصلی مواجه می‌شویم. بارزترین موردی که باید اشاره کرد، ضعف React JS در SEO است که این مشکل توسط Next JS حل شده است. البته NextJS مزایای دیگری هم دارد که در طول این دوره به آن خواهیم پرداخت.",
       "image": "https://ucarecdn.com/3b5ddcf4-46cf-41af-9325-e5754c6a33cd/",
-      "icon": "https://ucarecdn.com/77af7b90-48ca-4e82-ad93-95b1074b2d3f/",
+      "icon": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZiuRBsLJ-react-js.svg",
       "details": "React Js Course",
       "teacherId": "5c0d2927-1d7c-4e70-b89c-a79cd94e1df1",
-      "price": 2500000,
+      "price": 1875000,
       "duration": 30,
       "studentsCount": 150,
       "isSupport": true,
@@ -368,8 +369,8 @@
           "description": "با توجه به محبوبیت و پشتیبانی فیسبوک، React همچنان یکی از اصلی‌ترین تکنولوژی‌های فرانت‌اند خواهد بود و به رشد خود ادامه خواهد داد."
         }
       ],
-      "discount": null,
-      "originalPrice": null
+      "discount": "25",
+      "originalPrice": 2500000
     },
     {
       "id": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
@@ -527,7 +528,7 @@
       "icon": "https://ucarecdn.com/d7397e61-3735-403c-85b9-6aa3a784cdea/",
       "details": "Vue Js Course",
       "teacherId": null,
-      "price": 2200000,
+      "price": 1540000,
       "duration": 25,
       "studentsCount": 90,
       "isSupport": true,
@@ -588,7 +589,9 @@
           "title": "چرا Vue.js انتخاب خوبی برای تازه‌کارهاست؟",
           "description": "به دلیل سینتکس ساده، مستندات عالی و منحنی یادگیری ملایم،Vue.js گزینه ایده‌آلی برای توسعه‌دهندگان تازه‌کار است."
         }
-      ]
+      ],
+      "discount": "30",
+      "originalPrice": 2200000
     },
     {
       "id": "46cd7e50-724b-42c4-b03a-6087c55c6328",
@@ -599,7 +602,7 @@
       "icon": "https://ucarecdn.com/bf48ff14-6492-4e2f-9f23-d9046f61b563/",
       "details": "React Native Course",
       "teacherId": "031efa93-8822-4207-8f97-d44fbd37faba",
-      "price": 1015000,
+      "price": 3500000,
       "duration": 45,
       "studentsCount": 80,
       "isSupport": true,
@@ -661,8 +664,8 @@
           "description": "با استفاده از بهینه‌سازی‌هایی مانند استفاده از PureComponent، حافظه پنهان (memoization)، کاهش اندازه تصاویر و استفاده از لیست‌های بهینهشده."
         }
       ],
-      "discount": "71",
-      "originalPrice": 3500000
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "501fa59c-8d67-4273-b1e5-a5fcd9056e47",
@@ -734,7 +737,9 @@
           "title": "تفاوت بین let، const و var چیست؟",
           "description": "var دارای scope تابعی است و hoisting می‌شود. let و constدارای scope بلوکی هستند و hoisting نمی‌شوند. const برای تعریف ثابت‌ها استفاده می‌شود و مقدار آن پس از تعریف قابل تغییر نیست در حالی که let برای متغیرهای قابل تغییر استفاده می‌شود."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "b24905e6-2a14-4042-a790-0fe5d9476db2",
@@ -742,10 +747,10 @@
       "slug": "typescript",
       "overview": "TypeScript نسخه‌ی توسعه‌یافته‌تری از جاوااسکریپت است که ویژگی‌هایی مثل تایپ ایمن و کلاس‌های پیشرفته را به آن اضافه می‌کند. در این دوره با سینتکس تایپ‌اسکریپت و نحوه ترکیب آن با فریم‌ورک‌هایی مثل React آشنا می‌شویم.",
       "image": "https://ucarecdn.com/634f861b-1e21-4f0c-9b8d-b53121c65a94/",
-      "icon": "https://ucarecdn.com/39c3a983-abb2-4f17-a9e9-62228833af57/",
+      "icon": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZiuMEQ5W-typescript.svg",
       "details": "TypeScript Course",
       "teacherId": null,
-      "price": 1206000,
+      "price": 1800000,
       "duration": 18,
       "studentsCount": 150,
       "isSupport": true,
@@ -807,8 +812,8 @@
           "description": "با حمایت مایکروسافت و پذیرش گسترده در جامعه توسعه‌دهندگان، TypeScript به رشد خود ادامه خواهد داد. بسیاری از فریم‌ورک‌های مدرن مانند Angular و NestJS از TypeScript به عنوان زبان اصلی استفاده می‌کنند."
         }
       ],
-      "discount": "33",
-      "originalPrice": 1800000
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "eb9a69ed-a9fc-4b63-987b-e657a5fa7496",
@@ -954,7 +959,9 @@
           "title": "آینده Docker چگونه است؟",
           "description": "با رشد محاسبات ابری و نیاز به توسعه مبتنی بر میکروسرویس‌ها، داکر همچنان یکی از فناوری‌های کلیدی در اکوسیستم DevOps خواهد بود."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "61b91f5e-f071-435b-a956-572dc0011a4a",
@@ -1036,10 +1043,10 @@
       "slug": "next-js",
       "overview": "Next JS بر پایه React ساخته شده و امکاناتی مثل SSR، SEO بهینه و مسیرهای داینامیک را در اختیار توسعه‌دهنده می‌گذارد. در این دوره با ساخت پروژه‌های واقعی به قدرت و مزایای Next پی خواهیم برد.",
       "image": "https://ucarecdn.com/1317ce5f-f46f-4f53-b3c1-4888794d9e1b/",
-      "icon": "https://ucarecdn.com/b8d9f74d-8788-452b-af96-ddf8d375f3b7/",
+      "icon": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZiu9jRD4-next-js.svg",
       "details": "Next Js Course",
       "teacherId": "7b770ce5-2a1e-48a6-b20d-fec6ac1214e0",
-      "price": 2295000,
+      "price": 2700000,
       "duration": 28,
       "studentsCount": 110,
       "isSupport": true,
@@ -1101,8 +1108,8 @@
           "description": "با سرویس‌هایی مانند Vercel، Netlify یا حتی سرورهای اختصاصی از طریق Docker و Node.js قابل دیپلوی است."
         }
       ],
-      "discount": "15",
-      "originalPrice": 2700000
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "c7c5350c-eca5-4226-bc98-aa571df106a3",
@@ -1174,79 +1181,9 @@
           "title": "Nest CLI چیست؟",
           "description": "ابزاری خط فرمان برای ساخت سریع پروژه و اجزای مختلف مانندکنترلر، ماژول و سرویس‌ها است."
         }
-      ]
-    },
-    {
-      "id": "5b849684-b46d-4d5c-a13b-f535ead82eff",
-      "title": "ساخت اپ با Flutter",
-      "slug": "flutter",
-      "overview": "Flutter یک فریم‌ورک مدرن از گوگل برای توسعه اپلیکیشن‌های موبایل با رابط کاربری بسیار زیبا و سرعت بالا است. در این دوره با زبان Dart، ساخت UIو نحوه ارتباط با سرور در Flutter آشنا می‌شویم.",
-      "image": "https://ucarecdn.com/c155c35c-0ac2-41ec-9c7c-3ac38d6add55/",
-      "icon": "https://ucarecdn.com/e0fbb342-7f7e-4bec-bcfa-7962cb9e321b/",
-      "details": "Flutter Course",
-      "teacherId": "031efa93-8822-4207-8f97-d44fbd37faba",
-      "price": 3200000,
-      "duration": 35,
-      "studentsCount": 85,
-      "isSupport": true,
-      "createdAt": "2025-04-10T22:00:00Z",
-      "sessions": [
-        "s33",
-        "s34",
-        "s35"
       ],
-      "description": [
-        {
-          "id": 1,
-          "title": "Flutter چیست؟",
-          "description": "فریم‌ورکی برای ساخت اپلیکیشن‌های موبایل، وب و دسکتاپ بایک کد بیس واحد با استفاده از زبان Dart."
-        },
-        {
-          "id": 2,
-          "title": "مزایای Flutter چیست؟",
-          "description": "Hot Reload، رابط کاربری زیبا، توسعه سریع، و اجرای nativeروی iOS و Android."
-        },
-        {
-          "id": 3,
-          "title": "Dart چه نقشی در Flutter دارد؟",
-          "description": "Dart زبان برنامه‌نویسی Flutter است که توسط گوگل توسعه داده شده و برای ساخت رابط‌های کاربری reactive طراحی شده است."
-        },
-        {
-          "id": 4,
-          "title": "Widget در Flutter چیست؟",
-          "description": "هر چیزی در Flutter یک ویجت است؛ از دکمه و متن گرفته تا layoutهای پیچیده."
-        },
-        {
-          "id": 5,
-          "title": "تفاوت Stateless و Stateful Widget چیست؟",
-          "description": "Stateless تغییرناپذیر است ولی Stateful می‌تواند state داخلی داشته باشد و با تغییر آن بازسازی شود."
-        },
-        {
-          "id": 6,
-          "title": "State Management در Flutter چگونه است؟",
-          "description": "می‌توان از روش‌هایی مانند Provider، Bloc، Riverpod یا setState استفاده کرد."
-        },
-        {
-          "id": 7,
-          "title": "Flutter چگونه UI را رندر می‌کند؟",
-          "description": "با استفاده از موتور گرافیکی Skia بدون وابستگی به کامپوننت‌های native سیستم عامل."
-        },
-        {
-          "id": 8,
-          "title": "Hot Reload در Flutter چیست؟",
-          "description": "قابلیتی برای اعمال سریع تغییرات کد بدون نیاز به ری‌استارت کامل برنامه."
-        },
-        {
-          "id": 9,
-          "title": "چگونه می‌توان اپ را در Android و iOS اجرا کرد؟",
-          "description": "با استفاده از Android Studio، VSCode یا دستور `flutter run` می‌توان روی هر دو پلتفرم اجرا گرفت."
-        },
-        {
-          "id": 10,
-          "title": "Flutter برای وب و دسکتاپ هم قابل استفاده است؟",
-          "description": "بله، Flutter از وب (HTML/CSS/Canvas) و دسکتاپ (Windows،macOS، Linux) نیز پشتیبانی می‌کند."
-        }
-      ]
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "b669682d-24fa-46ad-a698-7c462857a6f9",
@@ -1260,7 +1197,7 @@
       "price": 0,
       "duration": 18,
       "studentsCount": 70,
-      "isSupport": true,
+      "isSupport": false,
       "createdAt": "2025-04-15T23:00:00Z",
       "sessions": [
         "s36",
@@ -1317,7 +1254,9 @@
           "title": "Svelte برای پروژه‌های بزرگ مناسب است؟",
           "description": "بله، مخصوصاً با SvelteKit، قابلیت استفاده در پروژه‌های واقعی با عملکرد بالا فراهم شده است."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "d057a7a2-348e-401d-80c7-a141d41e7c07",
@@ -1389,7 +1328,51 @@
           "title": "Kubernetes برای چه کاربردهایی مناسب است؟",
           "description": "برای مدیریت خودکار برنامه‌های کانتینری، مقیاس‌پذیری، خودترمیمی و استقرار پیوسته بسیار مناسب است."
         }
-      ]
+      ],
+      "discount": null,
+      "originalPrice": null
+    },
+    {
+      "id": "607ff2e9-146d-4af5-a8da-5fafafd73b59",
+      "title": "آموزش صفر تا صد لاراول",
+      "slug": "aamwzsh-sfr-ta-sd-larawl",
+      "overview": "لاراول پر استفاده‌ترین فریمورک زبان برنامه نویسی PHP بوده و در سال‌های اخیر توسط شرکت‌ها و استارتاپ‌های بسیار زیادی مورد استفاده قرار گرفته است. یادگیری لاراول به شما کمک می‌کند با سرعت بسیار زیادی وبسایت مورد نظرتان را توسعه دهید.",
+      "icon": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZiv82y44-laravel-svgrepo-com.svg",
+      "image": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZisHGp2T-laravel-cover-l5167kio.jpg",
+      "studentsCount": "25",
+      "duration": "45",
+      "isSupport": true,
+      "description": [
+        {
+          "title": "فریم ورک Laravel چیست؟",
+          "description": "لاراول (Laravel) یک فریم‌ورک متن‌باز و رایگان برای زبان PHP است که توسط تایلور اوتول (Taylor Otwell) در سال ۲۰۱۱ توسعه داده شد. لاراول با معماری MVC (Model-View-Controller) طراحی شده و هدف آن ساده‌تر کردن توسعه وب، ایجاد ساختار منظم برای پروژه‌ها و کاهش پیچیدگی‌های برنامه‌نویسی با PHP است."
+        },
+        {
+          "title": "چرا باید از Laravel استفاده کنیم؟",
+          "description": "لاراول امکاناتی مثل سیستم مسیریابی قدرتمند، ORM اختصاصی (Eloquent)، قالب‌ساز Blade، سیستم احراز هویت و مجوزدهی داخلی، تست‌نویسی آسان و … را در اختیار توسعه‌دهنده می‌گذارد. این ویژگی‌ها باعث می‌شود توسعه اپلیکیشن‌های وب سریع‌تر، ایمن‌تر و سازمان‌یافته‌تر انجام شود."
+        },
+        {
+          "title": "لاراول برای چه نوع پروژه‌هایی مناسب است؟",
+          "description": "لاراول برای پروژه‌های کوچک، متوسط و بزرگ مناسب است. می‌توان از آن برای ساخت سایت‌های فروشگاهی، پنل‌های مدیریتی، اپلیکیشن‌های سازمانی، API برای موبایل، سیستم‌های مدیریت محتوا و حتی پروژه‌های بسیار بزرگ استفاده کرد."
+        },
+        {
+          "title": "چه کسانی از Laravel استفاده می‌کنند؟",
+          "description": "لاراول در بین توسعه‌دهندگان PHP بسیار محبوب است و شرکت‌های زیادی برای ساخت اپلیکیشن‌های وب از آن استفاده می‌کنند. همچنین به دلیل مستندات کامل و جامعه کاربری فعال، یادگیری و پشتیبانی آن برای برنامه‌نویسان تازه‌کار و حرفه‌ای آسان است."
+        },
+        {
+          "title": "معماری MVC در Laravel چیست؟",
+          "description": "لاراول بر اساس MVC کار می‌کند."
+        }
+      ],
+      "price": "2200000",
+      "details": "آموزش صفر تا صد لاراول Course",
+      "teacherId": null,
+      "sessions": [
+        "s1755357546764"
+      ],
+      "createdAt": "2025-08-16T15:17:47.353Z",
+      "discount": null,
+      "originalPrice": null
     }
   ],
   "sessions": [
@@ -3158,6 +3141,29 @@
         }
       ],
       "isFree": false
+    },
+    {
+      "id": "s1755357546764",
+      "courseId": "607ff2e9-146d-4af5-a8da-5fafafd73b59",
+      "seasion": "فصل اول",
+      "title": "چرا لاراول ؟",
+      "videos": [
+        {
+          "id": "v1755357615624",
+          "title": "معرفی دوره",
+          "duration": "25",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/16/4jaDpPoaGw-SampleVideo_1280x720_1mb.mp4",
+          "order": 1
+        },
+        {
+          "id": "v1755684103039",
+          "title": "جلسه تستی",
+          "duration": "14",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZixzzz4y-SampleVideo_1280x720_1mb.mp4",
+          "order": 2
+        }
+      ],
+      "isFree": true
     }
   ],
   "teachers": [

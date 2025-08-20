@@ -14,6 +14,7 @@ const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
 const { log } = require("console");
+const slugify = require("slugify");
 
 // تنظیمات
 const SECRET_KEY = "your-very-secure-key-123!@#";
@@ -157,6 +158,128 @@ server.get("/courses", (req, res) => {
   });
 });
 
+server.post("/courses", (req, res) => {
+  const db = router.db;
+  const {
+    title,
+    overview,
+    icon,
+    image,
+    studentsCount,
+    duration,
+    isSupport,
+    description,
+    price,
+  } = req.body;
+
+  if (!title || !overview || !icon || !image || !price) {
+    return res.status(400).json({ error: "لطفا فیلدهای ضروری را پر کنید" });
+  }
+
+  const newCourse = {
+    id: uuidv4(),
+    title,
+    slug: slugify(title, { lower: true, strict: true }), // slug از روی title
+    overview,
+    icon,
+    image,
+    studentsCount: studentsCount || 0,
+    duration: duration || 0,
+    isSupport: isSupport == "true" ? true : false,
+    description: description || [],
+    price,
+    details: title + " Course", // یک مقدار پیش‌فرض برای details
+    teacherId: null, // طبق چیزی که گفتی
+    sessions: [], // خالی
+    createdAt: new Date().toISOString(),
+    discount: null,
+    originalPrice: null,
+  };
+
+  db.get("courses").push(newCourse).write();
+
+  res.status(201).json({
+    success: true,
+    message: "دوره با موفقیت ایجاد شد",
+    course: newCourse,
+  });
+});
+
+// DELETE /courses/:id
+server.delete("/courses/:courseId", (req, res) => {
+  const db = router.db;
+  const { courseId } = req.params;
+
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن ارسال نشده" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "توکن معتبر نیست" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر" });
+    }
+
+    // چک نقش ادمین
+    const adminUser = db.get("users").find({ id: user.userId }).value();
+    if (!adminUser || adminUser.role !== "admin") {
+      return res
+        .status(403)
+        .json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+    }
+
+    // پیدا کردن دوره
+    const course = db.get("courses").find({ id: courseId }).value();
+    if (!course) {
+      return res.status(404).json({ error: "دوره یافت نشد" });
+    }
+
+    // 1️⃣ حذف دوره از جدول courses
+    db.get("courses").remove({ id: courseId }).write();
+
+    // 2️⃣ آپدیت users
+    db.get("users")
+      .value()
+      .forEach((u) => {
+        if (u.courses?.includes(courseId)) {
+          db.get("users")
+            .find({ id: u.id })
+            .assign({ courses: u.courses.filter((id) => id !== courseId) })
+            .write();
+        }
+      });
+
+    // 3️⃣ آپدیت teachers
+    db.get("teachers")
+      .value()
+      .forEach((t) => {
+        if (t.courses?.includes(courseId)) {
+          db.get("teachers")
+            .find({ id: t.id })
+            .assign({ courses: t.courses.filter((id) => id !== courseId) })
+            .write();
+        }
+      });
+
+    // 4️⃣ حذف sessions که شامل courseId هستند
+    db.get("sessions")
+      .remove((s) => Array.isArray(s.data) && s.data.includes(courseId))
+      .write();
+
+    res.status(200).json({
+      message: "دوره و تمام وابستگی‌ها حذف شدند",
+      deletedCourseId: courseId,
+    });
+  });
+});
+
+
+
 server.get("/all-courses", (req, res) => {
   const db = router.db;
 
@@ -164,7 +287,6 @@ server.get("/all-courses", (req, res) => {
 
   res.json(allCourses);
 });
-
 
 server.get("/teachers-with-courses", (req, res) => {
   const db = router.db;
@@ -259,13 +381,13 @@ server.get("/sessions-with-course", (req, res) => {
   const endIndex = page * limit;
   const paginatedSessions = allSessions.slice(startIndex, endIndex);
 
-  const data = paginatedSessions.map(session => {
+  const data = paginatedSessions.map((session) => {
     // پیدا کردن course مربوطه
     const course = db.get("courses").find({ id: session.courseId }).value();
 
     return {
       ...session,
-      course
+      course,
     };
   });
 
@@ -273,7 +395,7 @@ server.get("/sessions-with-course", (req, res) => {
     success: true,
     currentPage: page,
     totalPages: Math.ceil(allSessions.length / limit),
-    sessions: data
+    sessions: data,
   });
 });
 
@@ -290,13 +412,13 @@ server.get("/seasions-with-course", (req, res) => {
   const endIndex = page * limit;
   const paginatedSessions = allSessions.slice(startIndex, endIndex);
 
-  const data = paginatedSessions.map(session => {
+  const data = paginatedSessions.map((session) => {
     // پیدا کردن course مربوطه
     const course = db.get("courses").find({ id: session.courseId }).value();
 
     return {
       ...session,
-      course
+      course,
     };
   });
 
@@ -304,10 +426,9 @@ server.get("/seasions-with-course", (req, res) => {
     success: true,
     currentPage: page,
     totalPages: Math.ceil(allSessions.length / limit),
-    seasions: data
+    seasions: data,
   });
-})
-
+});
 
 /**
  * @api {post} /register ثبت‌نام کاربران و معلمین
@@ -1053,7 +1174,6 @@ server.get("/courses/discounted", (req, res) => {
   });
 });
 
-
 /**
  * @api {post} /offs/all اعمال تخفیف به همه دوره‌ها
  */
@@ -1093,56 +1213,63 @@ server.post("/offs/all", (req, res) => {
  * @apiParam {String} teacherId شناسه معلم
  * @apiSuccess {String} message پیام موفقیت‌آمیز حذف
  */
-server.delete("/teachers/:teacherId", (req, res) => {
+server.delete("/courses/:courseId", (req, res) => {
   const db = router.db;
-  const { teacherId } = req.params;
+  const { courseId } = req.params;
 
+  // احراز هویت و بررسی دسترسی ادمین
   const authHeader = req.headers["authorization"];
-  if (!authHeader) {
-    return res.status(401).json({ error: "توکن ارسال نشده" });
-  }
-
+  if (!authHeader) return res.status(401).json({ error: "توکن ارسال نشده" });
+  
   const token = authHeader.split(" ")[1];
-  if (!token) {
-    return res.status(401).json({ error: "توکن معتبر نیست" });
-  }
+  if (!token) return res.status(401).json({ error: "توکن معتبر نیست" });
 
   jwt.verify(token, SECRET_KEY, (err, user) => {
-    if (err) {
-      return res.status(401).json({ error: "توکن نامعتبر" });
-    }
+    if (err) return res.status(401).json({ error: "توکن نامعتبر" });
 
-    // چک نقش ادمین در جدول users
     const adminUser = db.get("users").find({ id: user.userId }).value();
     if (!adminUser || adminUser.role !== "admin") {
-      return res
-        .status(403)
-        .json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+      return res.status(403).json({ error: "فقط ادمین دسترسی دارد" });
     }
 
-    // پیدا کردن معلم
-    const teacher = db.get("teachers").find({ id: teacherId }).value();
-    if (!teacher) {
-      return res.status(404).json({ error: "معلم یافت نشد" });
-    }
+    // دریافت state فعلی
+    const currentState = db.getState();
 
-    // 1. پیدا کردن تمام دوره‌های مربوط به این معلم
-    const teacherCourses = db.get("courses").filter({ teacherId }).value();
+    // 1. حذف از purchasedCourses کاربران
+    currentState.users = currentState.users.map(user => ({
+      ...user,
+      purchasedCourses: user.purchasedCourses 
+        ? user.purchasedCourses.filter(id => id !== courseId) 
+        : [],
+      cart: user.cart 
+        ? user.cart.filter(id => id !== courseId) 
+        : []
+    }));
 
-    // 2. حذف teacherId از دوره‌های مربوطه (تنظیم به null)
-    teacherCourses.forEach((course) => {
-      db.get("courses")
-        .find({ id: course.id })
-        .assign({ teacherId: null })
-        .write();
-    });
+    // 2. حذف از courseIds معلمان
+    currentState.teachers = currentState.teachers.map(teacher => ({
+      ...teacher,
+      courseIds: teacher.courseIds 
+        ? teacher.courseIds.filter(id => id !== courseId) 
+        : []
+    }));
 
-    // 3. حذف معلم از جدول teachers
-    db.get("teachers").remove({ id: teacherId }).write();
+    // 3. حذف جلسات مربوطه
+    currentState.sessions = currentState.sessions.filter(
+      session => session.courseId !== courseId
+    );
+
+    // 4. حذف خود دوره
+    currentState.courses = currentState.courses.filter(
+      course => course.id !== courseId
+    );
+
+    // ذخیره state جدید
+    db.setState(currentState).write();
 
     res.status(200).json({
-      message: "معلم با موفقیت حذف شد و دوره‌های مربوطه به‌روزرسانی شدند",
-      affectedCourses: teacherCourses.map((c) => c.id), // لیست دوره‌های تغییر کرده
+      success: true,
+      message: "دوره و تمام وابستگی‌های آن با موفقیت حذف شدند"
     });
   });
 });
@@ -1264,7 +1391,6 @@ server.post("/sessions", (req, res) => {
   });
 });
 
-
 /**
  * @api {delete} /sessions/:sessionId حذف جلسه
  */
@@ -1290,7 +1416,7 @@ server.delete("/sessions/:sessionId", (req, res) => {
     success: true,
     deletedSession: sessionId,
     courseId: session.courseId,
-    message : 'سر فصل با موفقیت حذف شد'
+    message: "سر فصل با موفقیت حذف شد",
   });
 });
 
@@ -1340,7 +1466,9 @@ server.put("/sessions/:sessionId", (req, res) => {
       // حذف از دوره قدیم
       db.get("courses")
         .find({ id: currentSession.courseId })
-        .update("sessions", (sessions) => sessions.filter(id => id !== sessionId))
+        .update("sessions", (sessions) =>
+          sessions.filter((id) => id !== sessionId)
+        )
         .write();
 
       // اضافه به دوره جدید
@@ -1357,7 +1485,7 @@ server.put("/sessions/:sessionId", (req, res) => {
         courseId,
         seasion,
         title,
-        isFree
+        isFree,
       })
       .write();
 
@@ -1370,12 +1498,12 @@ server.put("/sessions/:sessionId", (req, res) => {
         courseId,
         seasion,
         title,
-        isFree
+        isFree,
       },
       affectedCourses: {
         oldCourseId: currentSession.courseId,
-        newCourseId: courseId
-      }
+        newCourseId: courseId,
+      },
     });
   });
 });
@@ -1626,50 +1754,174 @@ server.put("/offs/:courseId", (req, res) => {
   });
 });
 
-// آپلود عکس دوره
-/**
- * @api {post} /upload-course-image اعمال تخفیف به دوره خاص
- * @api {body} courseImage
- * @api {body} courseId
- */
-server.post(
-  "/upload-course-image",
-  upload.single("courseImage"),
-  (req, res) => {
-    if (!req.file)
-      return res.status(400).json({ error: "هیچ فایلی آپلود نشد" });
+server.put("/courses/:courseId", (req, res) => {
+  const db = router.db;
+  const { courseId } = req.params;
 
-    const db = router.db;
-    const courseId = req.body.courseId;
-    const imageUrl = `/uploads/courses/${req.file.filename}`;
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن ارسال نشده" });
+  }
 
-    db.get("courses")
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "توکن معتبر نیست" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر" });
+    }
+
+    // چک نقش ادمین
+    const adminUser = db.get("users").find({ id: user.userId }).value();
+    if (!adminUser || adminUser.role !== "admin") {
+      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+    }
+
+    // پیدا کردن دوره
+    const course = db.get("courses").find({ id: courseId }).value();
+    if (!course) {
+      return res.status(404).json({ error: "دوره یافت نشد" });
+    }
+
+    // مقادیر قابل ویرایش از بادی
+    const {
+      title,
+      overview,
+      price,
+      duration,
+      studentsCount,
+      isSupport,
+      description,
+    } = req.body;
+
+    const {icon : prevIcon , image : prevImage} = db.get('courses').find({id : courseId}).value();
+    console.log(prevIcon , prevImage);
+
+    // بروزرسانی دوره
+    const updatedCourse = db
+      .get("courses")
       .find({ id: courseId })
-      .assign({ image: imageUrl })
+      .assign({
+        title,
+        overview,
+        price,
+        duration,
+        studentsCount,
+        isSupport : isSupport == 'true' ? true : false,
+        description,
+        icon: prevIcon || '',  
+        image: prevImage || '', 
+      })
       .write();
 
-    res.json({ imageUrl });
-  }
-);
-
-// آپلود ویدئو جلسه
-
-/**
- * @api {post} /upload-session-video اعمال تخفیف به دوره خاص
- * @api {body} video
- * @api {body} sessionId
- */
-server.post("/upload-session-video", upload.single("video"), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: "هیچ فایلی آپلود نشد" });
-
-  const db = router.db;
-  const sessionId = req.body.sessionId;
-  const videoUrl = `/uploads/videos/${req.file.filename}`;
-
-  db.get("sessions").find({ id: sessionId }).assign({ videoUrl }).write();
-
-  res.json({ videoUrl });
+    res.status(200).json({
+      message: "دوره با موفقیت ویرایش شد",
+      course: updatedCourse,
+    });
+  });
 });
+
+server.put("/courses/:courseId/icon", (req, res) => {
+  const db = router.db;
+  const { courseId } = req.params;
+
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن ارسال نشده" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "توکن معتبر نیست" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر" });
+    }
+
+    // چک نقش ادمین
+    const adminUser = db.get("users").find({ id: user.userId }).value();
+    if (!adminUser || adminUser.role !== "admin") {
+      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+    }
+
+    // پیدا کردن دوره
+    const course = db.get("courses").find({ id: courseId }).value();
+    if (!course) {
+      return res.status(404).json({ error: "دوره یافت نشد" });
+    }
+
+    const { icon } = req.body;
+    if (!icon) {
+      return res.status(400).json({ error: "آیکون الزامی است" });
+    }
+
+    const updatedCourse = db
+      .get("courses")
+      .find({ id: courseId })
+      .assign({ icon }) // فقط icon تغییر میکنه
+      .write();
+
+    res.status(200).json({
+      message: "آیکون دوره با موفقیت ویرایش شد",
+      course: updatedCourse,
+    });
+  });
+});
+
+server.put("/courses/:courseId/image", (req, res) => {
+  const db = router.db;
+  const { courseId } = req.params;
+
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن ارسال نشده" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "توکن معتبر نیست" });
+  }
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(401).json({ error: "توکن نامعتبر" });
+    }
+
+    // چک نقش ادمین
+    const adminUser = db.get("users").find({ id: user.userId }).value();
+    if (!adminUser || adminUser.role !== "admin") {
+      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+    }
+
+    // پیدا کردن دوره
+    const course = db.get("courses").find({ id: courseId }).value();
+    if (!course) {
+      return res.status(404).json({ error: "دوره یافت نشد" });
+    }
+
+    const { image } = req.body;
+    if (!image) {
+      return res.status(400).json({ error: "عکس الزامی است" });
+    }
+
+    const updatedCourse = db
+      .get("courses")
+      .find({ id: courseId })
+      .assign({ image }) // فقط image تغییر میکنه
+      .write();
+
+    res.status(200).json({
+      message: "عکس دوره با موفقیت ویرایش شد",
+      course: updatedCourse,
+    });
+  });
+});
+
+
 
 // استفاده از روتر json-server
 server.use(router);
