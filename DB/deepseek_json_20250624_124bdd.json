@@ -3,7 +3,7 @@
     {
       "id": "e9c137d0-8259-4c1e-b97f-8eb33a0b33e5",
       "role": "admin",
-      "password": "$2b$10$yUUNmFaroiEQm0XlKjrOE.5YF/WqAbb7ES9hNPmDQQy2zBwtFv4By",
+      "password": "$2b$10$1DKxw7gwz6PZAm6h4UyVqufaSicQXI4sAz02RMkvrbY.9UgnmWCLS",
       "isBanned": false,
       "purchasedCourses": [
         "61b91f5e-f071-435b-a956-572dc0011a4a",
@@ -1183,7 +1183,7 @@
       "image": "https://ucarecdn.com/192d54e9-4468-45ab-8046-3e29f5da518d/",
       "icon": "https://ucarecdn.com/a4122dde-dc18-4b69-8a7e-3f0cfe84d5b8/",
       "details": "Svelte Course",
-      "teacherId": "d2c1e4dd-a457-498c-8f0e-ded09ba1fe83",
+      "teacherId": "72d235b7-46b8-4a26-9361-197206a6d4c7",
       "price": 0,
       "duration": 18,
       "studentsCount": 70,
@@ -1191,7 +1191,8 @@
       "createdAt": "2025-04-15T23:00:00Z",
       "sessions": [
         "s36",
-        "s37"
+        "s37",
+        "s1755727559067"
       ],
       "description": [
         {
@@ -1255,7 +1256,7 @@
       "overview": "Kubernetes ابزاری قدرتمند برای مدیریت و ارکستراسیون کانتینرها در مقیاس بالا است. در این دوره با مفاهیم Pod، Service، Deployment و نحوه مدیریت پروژه‌های کانتینری در محیط‌های پرکاربرد آشنا می‌شویم.",
       "image": "https://ucarecdn.com/7a50fb61-9f4c-407a-976c-27fb18e7c2e5/",
       "icon": "https://ucarecdn.com/c099aaee-cc1b-4ba1-9b59-42d1ac98c00e/",
-      "teacherId": null,
+      "teacherId": "72d235b7-46b8-4a26-9361-197206a6d4c7",
       "details": "Kubernetes Course",
       "price": 3600000,
       "duration": 40,
@@ -3154,6 +3155,14 @@
         }
       ],
       "isFree": true
+    },
+    {
+      "id": "s1755727559067",
+      "courseId": "b669682d-24fa-46ad-a698-7c462857a6f9",
+      "seasion": "فصل سوم",
+      "title": "Stores در Svelte",
+      "videos": [],
+      "isFree": false
     }
   ],
   "teachers": [
@@ -3259,13 +3268,14 @@
     {
       "id": "72d235b7-46b8-4a26-9361-197206a6d4c7",
       "username": "mhmd_12",
-      "password": "$2b$10$9Yf5KdSTX3EhAzueJxzFOesQDhphJCqn5QGJwV/Mot8UyzVpeqqCK",
+      "password": "$2b$10$5mEZNttKCOU7yS.2woO/CeqGFvYSNLf7mi1uidNYM7VuOnIvkJb6m",
       "email": "mhmd@gmail.com",
       "phonenumber": "09151147788",
       "fullname": "محمد مهدی سلوکی",
       "role": "teacher",
-      "isBanned": true,
+      "isBanned": false,
       "courseIds": [
+        "b669682d-24fa-46ad-a698-7c462857a6f9",
         "d057a7a2-348e-401d-80c7-a141d41e7c07"
       ],
       "stack": "بک اند"

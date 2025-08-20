@@ -204,10 +204,9 @@ server.post("/courses", (req, res) => {
   });
 });
 
-// DELETE /courses/:id
-server.delete("/courses/:courseId", (req, res) => {
+server.get("/teachers/:teacherId/courses", (req, res) => {
   const db = router.db;
-  const { courseId } = req.params;
+  const { teacherId } = req.params;
 
   const authHeader = req.headers["authorization"];
   if (!authHeader) {
@@ -224,58 +223,62 @@ server.delete("/courses/:courseId", (req, res) => {
       return res.status(401).json({ error: "توکن نامعتبر" });
     }
 
-    // چک نقش ادمین
-    const adminUser = db.get("users").find({ id: user.userId }).value();
-    if (!adminUser || adminUser.role !== "admin") {
-      return res
-        .status(403)
-        .json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+    // پیدا کردن یوزر لاگین‌شده
+    const currentUser = db.get("teachers").find({ id: user.userId }).value();
+
+    if (!currentUser) {
+      return res.status(404).json({ error: "کاربر یافت نشد" });
     }
 
-    // پیدا کردن دوره
-    const course = db.get("courses").find({ id: courseId }).value();
-    if (!course) {
-      return res.status(404).json({ error: "دوره یافت نشد" });
+    // فقط مدرس‌ها اجازه دارن
+    if (currentUser.role !== "teacher") {
+      return res.status(403).json({
+        error: "فقط مدرس می‌تواند به این مسیر دسترسی داشته باشد",
+      });
     }
 
-    // 1️⃣ حذف دوره از جدول courses
-    db.get("courses").remove({ id: courseId }).write();
-
-    // 2️⃣ آپدیت users
-    db.get("users")
-      .value()
-      .forEach((u) => {
-        if (u.courses?.includes(courseId)) {
-          db.get("users")
-            .find({ id: u.id })
-            .assign({ courses: u.courses.filter((id) => id !== courseId) })
-            .write();
-        }
+    // مدرس فقط به دوره‌های خودش دسترسی داره
+    if (currentUser.id !== teacherId) {
+      return res.status(403).json({
+        error: "شما اجازه دسترسی به اطلاعات مدرس دیگر را ندارید",
       });
+    }
 
-    // 3️⃣ آپدیت teachers
-    db.get("teachers")
-      .value()
-      .forEach((t) => {
-        if (t.courses?.includes(courseId)) {
-          db.get("teachers")
-            .find({ id: t.id })
-            .assign({ courses: t.courses.filter((id) => id !== courseId) })
-            .write();
-        }
-      });
+    // پیدا کردن مدرس
+    const teacher = db.get("teachers").find({ id: teacherId }).value();
+    if (!teacher) {
+      return res.status(404).json({ error: "مدرس یافت نشد" });
+    }
 
-    // 4️⃣ حذف sessions که شامل courseId هستند
-    db.get("sessions")
-      .remove((s) => Array.isArray(s.data) && s.data.includes(courseId))
-      .write();
+    // گرفتن لیست دوره‌های مدرس از جدول courses
+    let teacherCourses = db
+      .get("courses")
+      .filter({ teacherId: teacherId })
+      .value();
+
+    // pagination
+    let { page = 1, limit = 5 } = req.query;
+    page = parseInt(page);
+    limit = parseInt(limit);
+
+    const total = teacherCourses.length;
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+
+    console.log('teacherCourses Length : ' + teacherCourses.length);
+
+    const paginatedCourses = teacherCourses.slice(startIndex, endIndex);
 
     res.status(200).json({
-      message: "دوره و تمام وابستگی‌ها حذف شدند",
-      deletedCourseId: courseId,
+      page,
+      limit,
+      total,
+      teacherCourses: paginatedCourses,
     });
   });
 });
+
+
 
 server.get("/teachers/:teacherId", (req, res) => {
   const db = router.db;
@@ -920,6 +923,7 @@ server.put("/teachers/:teacherId", async (req, res) => {
     if (stack) updates.stack = stack;
 
     if (courseIds && Array.isArray(courseIds)) {
+      // اعتبارسنجی آیدی‌های دوره
       const invalidCourses = courseIds.filter(
         (id) => !db.get("courses").find({ id }).value()
       );
@@ -932,9 +936,8 @@ server.put("/teachers/:teacherId", async (req, res) => {
       }
 
       const previousCourseIds = teacher.courseIds || [];
-      updates.courseIds = courseIds;
 
-      // حذف teacherId از دوره‌های قبلی که دیگر به این معلم تعلق ندارند
+      // حذف teacherId از دوره‌هایی که دیگه جزو لیست نیستن
       const removedCourses = previousCourseIds.filter(
         (id) => !courseIds.includes(id)
       );
@@ -946,19 +949,19 @@ server.put("/teachers/:teacherId", async (req, res) => {
       });
 
       // اضافه کردن teacherId به دوره‌های جدید
-      const addedCourses = courseIds.filter(
-        (id) => !previousCourseIds.includes(id)
-      );
-      addedCourses.forEach((courseId) => {
+      courseIds.forEach((courseId) => {
         db.get("courses")
           .find({ id: courseId })
-          .assign({ teacherId: teacherId })
+          .assign({ teacherId })
           .write();
       });
+
+      // در نهایت هم لیست دوره‌ها رو توی teacher ست کنیم
+      updates.courseIds = courseIds;
     }
   }
 
-  // اعمال به‌روزرسانی‌ها
+  // اعمال تغییرات روی teacher
   db.get("teachers").find({ id: teacherId }).assign(updates).write();
 
   const updatedTeacher = db.get("teachers").find({ id: teacherId }).value();
@@ -977,6 +980,7 @@ server.put("/teachers/:teacherId", async (req, res) => {
     },
   });
 });
+
 
 
 /**
@@ -1365,56 +1369,98 @@ server.post("/sessions", (req, res) => {
   const { courseId, seasion, title, isFree } = req.body;
   const db = router.db;
 
-  // اعتبارسنجی
-  if (!courseId || !seasion || !title || !isFree) {
+  // === Auth ===
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) return res.status(401).json({ error: "توکن ارسال نشده" });
+
+  const token = authHeader.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "توکن معتبر نیست" });
+
+  // === Validation (بدون گیر دادن به false بودن isFree) ===
+  if (!courseId || !seasion || !title || typeof isFree === "undefined") {
     return res.status(400).json({ error: "پر کردن تمام فیلدها الزامی است" });
   }
 
-  // بررسی وجود دوره
-  const course = db.get("courses").find({ id: courseId }).value();
-  if (!course) {
-    return res.status(404).json({ error: "دوره مورد نظر یافت نشد" });
-  }
+  jwt.verify(token, SECRET_KEY, (err, payload) => {
+    if (err) return res.status(401).json({ error: "توکن نامعتبر" });
 
-  // بررسی وجود جلسه مشابه
-  const existingSession = db
-    .get("sessions")
-    .find({ courseId, seasion, title })
-    .value();
+    const { userId, role } = payload || {};
 
-  if (existingSession) {
-    return res.status(409).json({
-      error: "این جلسه قبلاً برای این دوره ثبت شده است",
-      session: existingSession,
+    // === پیدا کردن نقش ===
+    let isAdmin = false;
+    let teacher = null;
+
+    if (role === "admin") {
+      // اطمینان از اینکه واقعاً ادمینه
+      isAdmin = !!db.get("users").find({ id: userId, role: "admin" }).value();
+      if (!isAdmin) return res.status(403).json({ error: "دسترسی غیرمجاز" });
+    } else if (role === "teacher") {
+      teacher = db.get("teachers").find({ id: userId, role: "teacher" }).value();
+      if (!teacher) return res.status(403).json({ error: "مدرس یافت نشد" });
+    } else {
+      return res.status(403).json({ error: "دسترسی غیرمجاز" });
+    }
+
+    // === وجود دوره ===
+    const course = db.get("courses").find({ id: courseId }).value();
+    if (!course) return res.status(404).json({ error: "دوره مورد نظر یافت نشد" });
+
+    // === محدودیتِ مالکیت برای مدرس ===
+    if (!isAdmin) {
+      const ownsByCourseField = course.teacherId === teacher.id;
+      const ownsByList =
+        Array.isArray(teacher.courseIds) && teacher.courseIds.includes(courseId);
+
+      if (!ownsByCourseField && !ownsByList) {
+        return res
+          .status(403)
+          .json({ error: "فقط ادمین یا مدرسِ همین دوره اجازه اضافه کردن جلسه دارد" });
+      }
+    }
+
+    // === جلوگیری از جلسه‌ی تکراری در همان دوره/فصل/عنوان ===
+    const duplicate = db
+      .get("sessions")
+      .find({ courseId, seasion, title })
+      .value();
+
+    if (duplicate) {
+      return res.status(409).json({
+        error: "این جلسه قبلاً برای این دوره ثبت شده است",
+        session: duplicate,
+      });
+    }
+
+    // === ساخت جلسه ===
+    const newSession = {
+      id: `s${Date.now()}`,
+      courseId,
+      seasion,
+      title,
+      videos: [],
+      isFree: typeof isFree === "string" ? isFree === "true" : !!isFree,
+    };
+
+    db.get("sessions").push(newSession).write();
+
+    // === اضافه‌کردن شناسه جلسه به دوره (بدون تکرار) ===
+    const currentSessions = course.sessions || [];
+    if (!currentSessions.includes(newSession.id)) {
+      db.get("courses")
+        .find({ id: courseId })
+        .assign({ sessions: [...currentSessions, newSession.id] })
+        .write();
+    }
+
+    return res.status(201).json({
+      success: true,
+      message: "جلسه با موفقیت ایجاد شد",
+      session: newSession,
+      updatedCourseId: course.id,
     });
-  }
-
-  // ایجاد جلسه جدید
-  const newSession = {
-    id: `s${Date.now()}`,
-    courseId,
-    seasion,
-    title,
-    videos: [],
-    isFree: isFree == "true" ? true : false,
-  };
-
-  // ذخیره جلسه
-  db.get("sessions").push(newSession).write();
-
-  // آپدیت دوره با اضافه کردن sessionId
-  db.get("courses")
-    .find({ id: courseId })
-    .update("sessions", (sessions = []) => [...sessions, newSession.id])
-    .write();
-
-  res.status(201).json({
-    success: true,
-    session: newSession,
-    updatedCourse: course.id,
-    message: "جلسه با موفقیت ایجاد شد",
   });
 });
+
 
 /**
  * @api {delete} /sessions/:sessionId حذف جلسه
