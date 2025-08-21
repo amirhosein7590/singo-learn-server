@@ -31,12 +31,7 @@ const PUBLIC_ROUTES = [
 ];
 
 // لیست مسیرهای ادمین
-const ADMIN_ROUTES = [
-  "/users",
-  "/ban",
-  "/offs/all",
-  "/offs/:courseId"
-];
+const ADMIN_ROUTES = ["/users", "/ban", "/offs/all", "/offs/:courseId"];
 
 // تنظیمات multer برای آپلود فایل
 const storage = multer.diskStorage({
@@ -265,7 +260,7 @@ server.get("/teachers/:teacherId/courses", (req, res) => {
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
 
-    console.log('teacherCourses Length : ' + teacherCourses.length);
+    console.log("teacherCourses Length : " + teacherCourses.length);
 
     const paginatedCourses = teacherCourses.slice(startIndex, endIndex);
 
@@ -277,8 +272,6 @@ server.get("/teachers/:teacherId/courses", (req, res) => {
     });
   });
 });
-
-
 
 server.get("/teachers/:teacherId", (req, res) => {
   const db = router.db;
@@ -303,7 +296,7 @@ server.get("/teachers/:teacherId", (req, res) => {
   // اگر ادمین یا خودش باشه
   res.json({
     success: true,
-    ...teacher
+    ...teacher,
   });
 });
 
@@ -395,34 +388,106 @@ server.get("/users", (req, res) => {
   });
 });
 
+// server.get("/sessions-with-course", (req, res) => {
+//   const db = router.db;
+
+//   const page = parseInt(req.query.page) || 1;
+//   const limit = parseInt(req.query.limit) || 10;
+
+//   const allSessions = db.get("sessions").value();
+
+//   // Pagination محاسبه
+//   const startIndex = (page - 1) * limit;
+//   const endIndex = page * limit;
+//   const paginatedSessions = allSessions.slice(startIndex, endIndex);
+
+//   const data = paginatedSessions.map((session) => {
+//     // پیدا کردن course مربوطه
+//     const course = db.get("courses").find({ id: session.courseId }).value();
+
+//     return {
+//       ...session,
+//       course,
+//     };
+//   });
+
+//   res.json({
+//     success: true,
+//     currentPage: page,
+//     totalPages: Math.ceil(allSessions.length / limit),
+//     sessions: data,
+//   });
+// });
+
 server.get("/sessions-with-course", (req, res) => {
   const db = router.db;
 
+  // گرفتن page و limit
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
 
-  const allSessions = db.get("sessions").value();
+  // گرفتن توکن از هدر
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    return res.status(401).json({ error: "توکن ارسال نشده است" });
+  }
 
-  // Pagination محاسبه
-  const startIndex = (page - 1) * limit;
-  const endIndex = page * limit;
-  const paginatedSessions = allSessions.slice(startIndex, endIndex);
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ error: "توکن نامعتبر است" });
+  }
 
-  const data = paginatedSessions.map((session) => {
-    // پیدا کردن course مربوطه
-    const course = db.get("courses").find({ id: session.courseId }).value();
+  jwt.verify(token, SECRET_KEY, (err, payload) => {
+    if (err) return res.status(401).json({ error: "توکن نامعتبر است" });
 
-    return {
-      ...session,
-      course,
-    };
-  });
+    const { userId, role } = payload;
 
-  res.json({
-    success: true,
-    currentPage: page,
-    totalPages: Math.ceil(allSessions.length / limit),
-    sessions: data,
+    let allSessions = db.get("sessions").value();
+
+    if (role === "admin") {
+      // ادمین همه جلسات رو می‌بینه (بدون فیلتر)
+    } else if (role === "teacher") {
+      const teacher = db.get("teachers").find({ id: userId }).value();
+      if (!teacher) {
+        return res.status(403).json({ error: "مدرس یافت نشد" });
+      }
+
+      // فقط جلسات دوره‌هایی که مدرس صاحبشونه
+      allSessions = allSessions.filter((session) => {
+        const course = db.get("courses").find({ id: session.courseId }).value();
+        if (!course) return false;
+
+        const ownsByCourseField = course.teacherId === teacher.id;
+        const ownsByList =
+          Array.isArray(teacher.courseIds) &&
+          teacher.courseIds.includes(course.id);
+
+        return ownsByCourseField || ownsByList;
+      });
+    } else {
+      return res.status(403).json({ error: "دسترسی غیرمجاز" });
+    }
+
+    // Pagination
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const paginatedSessions = allSessions.slice(startIndex, endIndex);
+
+    // اضافه کردن course به هر session
+    const data = paginatedSessions.map((session) => {
+      const course = db.get("courses").find({ id: session.courseId }).value();
+      return {
+        ...session,
+        course,
+      };
+    });
+
+    res.json({
+      success: true,
+      currentPage: page,
+      totalPages: Math.ceil(allSessions.length / limit),
+      sessions: data,
+    });
   });
 });
 
@@ -432,17 +497,39 @@ server.get("/seasions-with-course", (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
 
-  const allSessions = db.get("sessions").value();
+  const user = req.user; // اطلاعات کاربر از توکن
+  if (!user) {
+    return res.status(401).json({ error: "ابتدا وارد حساب کاربری شوید" });
+  }
 
-  // Pagination محاسبه
+  let allSessions = db.get("sessions").value();
+
+  // 👇 فیلتر جلسات بر اساس نقش
+  if (user.role === "teacher") {
+    const teacher = db.get("teachers").find({ id: user.userId }).value();
+    if (!teacher) {
+      return res
+        .status(403)
+        .json({ error: "شما اجازه دسترسی به جلسات ندارید" });
+    }
+
+    // فقط جلسات دوره‌هایی که این مدرس داره
+    allSessions = allSessions.filter((session) =>
+      teacher.courseIds.includes(session.courseId)
+    );
+  } else if (user.role !== "admin") {
+    return res
+      .status(403)
+      .json({ error: "شما اجازه دسترسی به جلسات را ندارید" });
+  }
+
+  // Pagination
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const paginatedSessions = allSessions.slice(startIndex, endIndex);
 
   const data = paginatedSessions.map((session) => {
-    // پیدا کردن course مربوطه
     const course = db.get("courses").find({ id: session.courseId }).value();
-
     return {
       ...session,
       course,
@@ -870,14 +957,7 @@ server.post("/ban", (req, res) => {
  */
 server.put("/teachers/:teacherId", async (req, res) => {
   const { teacherId } = req.params;
-  const {
-    username,
-    email,
-    fullname,
-    stack,
-    phonenumber,
-    courseIds,
-  } = req.body;
+  const { username, email, fullname, stack, phonenumber, courseIds } = req.body;
   const db = router.db;
 
   // پیدا کردن معلم
@@ -950,10 +1030,7 @@ server.put("/teachers/:teacherId", async (req, res) => {
 
       // اضافه کردن teacherId به دوره‌های جدید
       courseIds.forEach((courseId) => {
-        db.get("courses")
-          .find({ id: courseId })
-          .assign({ teacherId })
-          .write();
+        db.get("courses").find({ id: courseId }).assign({ teacherId }).write();
       });
 
       // در نهایت هم لیست دوره‌ها رو توی teacher ست کنیم
@@ -980,8 +1057,6 @@ server.put("/teachers/:teacherId", async (req, res) => {
     },
   });
 });
-
-
 
 /**
  * @api {put} /users/:userId ویرایش اطلاعات کاربر
@@ -1249,7 +1324,7 @@ server.delete("/courses/:courseId", (req, res) => {
   // احراز هویت و بررسی دسترسی ادمین
   const authHeader = req.headers["authorization"];
   if (!authHeader) return res.status(401).json({ error: "توکن ارسال نشده" });
-  
+
   const token = authHeader.split(" ")[1];
   if (!token) return res.status(401).json({ error: "توکن معتبر نیست" });
 
@@ -1265,32 +1340,30 @@ server.delete("/courses/:courseId", (req, res) => {
     const currentState = db.getState();
 
     // 1. حذف از purchasedCourses کاربران
-    currentState.users = currentState.users.map(user => ({
+    currentState.users = currentState.users.map((user) => ({
       ...user,
-      purchasedCourses: user.purchasedCourses 
-        ? user.purchasedCourses.filter(id => id !== courseId) 
+      purchasedCourses: user.purchasedCourses
+        ? user.purchasedCourses.filter((id) => id !== courseId)
         : [],
-      cart: user.cart 
-        ? user.cart.filter(id => id !== courseId) 
-        : []
+      cart: user.cart ? user.cart.filter((id) => id !== courseId) : [],
     }));
 
     // 2. حذف از courseIds معلمان
-    currentState.teachers = currentState.teachers.map(teacher => ({
+    currentState.teachers = currentState.teachers.map((teacher) => ({
       ...teacher,
-      courseIds: teacher.courseIds 
-        ? teacher.courseIds.filter(id => id !== courseId) 
-        : []
+      courseIds: teacher.courseIds
+        ? teacher.courseIds.filter((id) => id !== courseId)
+        : [],
     }));
 
     // 3. حذف جلسات مربوطه
     currentState.sessions = currentState.sessions.filter(
-      session => session.courseId !== courseId
+      (session) => session.courseId !== courseId
     );
 
     // 4. حذف خود دوره
     currentState.courses = currentState.courses.filter(
-      course => course.id !== courseId
+      (course) => course.id !== courseId
     );
 
     // ذخیره state جدید
@@ -1298,7 +1371,7 @@ server.delete("/courses/:courseId", (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "دوره و تمام وابستگی‌های آن با موفقیت حذف شدند"
+      message: "دوره و تمام وابستگی‌های آن با موفقیت حذف شدند",
     });
   });
 });
@@ -1395,7 +1468,10 @@ server.post("/sessions", (req, res) => {
       isAdmin = !!db.get("users").find({ id: userId, role: "admin" }).value();
       if (!isAdmin) return res.status(403).json({ error: "دسترسی غیرمجاز" });
     } else if (role === "teacher") {
-      teacher = db.get("teachers").find({ id: userId, role: "teacher" }).value();
+      teacher = db
+        .get("teachers")
+        .find({ id: userId, role: "teacher" })
+        .value();
       if (!teacher) return res.status(403).json({ error: "مدرس یافت نشد" });
     } else {
       return res.status(403).json({ error: "دسترسی غیرمجاز" });
@@ -1403,18 +1479,20 @@ server.post("/sessions", (req, res) => {
 
     // === وجود دوره ===
     const course = db.get("courses").find({ id: courseId }).value();
-    if (!course) return res.status(404).json({ error: "دوره مورد نظر یافت نشد" });
+    if (!course)
+      return res.status(404).json({ error: "دوره مورد نظر یافت نشد" });
 
     // === محدودیتِ مالکیت برای مدرس ===
     if (!isAdmin) {
       const ownsByCourseField = course.teacherId === teacher.id;
       const ownsByList =
-        Array.isArray(teacher.courseIds) && teacher.courseIds.includes(courseId);
+        Array.isArray(teacher.courseIds) &&
+        teacher.courseIds.includes(courseId);
 
       if (!ownsByCourseField && !ownsByList) {
-        return res
-          .status(403)
-          .json({ error: "فقط ادمین یا مدرسِ همین دوره اجازه اضافه کردن جلسه دارد" });
+        return res.status(403).json({
+          error: "فقط ادمین یا مدرسِ همین دوره اجازه اضافه کردن جلسه دارد",
+        });
       }
     }
 
@@ -1461,7 +1539,6 @@ server.post("/sessions", (req, res) => {
   });
 });
 
-
 /**
  * @api {delete} /sessions/:sessionId حذف جلسه
  */
@@ -1469,15 +1546,37 @@ server.delete("/sessions/:sessionId", (req, res) => {
   const { sessionId } = req.params;
   const db = router.db;
 
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ error: "ابتدا وارد حساب کاربری شوید" });
+  }
+
   const session = db.get("sessions").find({ id: sessionId }).value();
   if (!session) {
     return res.status(404).json({ error: "جلسه یافت نشد" });
   }
 
-  // حذف از جدول sessions
+  // اگر نقش کاربر teacher بود باید بررسی کنیم این جلسه مربوط به خودش باشه
+  if (user.role === "teacher") {
+    const teacher = db.get("teachers").find({ id: user.userId }).value();
+    if (!teacher) {
+      return res.status(403).json({ error: "دسترسی غیرمجاز" });
+    }
+
+    // بررسی اینکه دوره‌ی این جلسه جزو دوره‌های این مدرس هست یا نه
+    if (!teacher.courseIds.includes(session.courseId)) {
+      return res
+        .status(403)
+        .json({ error: "شما اجازه حذف این جلسه را ندارید" });
+    }
+  } else if (user.role !== "admin") {
+    return res.status(403).json({ error: "شما اجازه حذف جلسه را ندارید" });
+  }
+
+  // حالا حذف کنیم
   db.get("sessions").remove({ id: sessionId }).write();
 
-  // حذف از آرایه sessions در دوره مربوطه
+  // از جدول course هم حذف بشه
   db.get("courses")
     .find({ id: session.courseId })
     .update("sessions", (sessions) => sessions.filter((id) => id !== sessionId))
@@ -1487,7 +1586,7 @@ server.delete("/sessions/:sessionId", (req, res) => {
     success: true,
     deletedSession: sessionId,
     courseId: session.courseId,
-    message: "سر فصل با موفقیت حذف شد",
+    message: "جلسه با موفقیت حذف شد",
   });
 });
 
@@ -1496,7 +1595,7 @@ server.put("/sessions/:sessionId", (req, res) => {
   const { courseId, seasion, title, isFree } = req.body;
   const db = router.db;
 
-  // 1. احراز هویت ادمین
+  // 1. احراز هویت
   const authHeader = req.headers["authorization"];
   if (!authHeader) {
     return res.status(401).json({ error: "توکن احراز هویت ارسال نشده" });
@@ -1512,29 +1611,51 @@ server.put("/sessions/:sessionId", (req, res) => {
       return res.status(401).json({ error: "توکن نامعتبر یا منقضی شده" });
     }
 
-    // 2. بررسی نقش ادمین
-    const admin = db.get("users").find({ id: decoded.userId }).value();
-    if (!admin || admin.role !== "admin") {
-      return res
-        .status(403)
-        .json({ error: "فقط ادمین می‌تواند سرفصل‌ها را ویرایش کند" });
+    const user =
+      decoded.role == "teacher"
+        ? db.get("teachers").find({ id: decoded.userId }).value()
+        : db.get("users").find({ id: decoded.userId }).value();
+    if (!user) {
+      return res.status(401).json({ error: "کاربر یافت نشد" });
     }
 
-    // 3. پیدا کردن سرفصل فعلی
+    // 2. پیدا کردن جلسه فعلی
     const currentSession = db.get("sessions").find({ id: sessionId }).value();
     if (!currentSession) {
-      return res.status(404).json({ error: "سرفصل مورد نظر یافت نشد" });
+      return res.status(404).json({ error: "جلسه مورد نظر یافت نشد" });
     }
 
-    // 4. بررسی وجود دوره جدید (اگر courseId تغییر کرده باشد)
+    // 3. بررسی دسترسی
+    if (user.role === "teacher") {
+      const course = db
+        .get("courses")
+        .find({ id: currentSession.courseId })
+        .value();
+      if (!course || course.teacherId !== user.id) {
+        return res
+          .status(403)
+          .json({ error: "شما مجاز به ویرایش این جلسه نیستید" });
+      }
+    } else if (user.role !== "admin") {
+      return res.status(403).json({ error: "دسترسی غیرمجاز" });
+    }
+
+    // 4. بررسی وجود دوره مقصد (اگر courseId تغییر کرده)
     const newCourse = db.get("courses").find({ id: courseId }).value();
     if (!newCourse) {
-      return res.status(404).json({ error: "دوره جدید یافت نشد" });
+      return res.status(404).json({ error: "دوره مقصد یافت نشد" });
     }
 
-    // 5. اگر دوره تغییر کرده باشد، باید سرفصل از دوره قدیم حذف و به دوره جدید اضافه شود
-    if (courseId !== currentSession.courseId) {
-      // حذف از دوره قدیم
+    // اگر teacher بخواد courseId رو تغییر بده → جلوگیری کن
+    if (user.role === "teacher" && courseId !== currentSession.courseId) {
+      return res
+        .status(403)
+        .json({ error: "مدرس نمی‌تواند جلسه را به دوره دیگری منتقل کند" });
+    }
+
+    // 5. اگر course تغییر کرد (فقط برای ادمین)
+    if (user.role === "admin" && courseId !== currentSession.courseId) {
+      // حذف از دوره قدیمی
       db.get("courses")
         .find({ id: currentSession.courseId })
         .update("sessions", (sessions) =>
@@ -1549,7 +1670,7 @@ server.put("/sessions/:sessionId", (req, res) => {
         .write();
     }
 
-    // 6. ویرایش سرفصل در جدول sessions
+    // 6. بروزرسانی جلسه
     db.get("sessions")
       .find({ id: sessionId })
       .assign({
@@ -1560,10 +1681,10 @@ server.put("/sessions/:sessionId", (req, res) => {
       })
       .write();
 
-    // 7. پاسخ موفقیت‌آمیز
+    // 7. خروجی
     res.status(200).json({
       success: true,
-      message: "سرفصل با موفقیت ویرایش شد",
+      message: "جلسه با موفقیت ویرایش شد",
       updatedSession: {
         id: sessionId,
         courseId,
@@ -1571,10 +1692,13 @@ server.put("/sessions/:sessionId", (req, res) => {
         title,
         isFree,
       },
-      affectedCourses: {
-        oldCourseId: currentSession.courseId,
-        newCourseId: courseId,
-      },
+      affectedCourses:
+        user.role === "admin"
+          ? {
+              oldCourseId: currentSession.courseId,
+              newCourseId: courseId,
+            }
+          : undefined,
     });
   });
 });
@@ -1590,6 +1714,11 @@ server.post("/sessions/:sessionId/videos", (req, res) => {
   const { title, duration, videoUrl } = req.body;
   const db = router.db;
 
+  const user = req.user; // اطلاعات کاربر از توکن
+  if (!user) {
+    return res.status(401).json({ error: "ابتدا وارد حساب کاربری شوید" });
+  }
+
   if (!title || !duration || !videoUrl) {
     return res.status(400).json({ error: "پر کردن تمام فیلدها الزامی است" });
   }
@@ -1599,12 +1728,34 @@ server.post("/sessions/:sessionId/videos", (req, res) => {
     return res.status(404).json({ error: "جلسه یافت نشد" });
   }
 
+  const course = db.get("courses").find({ id: session.courseId }).value();
+  if (!course) {
+    return res.status(404).json({ error: "دوره یافت نشد" });
+  }
+
+  // بررسی دسترسی
+  if (user.role === "admin") {
+    // ✅ ادمین همه‌چیز رو می‌تونه
+  } else if (user.role === "teacher") {
+    const teacher = db.get("teachers").find({ id: user.userId }).value();
+    if (!teacher || !teacher.courseIds.includes(course.id)) {
+      return res
+        .status(403)
+        .json({ error: "شما اجازه افزودن ویدئو به این جلسه را ندارید" });
+    }
+  } else {
+    return res
+      .status(403)
+      .json({ error: "شما اجازه افزودن ویدئو به جلسات را ندارید" });
+  }
+
+  // ایجاد ویدئوی جدید
   const newVideo = {
     id: `v${Date.now()}`,
     title,
     duration,
     videoUrl,
-    order: session.videos.length + 1,
+    order: (session.videos?.length || 0) + 1,
   };
 
   db.get("sessions")
@@ -1614,7 +1765,7 @@ server.post("/sessions/:sessionId/videos", (req, res) => {
 
   res.status(201).json({
     success: true,
-    message: "جلسه با موفقیت ایجاد شد",
+    message: "ویدئو با موفقیت اضافه شد",
     addedVideo: newVideo,
   });
 });
@@ -1845,7 +1996,9 @@ server.put("/courses/:courseId", (req, res) => {
     // چک نقش ادمین
     const adminUser = db.get("users").find({ id: user.userId }).value();
     if (!adminUser || adminUser.role !== "admin") {
-      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+      return res
+        .status(403)
+        .json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
     }
 
     // پیدا کردن دوره
@@ -1865,7 +2018,10 @@ server.put("/courses/:courseId", (req, res) => {
       description,
     } = req.body;
 
-    const {icon : prevIcon , image : prevImage} = db.get('courses').find({id : courseId}).value();
+    const { icon: prevIcon, image: prevImage } = db
+      .get("courses")
+      .find({ id: courseId })
+      .value();
 
     // بروزرسانی دوره
     const updatedCourse = db
@@ -1877,10 +2033,10 @@ server.put("/courses/:courseId", (req, res) => {
         price,
         duration,
         studentsCount,
-        isSupport : isSupport == 'true' ? true : false,
+        isSupport: isSupport == "true" ? true : false,
         description,
-        icon: prevIcon || '',  
-        image: prevImage || '', 
+        icon: prevIcon || "",
+        image: prevImage || "",
       })
       .write();
 
@@ -1913,7 +2069,9 @@ server.put("/courses/:courseId/icon", (req, res) => {
     // چک نقش ادمین
     const adminUser = db.get("users").find({ id: user.userId }).value();
     if (!adminUser || adminUser.role !== "admin") {
-      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+      return res
+        .status(403)
+        .json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
     }
 
     // پیدا کردن دوره
@@ -1962,7 +2120,9 @@ server.put("/courses/:courseId/image", (req, res) => {
     // چک نقش ادمین
     const adminUser = db.get("users").find({ id: user.userId }).value();
     if (!adminUser || adminUser.role !== "admin") {
-      return res.status(403).json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
+      return res
+        .status(403)
+        .json({ error: "دسترسی فقط برای ادمین امکان‌پذیر است" });
     }
 
     // پیدا کردن دوره
@@ -1988,8 +2148,6 @@ server.put("/courses/:courseId/image", (req, res) => {
     });
   });
 });
-
-
 
 // استفاده از روتر json-server
 server.use(router);

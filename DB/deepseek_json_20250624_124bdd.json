@@ -237,13 +237,15 @@
     {
       "id": "8f5c68e1-2a11-47bf-8553-78a3a11a3528",
       "username": "shima_naderi",
-      "password": "$2b$10$NnMJtw50B2jVGKJ.0nmBr.OzD0CjxN5qPshDjHCfGGomAvJKhACdm",
+      "password": "$2b$10$5cSpZHiXVVDjBT1nEz9hLeoNMMuIoKTAAeuxMEWxfW4wW3IIBVRRu",
       "email": "shima.naderi@example.com",
       "phonenumber": "09123456795",
       "fullname": "شیما نادری",
       "role": "user",
       "isBanned": false,
-      "purchasedCourses": [],
+      "purchasedCourses": [
+        "b669682d-24fa-46ad-a698-7c462857a6f9"
+      ],
       "cart": []
     },
     {
@@ -257,14 +259,6 @@
       "isBanned": false,
       "purchasedCourses": [],
       "cart": []
-    },
-    {
-      "username": "nima_ramezani",
-      "email": "nima.ramezani@example.com",
-      "phonenumber": "09123456797",
-      "fullname": "نیما رضایی",
-      "role": "user",
-      "id": "a5d5ab85-d027-4f52-bc5d-c4aa6171ca2d"
     },
     {
       "id": "e0e88377-4851-415e-a0fa-d514d69fc901",
@@ -306,7 +300,7 @@
       "icon": "https://upcdn.io/G22nht2/raw/uploads/2025/08/20/4jZiuRBsLJ-react-js.svg",
       "details": "React Js Course",
       "teacherId": "5c0d2927-1d7c-4e70-b89c-a79cd94e1df1",
-      "price": 1875000,
+      "price": 2500000,
       "duration": 30,
       "studentsCount": 150,
       "isSupport": true,
@@ -369,8 +363,8 @@
           "description": "با توجه به محبوبیت و پشتیبانی فیسبوک، React همچنان یکی از اصلی‌ترین تکنولوژی‌های فرانت‌اند خواهد بود و به رشد خود ادامه خواهد داد."
         }
       ],
-      "discount": "25",
-      "originalPrice": 2500000
+      "discount": null,
+      "originalPrice": null
     },
     {
       "id": "cc09bdcb-c445-4ac0-a5cf-dd9ea4eac783",
@@ -962,7 +956,7 @@
       "icon": "https://ucarecdn.com/79d6ebe7-e24f-4e45-9b67-e2a3c8fdfca6/",
       "details": "Graph Ql Course",
       "teacherId": "bbb10c00-d866-4c7d-98fa-5797caba1c0d",
-      "price": 2100000,
+      "price": 1533000,
       "duration": 20,
       "studentsCount": 90,
       "isSupport": true,
@@ -1024,8 +1018,8 @@
           "description": "با حمایت شرکت‌های بزرگی مانند فیسبوک، گیت‌هاب و ... و رشد جامعه توسعه‌دهندگان، GraphQL به استاندارد جدیدی برای APIهای مدرن تبدیل شده است."
         }
       ],
-      "discount": null,
-      "originalPrice": null
+      "discount": "27",
+      "originalPrice": 2100000
     },
     {
       "id": "020d41dd-173c-46e3-a9d2-245efbf89161",
@@ -1266,7 +1260,8 @@
       "sessions": [
         "s38",
         "s39",
-        "s40"
+        "s40",
+        "s1755782379327"
       ],
       "description": [
         {
@@ -3016,7 +3011,7 @@
           "order": 5
         }
       ],
-      "isFree": true
+      "isFree": false
     },
     {
       "id": "s39",
@@ -3161,7 +3156,31 @@
       "courseId": "b669682d-24fa-46ad-a698-7c462857a6f9",
       "seasion": "فصل سوم",
       "title": "Stores در Svelte",
-      "videos": [],
+      "videos": [
+        {
+          "id": "v1755784955214",
+          "title": "Stores چیست ؟",
+          "duration": "25",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/21/4jZa44T3CV-SampleVideo_1280x720_1mb.mp4",
+          "order": 1
+        }
+      ],
+      "isFree": false
+    },
+    {
+      "id": "s1755782379327",
+      "courseId": "d057a7a2-348e-401d-80c7-a141d41e7c07",
+      "seasion": "فصل سوم",
+      "title": "Cluster در Kubernetes ",
+      "videos": [
+        {
+          "id": "v1755786822366",
+          "title": "جلسه تستی",
+          "duration": "22",
+          "videoUrl": "https://upcdn.io/G22nht2/raw/uploads/2025/08/21/4jZZtV6G4y-SampleVideo_1280x720_1mb.mp4",
+          "order": 1
+        }
+      ],
       "isFree": false
     }
   ],
