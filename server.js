@@ -1376,6 +1376,53 @@ server.delete("/courses/:courseId", (req, res) => {
   });
 });
 
+server.delete("/teachers/:teacherId", (req, res) => {
+  const db = router.db;
+  const { teacherId } = req.params;
+
+  // احراز هویت و بررسی دسترسی ادمین
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) return res.status(401).json({ error: "توکن ارسال نشده" });
+
+  const token = authHeader.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "توکن معتبر نیست" });
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.status(401).json({ error: "توکن نامعتبر" });
+
+    const adminUser = db.get("users").find({ id: user.userId }).value();
+    if (!adminUser || adminUser.role !== "admin") {
+      return res.status(403).json({ error: "فقط ادمین دسترسی دارد" });
+    }
+
+    // دریافت state فعلی
+    const currentState = db.getState();
+
+    // 1. حذف teacher از teachers
+    currentState.teachers = currentState.teachers.filter(
+      (teacher) => teacher.id !== teacherId
+    );
+
+    // 2. پاک کردن teacherId در دوره‌هایی که این teacher داشتن
+    currentState.courses = currentState.courses.map((course) => {
+      if (course.teacherId === teacherId) {
+        return { ...course, teacherId: null };
+      }
+      return course;
+    });
+
+    // 3. ذخیره state جدید
+    db.setState(currentState).write();
+
+    res.status(200).json({
+      success: true,
+      message: "مدرس حذف شد و دوره‌های مربوط به او آزاد شدند",
+    });
+  });
+});
+
+
+
 /**
  * @api {delete} /users/:userId حذف کامل یک کاربر از سیستم
  * @apiHeader {String} Authorization توکن ادمین
