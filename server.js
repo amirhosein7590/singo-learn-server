@@ -122,6 +122,11 @@ server.use((req, res, next) => {
   });
 });
 
+const cors = require("cors");
+
+// حتما قبل از تعریف routeها
+server.use(cors());
+
 // --- روت‌های API ---
 
 server.get("/courses", (req, res) => {
